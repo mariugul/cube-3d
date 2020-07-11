@@ -1,2 +1,2 @@
-# Full-led-cube
+# Cube 3D
  
