@@ -58,7 +58,7 @@ public class OnMouseClick : MonoBehaviour
                         hit.transform.gameObject.transform.GetChild(0).GetComponent<Light>().enabled = false;
 
                         // Activate halo
-                        hit.transform.gameObject.transform.GetChild(1).GetComponent<Light>().enabled = false;
+                        //hit.transform.gameObject.transform.GetChild(1).GetComponent<Light>().enabled = false;
 
                         // Set led status in dictionary
                         ledStatus[clickedLed] = false;
@@ -70,7 +70,7 @@ public class OnMouseClick : MonoBehaviour
                         hit.transform.gameObject.transform.GetChild(0).GetComponent<Light>().enabled = true;
 
                         // Activate halo
-                        hit.transform.gameObject.transform.GetChild(1).GetComponent<Light>().enabled = true;
+                        //hit.transform.gameObject.transform.GetChild(1).GetComponent<Light>().enabled = true;
 
                         // Set led status in dictionary
                         ledStatus[clickedLed] = true;
