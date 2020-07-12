@@ -7,9 +7,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor.PackageManager.Requests;
 using System.Globalization;
-
 
 public class PatternGenerate : MonoBehaviour
 {
@@ -17,14 +15,10 @@ public class PatternGenerate : MonoBehaviour
     public TMP_InputField inputFieldTime;
 
     private const int CUBESIZE = 64;
-    private Light[] lights;
     ushort[] ledValuesHex = { 0, 0, 0, 0 };
 
     // Stored pattern table
     List<string> pattern = new List<string>();
-
-    // Stored pattern table for redo (ctrl + z)
-    List<string> pattern_redo = new List<string>();
 
     // Path to pattern.h
     string path = "pattern.h";
@@ -215,8 +209,8 @@ public class PatternGenerate : MonoBehaviour
             if (gameObject.transform.GetChild(i).GetChild(0).GetComponent<Light>().enabled == true)
             {
 
-                //Debug.Log("LED " + i + " was on!");
                 ledValueHex += (ushort)(1 << j); // Bitshifts a '1' the correct order into a ushort variable
+                //Debug.Log("LED " + i + " was on!");
             }
             else
             {
@@ -240,28 +234,8 @@ public class PatternGenerate : MonoBehaviour
         }
     }
 
-    [MenuItem("Tools/Write file")]
-    static void WriteString(TMP_InputField inputField)
-    {
-        string path = "pattern.h";
 
-        // Erase contents of file 
-        System.IO.File.WriteAllText(path, string.Empty);
-
-        //Write some text to the test.txt file
-        StreamWriter writer = new StreamWriter(path, true);
-        writer.WriteLine(inputField.text);
-        writer.Close();
-
-        //Re-import the file to update the reference in the editor
-        AssetDatabase.ImportAsset(path);
-        TextAsset asset = (TextAsset)Resources.Load("test");
-
-        //Print the text from the file
-        //Debug.Log(asset.text);
-    }
-
-    [MenuItem("Tools/Read file")]
+    //[MenuItem("Tools/Read file")]
     static void refreshInputField(TMP_InputField inputField)
     {
         string path = "pattern.h";
@@ -269,7 +243,7 @@ public class PatternGenerate : MonoBehaviour
         //Read the text from file
         StreamReader reader = new StreamReader(path);
         inputField.text = reader.ReadToEnd();
-
+        
         reader.Close();
     }
     
