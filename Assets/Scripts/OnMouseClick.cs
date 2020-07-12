@@ -12,6 +12,10 @@ public class OnMouseClick : MonoBehaviour
     // List to store the on or off status of LEDs
     Dictionary<string, bool> ledStatus = new Dictionary<string, bool>();
 
+    // Childs of LED cube
+    const int light_source = 0;
+    const int light_halo = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,10 +45,7 @@ public class OnMouseClick : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
                 if (hit.transform != null)
-                {
-                    // Print name of clicked object
-                    //PrintName(hit.transform.gameObject);
-
+                {            
                     // Save name of clicked LED
                     string clickedLed = hit.transform.gameObject.name;
 
@@ -54,11 +55,11 @@ public class OnMouseClick : MonoBehaviour
                     // Toggle LED light
                     if (clickedLedStatus)
                     {
-                        // Activate light source
-                        hit.transform.gameObject.transform.GetChild(0).GetComponent<Light>().enabled = false;
+                        // Deactivate light source
+                        hit.transform.gameObject.transform.GetChild(light_source).GetComponent<Light>().enabled = false;
 
-                        // Activate halo
-                        //hit.transform.gameObject.transform.GetChild(1).GetComponent<Light>().enabled = false;
+                        // Deactivate halo
+                        hit.transform.gameObject.transform.GetChild(light_source).GetChild(light_halo).GetComponent<Light>().enabled = false;
 
                         // Set led status in dictionary
                         ledStatus[clickedLed] = false;
@@ -67,10 +68,10 @@ public class OnMouseClick : MonoBehaviour
                     else
                     {
                         // Activate light source
-                        hit.transform.gameObject.transform.GetChild(0).GetComponent<Light>().enabled = true;
-
+                        hit.transform.gameObject.transform.GetChild(light_source).GetComponent<Light>().enabled = true;
+                        
                         // Activate halo
-                        //hit.transform.gameObject.transform.GetChild(1).GetComponent<Light>().enabled = true;
+                        hit.transform.gameObject.transform.GetChild(light_source).GetChild(light_halo).GetComponent<Light>().enabled = true;
 
                         // Set led status in dictionary
                         ledStatus[clickedLed] = true;

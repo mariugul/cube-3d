@@ -5,7 +5,6 @@ using UnityEditor;
 using System.IO;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor.PackageManager.Requests;
 
 public class ReadWriteTextToFile : MonoBehaviour
 {
@@ -32,7 +31,7 @@ public class ReadWriteTextToFile : MonoBehaviour
         //WriteString(inputField);
     }
 
-    [MenuItem("Tools/Write file")]
+    //[MenuItem("Tools/Write file")]
     static void WriteString(TMP_InputField inputField)
     {
         string path = "Assets/Resources/test.h";
@@ -46,14 +45,14 @@ public class ReadWriteTextToFile : MonoBehaviour
         writer.Close();
 
         //Re-import the file to update the reference in the editor
-        AssetDatabase.ImportAsset(path);
-        TextAsset asset = (TextAsset)Resources.Load("test");
+        //AssetDatabase.ImportAsset(path);
+        //TextAsset asset = (TextAsset)Resources.Load("test");
 
         //Print the text from the file
         //Debug.Log(asset.text);
     }
 
-    [MenuItem("Tools/Read file")]
+  //  [MenuItem("Tools/Read file")]
     static void ReadString(TMP_InputField inputField)
     {
         string path = "Assets/Resources/test.h";
