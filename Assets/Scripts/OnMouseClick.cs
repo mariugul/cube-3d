@@ -38,7 +38,8 @@ public class OnMouseClick : MonoBehaviour
     void Update()
     {
         // On left mouse click 
-        if (Input.GetMouseButtonDown(0))
+        const int left_mouse_click = 0;
+        if (Input.GetMouseButtonDown(left_mouse_click))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -55,7 +56,7 @@ public class OnMouseClick : MonoBehaviour
                     
                     // Look up the clicked LEDs status in dictionary
                     ledStatus.TryGetValue(clickedLed, out bool clickedLedStatus);
-
+                                       
                     // Toggle LED light
                     if (clickedLedStatus)
                     {
@@ -75,8 +76,7 @@ public class OnMouseClick : MonoBehaviour
 
                         // Set led status in dictionary
                         ledStatus[clickedLed] = true;
-                    }
-                    
+                    }                    
                 }
             }
         }
