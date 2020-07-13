@@ -32,8 +32,6 @@ public class PatternGenerate : MonoBehaviour
     // Nr of lines after the pattern table in pattern.h
     readonly int endLines = 2;
 
-    // Toggle variable for ctrl + A
-    bool toggle_ctrl_a = true;
     
     // Start is called before the first frame update
     void Start()
@@ -68,25 +66,12 @@ public class PatternGenerate : MonoBehaviour
         // Ctrl + A Clicked
         if (e.type == EventType.KeyDown && e.control && e.keyCode == KeyCode.A)
         {
-            Debug.Log("Ctrl + A!");
-
             // Instance of LedLights for turning LEDs on and off
             var ledLights = gameObject.AddComponent<LedLights>();
 
-            // Toggle the LEDs every ctrl + A click
-            if (toggle_ctrl_a)
-            {   // Turn LEDs on 
-                ledLights.Enable("leds");
-                ledLights.Enable("halos");
-
-                toggle_ctrl_a = false;
-            }
-            else
-            {   // Turn LEDs off
-                ledLights.Disable("leds");
-                ledLights.Disable("halos");
-                toggle_ctrl_a = true;
-            }
+            // Turn LEDs on 
+            ledLights.Enable("leds");
+            ledLights.Enable("halos");   
         }
 
         // Ctrl + Z clicked
