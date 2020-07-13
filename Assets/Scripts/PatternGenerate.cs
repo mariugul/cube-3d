@@ -63,8 +63,19 @@ public class PatternGenerate : MonoBehaviour
     {
         Event e = Event.current;
 
+        // Shift + A Clicked
+        if (e.type == EventType.KeyDown && e.shift && e.keyCode == KeyCode.A)
+        {
+            // Instance of LedLights for turning LEDs on and off
+            var ledLights = gameObject.AddComponent<LedLights>();
+
+            // Turn LEDs off
+            ledLights.Disable("leds");
+            ledLights.Disable("halos");
+        }
+
         // Ctrl + A Clicked
-        if (e.type == EventType.KeyDown && e.control && e.keyCode == KeyCode.A)
+        else if (e.type == EventType.KeyDown && e.control && e.keyCode == KeyCode.A)
         {
             // Instance of LedLights for turning LEDs on and off
             var ledLights = gameObject.AddComponent<LedLights>();
@@ -75,7 +86,7 @@ public class PatternGenerate : MonoBehaviour
         }
 
         // Ctrl + Z clicked
-        if (e.type == EventType.KeyDown && e.control && e.keyCode == KeyCode.Z)
+        else if (e.type == EventType.KeyDown && e.control && e.keyCode == KeyCode.Z)
         {
             //prevent IndexOutOfRangeException for empty list
             if (pattern.Any()) 
@@ -106,7 +117,7 @@ public class PatternGenerate : MonoBehaviour
         }
 
         // Enter clicked
-        if (e.type == EventType.KeyDown && e.keyCode == KeyCode.Return)
+        else if (e.type == EventType.KeyDown && e.keyCode == KeyCode.Return)
         {
             GeneratePattern(ReadLedValues());
             RefreshInputField(inputField);
@@ -116,7 +127,7 @@ public class PatternGenerate : MonoBehaviour
         }
 
         // Delete clicked
-        if (e.type == EventType.KeyDown && e.keyCode == KeyCode.Delete)
+        else if (e.type == EventType.KeyDown && e.keyCode == KeyCode.Delete)
         {
             //var contains = File.ReadAllLines(path).Contains("const PROGMEM uint16_t pattern_table[] = {");
             
