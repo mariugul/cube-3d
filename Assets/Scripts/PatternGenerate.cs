@@ -63,6 +63,13 @@ public class PatternGenerate : MonoBehaviour
     {
         Event e = Event.current;
 
+        // Ctrl + T Clicked
+        if (e.type == EventType.KeyDown && e.control && e.keyCode == KeyCode.T)
+        {
+            inputFieldTime.Select();
+            inputFieldTime.ActivateInputField();
+        }
+
         // Shift + A Clicked
         if (e.type == EventType.KeyDown && e.shift && e.keyCode == KeyCode.A)
         {
