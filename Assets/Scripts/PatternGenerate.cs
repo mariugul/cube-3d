@@ -11,27 +11,28 @@ using System.Globalization;
 
 public class PatternGenerate : MonoBehaviour
 {
-    public TMP_InputField inputField;
-    public TMP_InputField inputFieldTime;
+    public TMP_InputField inputField;       
+    public TMP_InputField inputFieldTime; 
 
     private const int CUBESIZE = 64;
-    ushort[] ledValuesHex = { 0, 0, 0, 0 };
+    //ushort[] ledValuesHex = { 0, 0, 0, 0 };
 
     // Stored pattern table
     List<string> pattern = new List<string>();
 
     // Path to pattern.h
-    string path = "pattern.h";
+    readonly string path = "pattern.h";
 
     // Used for the redo functionality
     int nrOfPatternsGenerated = 0;
 
     // Nr of lines before the pattern table in pattern.h
-    int defaultLines = 11;
+    readonly int defaultLines = 11;
 
     // Nr of lines after the pattern table in pattern.h
-    int endLines = 2;
+    readonly int endLines = 2;
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -41,13 +42,13 @@ public class PatternGenerate : MonoBehaviour
         // Create patterh.h
         if (!File.Exists(path))
         {
-            createPatternFile(path);
+            CreatePatternFile(path);
         }
 
         // Initialize pattern list with the contents of pattern.h
         pattern = File.ReadAllLines(path).ToList();
 
-        refreshInputField(inputField);
+        RefreshInputField(inputField);
     
     }
 
@@ -60,9 +61,39 @@ public class PatternGenerate : MonoBehaviour
     // Redo functionality
     void OnGUI()
     {
-        // Ctrl + Z clicked
         Event e = Event.current;
-        if (e.type == EventType.KeyDown && e.control && e.keyCode == KeyCode.Z)
+
+        // Ctrl + T Clicked
+        if (e.type == EventType.KeyDown && e.control && e.keyCode == KeyCode.T)
+        {
+            inputFieldTime.Select();
+            inputFieldTime.ActivateInputField();
+        }
+
+        // Shift + A Clicked
+        if (e.type == EventType.KeyDown && e.shift && e.keyCode == KeyCode.A)
+        {
+            // Instance of LedLights for turning LEDs on and off
+            var ledLights = gameObject.AddComponent<LedLights>();
+
+            // Turn LEDs off
+            ledLights.Disable("leds");
+            ledLights.Disable("halos");
+        }
+
+        // Ctrl + A Clicked
+        else if (e.type == EventType.KeyDown && e.control && e.keyCode == KeyCode.A)
+        {
+            // Instance of LedLights for turning LEDs on and off
+            var ledLights = gameObject.AddComponent<LedLights>();
+
+            // Turn LEDs on 
+            ledLights.Enable("leds");
+            ledLights.Enable("halos");   
+        }
+
+        // Ctrl + Z clicked
+        else if (e.type == EventType.KeyDown && e.control && e.keyCode == KeyCode.Z)
         {
             //prevent IndexOutOfRangeException for empty list
             if (pattern.Any()) 
@@ -87,24 +118,23 @@ public class PatternGenerate : MonoBehaviour
                     // Write to file
                     File.WriteAllLines(path, pattern);
 
-                    refreshInputField(inputField);
+                    RefreshInputField(inputField);
                 }
             }
         }
 
         // Enter clicked
-        if (e.type == EventType.KeyDown && e.keyCode == KeyCode.Return)
+        else if (e.type == EventType.KeyDown && e.keyCode == KeyCode.Return)
         {
-            readLedValues();
-            generatePattern();
-            refreshInputField(inputField);
+            GeneratePattern(ReadLedValues());
+            RefreshInputField(inputField);
 
             // Add to generated patterns for redo functionality
             nrOfPatternsGenerated += 1;
         }
 
         // Delete clicked
-        if (e.type == EventType.KeyDown && e.keyCode == KeyCode.Delete)
+        else if (e.type == EventType.KeyDown && e.keyCode == KeyCode.Delete)
         {
             //var contains = File.ReadAllLines(path).Contains("const PROGMEM uint16_t pattern_table[] = {");
             
@@ -127,12 +157,12 @@ public class PatternGenerate : MonoBehaviour
                 // Write to file
                 File.WriteAllLines(path, pattern);
 
-                refreshInputField(inputField);
+                RefreshInputField(inputField);
 
                 // Decrement the redo
                 if (nrOfPatternsGenerated != 0)
                     nrOfPatternsGenerated -= 1;
-                }
+            }
         }
     }
 
@@ -145,9 +175,7 @@ public class PatternGenerate : MonoBehaviour
         */
     }
 
-    
-
-    void createPatternFile(string path)
+    void CreatePatternFile(string path)
     {
         // Create pattern.h
         File.Create(path).Dispose();
@@ -168,7 +196,7 @@ public class PatternGenerate : MonoBehaviour
         File.WriteAllLines(path, pattern);
     }
 
-    void generatePattern()
+    void GeneratePattern(ushort[] ledValuesHex)
     {
         // Make list of patterns
         if (File.Exists(path))
@@ -192,32 +220,29 @@ public class PatternGenerate : MonoBehaviour
             File.WriteAllLines(path, pattern);
         }
         else
-            createPatternFile(path);
+            CreatePatternFile(path);
     }
 
-    void readLedValues()
+    public ushort[] ReadLedValues()
     {
-        ushort ledValueHex = 0;
+
+        // Array with the status of LEDs
+        ushort[] ledValuesHex = { 0, 0, 0, 0, };
+
         Array.Clear(ledValuesHex, 0, ledValuesHex.Length); // Clear array before every new reading
-        int j = 0;
 
         // Iterate over every LED lightsource to find the values (on/off)
+        ushort ledValueHex = 0;
+        int j = 0;
         for (int i = 0; i < CUBESIZE; i++)
         {
-
             // Check if LED is on or off
             if (gameObject.transform.GetChild(i).GetChild(0).GetComponent<Light>().enabled == true)
-            {
-
                 ledValueHex += (ushort)(1 << j); // Bitshifts a '1' the correct order into a ushort variable
-                //Debug.Log("LED " + i + " was on!");
-            }
+                        
             else
-            {
                 ledValueHex += (ushort)(0 << j); // Bitshifts a '0' the correct order into a ushort variable
-                //Debug.Log("LED " + i + " was off!");
-            }
-
+                      
             // Save hex value for UInt16 every 16th iteration (4 times total)
             if ((i + 1) % 16 == 0)
             {
@@ -232,11 +257,12 @@ public class PatternGenerate : MonoBehaviour
                 j++;
             
         }
+
+        return ledValuesHex;
     }
 
-
     //[MenuItem("Tools/Read file")]
-    static void refreshInputField(TMP_InputField inputField)
+    static void RefreshInputField(TMP_InputField inputField)
     {
         string path = "pattern.h";
 

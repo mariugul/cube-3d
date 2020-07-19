@@ -10,7 +10,7 @@ public class LedLights : MonoBehaviour
     const int    led_range      = 4;
     const int    led_intensity  = 15;
     const int    halo_range     = 15;
-    const float  halo_intensity = 0.3f;
+    const float  halo_intensity = 0.1f;
     Color color = Color.red;
 
     // Childs of LED cube
@@ -23,8 +23,9 @@ public class LedLights : MonoBehaviour
         //Adds a listener to the main slider and invokes a method when the value changes.
         slider.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
 
-        // Disable LEDs on startup
+        // Disable LEDs and halos by default
         Disable("leds");
+        Disable("halos");
         
         // Set range for LEDs and halos
         SetRange(led_range, "leds");
@@ -36,7 +37,7 @@ public class LedLights : MonoBehaviour
 
         // Set intensity for LEDs and halos
         SetIntensity(led_intensity, "leds");
-        SetIntensity(halo_intensity, "halo");
+        SetIntensity(halo_intensity, "halos");
     }
 
     // On slider value change
@@ -46,7 +47,7 @@ public class LedLights : MonoBehaviour
         SetIntensity((int)slider.value, "leds");
     }
   
-    void Enable(string light)
+    public void Enable(string light)
     {
         if (light == "leds")
         {
@@ -63,7 +64,7 @@ public class LedLights : MonoBehaviour
         }
     }
 
-    void Disable(string light)
+    public void Disable(string light)
     {
         if (light == "leds")
         {
