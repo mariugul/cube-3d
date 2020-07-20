@@ -10941,9 +10941,8 @@ GameObject:
   - component: {fileID: 1527085321}
   - component: {fileID: 1527085320}
   - component: {fileID: 1527085319}
-  - component: {fileID: 1527085322}
   m_Layer: 5
-  m_Name: Settings
+  m_Name: ButtonSettings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10959,8 +10958,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1643723639}
+  m_Children: []
   m_Father: {fileID: 1986539415}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11012,7 +11010,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1527085322}
+      - m_Target: {fileID: 0}
         m_MethodName: OpenPanel
         m_Mode: 1
         m_Arguments:
@@ -11060,19 +11058,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527085317}
   m_CullTransparentMesh: 0
---- !u!114 &1527085322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527085317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8a650b44c201de479f77486b58b6364, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Panel: {fileID: 1643723638}
 --- !u!1 &1537787620 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1212099040050262710, guid: a40e96bade5709e479d95039ecd98d9e,
@@ -11978,12 +11963,12 @@ RectTransform:
   - {fileID: 2096759078}
   - {fileID: 192339815}
   - {fileID: 1181066793}
-  m_Father: {fileID: 1527085318}
-  m_RootOrder: 0
+  m_Father: {fileID: 1986539415}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -931, y: -441}
+  m_AnchoredPosition: {x: -168, y: -20.076416}
   m_SizeDelta: {x: 1983.9543, y: 1109.0215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1643723640
@@ -12796,6 +12781,7 @@ MonoBehaviour:
   sliderFillLight: {fileID: 1443619950}
   sliderKeyLight: {fileID: 1627403325}
   sliderRoofLight: {fileID: 1547376677}
+  sliderLedIntensity: {fileID: 2054612060}
   toggleBackLight: {fileID: 1890564809}
   toggleFillLight: {fileID: 482560457}
   toggleKeyLight: {fileID: 1555291571}
@@ -15364,6 +15350,7 @@ GameObject:
   - component: {fileID: 1986539414}
   - component: {fileID: 1986539413}
   - component: {fileID: 1986539412}
+  - component: {fileID: 1986539416}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -15448,6 +15435,7 @@ RectTransform:
   - {fileID: 133221109}
   - {fileID: 2124572271}
   - {fileID: 1573869434}
+  - {fileID: 1643723639}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15456,6 +15444,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1986539416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986539411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8a650b44c201de479f77486b58b6364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Panel: {fileID: 1643723638}
+  SettingsButton: {fileID: 1527085319}
 --- !u!1 &1992028518
 GameObject:
   m_ObjectHideFlags: 0
@@ -15997,7 +15999,7 @@ GameObject:
   - component: {fileID: 2054612059}
   - component: {fileID: 2054612060}
   m_Layer: 5
-  m_Name: LED Intensity
+  m_Name: Slider LED intensity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16307,8 +16309,6 @@ GameObject:
   - component: {fileID: 2124572271}
   - component: {fileID: 2124572274}
   - component: {fileID: 2124572273}
-  - component: {fileID: 2124572272}
-  - component: {fileID: 2124572275}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -16336,49 +16336,6 @@ RectTransform:
   m_AnchoredPosition: {x: 703, y: 420.7}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2124572272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2124572270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 2124572273}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &2124572273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16416,19 +16373,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124572270}
   m_CullTransparentMesh: 0
---- !u!114 &2124572275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2124572270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f5c19984a6d69444be6bb64fd332377, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTime: 60
 --- !u!1 &2133112116
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class SliderControl : MonoBehaviour
     public Slider sliderFillLight;
     public Slider sliderKeyLight;
     public Slider sliderRoofLight;
+    public Slider sliderLedIntensity;
 
     // Connected Toggle Objects
     public Toggle toggleBackLight;
@@ -29,6 +30,7 @@ public class SliderControl : MonoBehaviour
         sliderFillLight.onValueChanged.AddListener(delegate { SliderValueChange(); });
         sliderKeyLight.onValueChanged.AddListener (delegate { SliderValueChange(); });
         sliderRoofLight.onValueChanged.AddListener(delegate { SliderValueChange(); });
+        sliderLedIntensity.onValueChanged.AddListener(delegate { SliderValueChange(); } );
 
         // Add toggles as listeners to handle 'value changed'
         toggleBackLight.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
@@ -68,11 +70,15 @@ public class SliderControl : MonoBehaviour
     // Invoked when the value of the slider changes.
     public void SliderValueChange()
     {
-        // Set slider values
+        // Set light intensity
         gameObject.transform.GetChild(light_back_child).GetComponent<Light>().intensity = sliderBackLight.value; 
         gameObject.transform.GetChild(light_fill_child).GetComponent<Light>().intensity = sliderFillLight.value; 
         gameObject.transform.GetChild(light_key_child).GetComponent<Light>().intensity  = sliderKeyLight.value;  
-        gameObject.transform.GetChild(light_roof_child).GetComponent<Light>().intensity = sliderRoofLight.value; 
+        gameObject.transform.GetChild(light_roof_child).GetComponent<Light>().intensity = sliderRoofLight.value;
+
+        // Set LED intensity
+        //var leds = new LedLights();
+        //leds.SetIntensity((int)sliderLedIntensity.value, "leds");
     } 
     
 }

@@ -21,7 +21,7 @@ public class LedLights : MonoBehaviour
     void Start()
     {
         //Adds a listener to the main slider and invokes a method when the value changes.
-        sliderLedIntensity.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
+        //sliderLedIntensity.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
 
         // Disable LEDs and halos by default
         Disable("leds");
@@ -44,7 +44,7 @@ public class LedLights : MonoBehaviour
     public void ValueChangeCheck()
     {
         // Control LED intensity with slider value
-        SetIntensity((int)sliderLedIntensity.value, "leds");
+        //SetIntensity((int)sliderLedIntensity.value, "leds");
     }
   
     public void Enable(string light)
@@ -96,7 +96,7 @@ public class LedLights : MonoBehaviour
         }
     }
 
-    void SetIntensity(float intensity, string light)
+    public void SetIntensity(float intensity, string light)
     {
         if (light == "leds")
         { 
