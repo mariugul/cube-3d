@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class LedLights : MonoBehaviour
 {
-    public Slider slider;
-
+    public Slider sliderLedIntensity;
+    
     // Default LED values
     const int    led_range      = 4;
     const int    led_intensity  = 15;
@@ -21,7 +21,7 @@ public class LedLights : MonoBehaviour
     void Start()
     {
         //Adds a listener to the main slider and invokes a method when the value changes.
-        slider.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
+        sliderLedIntensity.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
 
         // Disable LEDs and halos by default
         Disable("leds");
@@ -44,7 +44,7 @@ public class LedLights : MonoBehaviour
     public void ValueChangeCheck()
     {
         // Control LED intensity with slider value
-        SetIntensity((int)slider.value, "leds");
+        SetIntensity((int)sliderLedIntensity.value, "leds");
     }
   
     public void Enable(string light)

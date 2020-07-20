@@ -3256,26 +3256,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -58016953890786363, guid: a40e96bade5709e479d95039ecd98d9e, type: 3}
---- !u!1 &401006458 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6848674673039867173, guid: a40e96bade5709e479d95039ecd98d9e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1938958308}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &401006461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401006458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d694995c949a4d04d8b4629f70af8f9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 154349133}
-  button: {fileID: 1890564806}
 --- !u!1 &403762400
 GameObject:
   m_ObjectHideFlags: 0
@@ -3958,25 +3938,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443739873}
   m_CullTransparentMesh: 0
---- !u!1 &443758372 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4542442335914108092, guid: a40e96bade5709e479d95039ecd98d9e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1938958308}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &443758375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443758372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e7fb0161b84c147b827f586213c316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 1627403325}
 --- !u!1 &443788462
 GameObject:
   m_ObjectHideFlags: 0
@@ -4363,7 +4324,6 @@ GameObject:
   m_Component:
   - component: {fileID: 482560455}
   - component: {fileID: 482560457}
-  - component: {fileID: 482560456}
   m_Layer: 5
   m_Name: Toggle_Fill_Light
   m_TagString: Untagged
@@ -4393,19 +4353,6 @@ RectTransform:
   m_AnchoredPosition: {x: -4.6, y: -217.25623}
   m_SizeDelta: {x: 99.41608, y: 23.084198}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &482560456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 482560454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b96e69f8912eea643b05396b3b358dcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FillLight: {fileID: 1887679350}
 --- !u!114 &482560457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4870,7 +4817,6 @@ GameObject:
   - component: {fileID: 528287724}
   - component: {fileID: 528287726}
   - component: {fileID: 528287725}
-  - component: {fileID: 528287727}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -4934,19 +4880,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528287723}
   m_CullTransparentMesh: 0
---- !u!114 &528287727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 528287723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fd4f14f172345042a0048be6078d045, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 0}
 --- !u!1 &551036548
 GameObject:
   m_ObjectHideFlags: 0
@@ -11391,7 +11324,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1555291569}
   - component: {fileID: 1555291571}
-  - component: {fileID: 1555291570}
   m_Layer: 5
   m_Name: Toggle_Key_Light
   m_TagString: Untagged
@@ -11421,19 +11353,6 @@ RectTransform:
   m_AnchoredPosition: {x: -4.6, y: -157.25623}
   m_SizeDelta: {x: 99.41608, y: 23.084198}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1555291570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555291568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f296a50ff2467394d9cc490eafe67cd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KeyLight: {fileID: 443758372}
 --- !u!114 &1555291571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12860,7 +12779,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34172137d027ba4da081d895e69b6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 2054612060}
+  sliderLedIntensity: {fileID: 2054612060}
+--- !u!114 &1811810687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811810683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d694995c949a4d04d8b4629f70af8f9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderBackLight: {fileID: 154349133}
+  sliderFillLight: {fileID: 1443619950}
+  sliderKeyLight: {fileID: 1627403325}
+  sliderRoofLight: {fileID: 1547376677}
+  toggleBackLight: {fileID: 1890564809}
+  toggleFillLight: {fileID: 482560457}
+  toggleKeyLight: {fileID: 1555291571}
+  toggleRoofLight: {fileID: 2102609039}
 --- !u!114 &1811810688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13463,25 +13402,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874376888}
   m_CullTransparentMesh: 0
---- !u!1 &1887679350 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8905622576259414048, guid: a40e96bade5709e479d95039ecd98d9e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1938958308}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1887679353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887679350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffe14706968240640a508df0a5d61d3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 1443619950}
 --- !u!1 &1890564806
 GameObject:
   m_ObjectHideFlags: 0
@@ -13492,7 +13412,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1890564807}
   - component: {fileID: 1890564809}
-  - component: {fileID: 1890564808}
   m_Layer: 5
   m_Name: Toggle_Back_Light
   m_TagString: Untagged
@@ -13522,19 +13441,6 @@ RectTransform:
   m_AnchoredPosition: {x: -4.6, y: -277.2563}
   m_SizeDelta: {x: 99.41608, y: 23.084198}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1890564808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1890564806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fea8a31c2b9702b469d17a6ebb4817a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BackLight: {fileID: 401006458}
 --- !u!114 &1890564809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14627,31 +14533,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a40e96bade5709e479d95039ecd98d9e, type: 3}
---- !u!1 &1938958309 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8878206021434438832, guid: a40e96bade5709e479d95039ecd98d9e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1938958308}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1938958310 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2155638718741447409, guid: a40e96bade5709e479d95039ecd98d9e,
     type: 3}
   m_PrefabInstance: {fileID: 1938958308}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1938958311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1938958309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fd4f14f172345042a0048be6078d045, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 1547376677}
 --- !u!4 &1938958312 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1457265300930326756, guid: a40e96bade5709e479d95039ecd98d9e,
@@ -16333,7 +16220,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2102609038}
   - component: {fileID: 2102609039}
-  - component: {fileID: 2102609040}
   m_Layer: 5
   m_Name: Toggle_Roof_Light
   m_TagString: Untagged
@@ -16410,19 +16296,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
---- !u!114 &2102609040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102609037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e91079a06332f2489dd7c76788f8ce3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RoofLight: {fileID: 1938958309}
 --- !u!1 &2124572270
 GameObject:
   m_ObjectHideFlags: 0
