@@ -77,8 +77,8 @@ public class SliderControl : MonoBehaviour
         gameObject.transform.GetChild(light_roof_child).GetComponent<Light>().intensity = sliderRoofLight.value;
 
         // Set LED intensity
-        //var leds = new LedLights();
-        //leds.SetIntensity((int)sliderLedIntensity.value, "leds");
+        var leds = new LedLights();
+        leds.SetIntensity((int)sliderLedIntensity.value, "leds");
     } 
     
 }

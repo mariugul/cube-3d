@@ -70,6 +70,18 @@ public class PatternGenerate : MonoBehaviour
             inputFieldTime.ActivateInputField();
         }
 
+        // Ctrl + A Clicked
+        else if (e.type == EventType.KeyDown && e.control && e.keyCode == KeyCode.A)
+        {
+            Debug.Log("Click Ctrl + A");
+            // Instance of LedLights for turning LEDs on and off
+            var ledLights = gameObject.AddComponent<LedLights>();
+
+            // Turn LEDs on 
+            ledLights.Enable("leds");
+            ledLights.Enable("halos");   
+        }
+
         // Shift + A Clicked
         if (e.type == EventType.KeyDown && e.shift && e.keyCode == KeyCode.A)
         {
@@ -79,17 +91,6 @@ public class PatternGenerate : MonoBehaviour
             // Turn LEDs off
             ledLights.Disable("leds");
             ledLights.Disable("halos");
-        }
-
-        // Ctrl + A Clicked
-        else if (e.type == EventType.KeyDown && e.control && e.keyCode == KeyCode.A)
-        {
-            // Instance of LedLights for turning LEDs on and off
-            var ledLights = gameObject.AddComponent<LedLights>();
-
-            // Turn LEDs on 
-            ledLights.Enable("leds");
-            ledLights.Enable("halos");   
         }
 
         // Ctrl + Z clicked
