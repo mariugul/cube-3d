@@ -15,12 +15,18 @@ public class InputFieldZoom : MonoBehaviour
         Button minusBtn = minusButton.GetComponent<Button>();
         
         // Add click function to button
-        plusBtn.onClick.AddListener(OnButtonClick);
-        minusBtn.onClick.AddListener(OnButtonClick);
+        plusBtn.onClick.AddListener(PlusButtonClick);
+        minusBtn.onClick.AddListener(MinusButtonClick);
     }
 
-    void OnButtonClick()
+    void PlusButtonClick()
     {
-        Debug.Log("Button clicked!");
+        Debug.Log("Plus Button clicked!");
+        
+    }
+
+    void MinusButtonClick()
+    {
+        Debug.Log("Minus Button clicked!");
     }
 }

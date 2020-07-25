@@ -1742,8 +1742,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2166,7 +2166,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1818045703}
   m_Father: {fileID: 23021281}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2195,13 +2196,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "#ifndef __PATTERN_H__\r\n#define __PATTERN_H__\r\n\r\n// Includes\r\n//---------------------------------\r\n#include
-    <stdint.h>        // Use uint_t\r\n#include <avr/pgmspace.h>  // Store patterns
-    in program memory\r\n\r\n// Pattern that LED cube will display\r\n//---------------------------------
-    \r\nconst PROGMEM uint16_t pattern_table[][5] = {\r\n//   Plane1  Plane2  Plane3 
-    Plane4  Time[ms]\r\n};\r\n#endif\r\n\u200B"
+    <stdint.h>        \n#include <avr/pgmspace.h> \n\r\n// Pattern that LED cube
+    will display\r\n//--------------------------------- \r\nconst PROGMEM uint16_t
+    pattern_table[][5] = {\r\n\n};\r\n#endif\r\n\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
-  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ed0b1cb7a703bde40a4ddac0bd0d58ab, type: 2}
+  m_sharedMaterial: {fileID: 5259061394658136411, guid: ed0b1cb7a703bde40a4ddac0bd0d58ab,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2226,13 +2227,13 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_textAlignment: 257
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2250,7 +2251,7 @@ MonoBehaviour:
   m_enableKerning: 1
   m_enableExtraPadding: 1
   checkPaddingRequired: 0
-  m_isRichText: 0
+  m_isRichText: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -2267,12 +2268,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 295748244}
-    characterCount: 390
+    characterCount: 293
     spriteCount: 0
-    spaceCount: 59
-    wordCount: 44
+    spaceCount: 40
+    wordCount: 30
     linkCount: 0
-    lineCount: 16
+    lineCount: 15
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -2281,7 +2282,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1818045704}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -3148,7 +3149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 155.08, y: -0.5}
+  m_AnchoredPosition: {x: 164.88, y: -0.5}
   m_SizeDelta: {x: 14.564301, y: 833.44763}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &391058498
@@ -5138,11 +5139,11 @@ RectTransform:
   m_Children:
   - {fileID: 466126771}
   m_Father: {fileID: 1986539415}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 757.95, y: 343.18}
+  m_AnchoredPosition: {x: 755.14, y: 343.18}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &573007421
@@ -6254,7 +6255,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 324.72034, y: 833.4418}
+  m_SizeDelta: {x: 344.3203, y: 833.4418}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &748559472
 MonoBehaviour:
@@ -6311,7 +6312,7 @@ MonoBehaviour:
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
-  m_GlobalPointSize: 14
+  m_GlobalPointSize: 12
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -6341,14 +6342,13 @@ MonoBehaviour:
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
   m_Text: "#ifndef __PATTERN_H__\r\n#define __PATTERN_H__\r\n\r\n// Includes\r\n//---------------------------------\r\n#include
-    <stdint.h>        // Use uint_t\r\n#include <avr/pgmspace.h>  // Store patterns
-    in program memory\r\n\r\n// Pattern that LED cube will display\r\n//---------------------------------
-    \r\nconst PROGMEM uint16_t pattern_table[][5] = {\r\n//   Plane1  Plane2  Plane3 
-    Plane4  Time[ms]\r\n};\r\n#endif\r\n"
+    <stdint.h>        \n#include <avr/pgmspace.h> \n\r\n// Pattern that LED cube
+    will display\r\n//--------------------------------- \r\nconst PROGMEM uint16_t
+    pattern_table[][5] = {\r\n\n};\r\n#endif\r\n"
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 1
-  m_RichText: 0
+  m_RichText: 1
   m_GlobalFontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_OnFocusSelectAll: 0
   m_ResetOnDeActivation: 0
@@ -12074,11 +12074,11 @@ RectTransform:
   m_Children:
   - {fileID: 589686605}
   m_Father: {fileID: 1986539415}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 777.95, y: 343.18}
+  m_AnchoredPosition: {x: 775.14, y: 343.18}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1600427867
@@ -13319,6 +13319,79 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1818045702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1818045703}
+  - component: {fileID: 1818045705}
+  - component: {fileID: 1818045704}
+  m_Layer: 5
+  m_Name: TMP SubMeshUI [LiberationSans SDF Material + LiberationSans SDF Atlas]
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1818045703
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818045702}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 295748243}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1818045704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818045702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_spriteAsset: {fileID: 0}
+  m_material: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
+  m_isDefaultMaterial: 0
+  m_padding: 11.25
+  m_canvasRenderer: {fileID: 1818045705}
+  m_TextComponent: {fileID: 295748244}
+  m_materialReferenceIndex: 1
+--- !u!222 &1818045705
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818045702}
+  m_CullTransparentMesh: 0
 --- !u!1 &1830361859 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7857147118252533589, guid: a40e96bade5709e479d95039ecd98d9e,
@@ -13443,8 +13516,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -15947,8 +16020,8 @@ RectTransform:
   - {fileID: 748559471}
   - {fileID: 981141959}
   - {fileID: 1840402130}
-  - {fileID: 573007420}
   - {fileID: 1600427866}
+  - {fileID: 573007420}
   - {fileID: 133221109}
   - {fileID: 2124572271}
   - {fileID: 1573869434}
