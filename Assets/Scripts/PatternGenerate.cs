@@ -209,11 +209,11 @@ public class PatternGenerate : MonoBehaviour
             pattern.Remove("};");
 
             // Add new pattern to list
-            pattern.Add("    {0x" + ledValuesHex[0].ToString("X4") +
+            pattern.Add("     0x" + ledValuesHex[0].ToString("X4") +
                            ", 0x" + ledValuesHex[1].ToString("X4") + 
                            ", 0x" + ledValuesHex[2].ToString("X4") + 
                            ", 0x" + ledValuesHex[3].ToString("X4") + 
-                           ", "   + inputFieldTime.text + "},");
+                           ", "   + inputFieldTime.text + ",");
             pattern.Add("};");
             pattern.Add("#endif");
 
