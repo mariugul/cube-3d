@@ -1,52 +1,43 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
-using UnityEditor;
-using UnityEngine.UI;
 using TMPro;
-using System.Globalization;
 
 public class PatternGenerate : MonoBehaviour
 {
-    public TMP_InputField inputField;       
-    public TMP_InputField inputFieldTime; 
+    // Input fields
+    public TMP_InputField inputField;     // The text input field for the pattern.h file
+    public TMP_InputField inputFieldTime; // The integer input field for time [ms]
 
-    private const int CUBESIZE = 64;
-    //ushort[] ledValuesHex = { 0, 0, 0, 0 };
+    // Lists
+    List<string> pattern = new List<string>(); // Stored pattern table
 
-    // Stored pattern table
-    List<string> pattern = new List<string>();
+    // Variables
+    int nrOfPatternsGenerated = 0; // Used for the redo functionality
 
-    // Path to pattern.h
-    readonly string path = "pattern.h";
+    // Readonly variables
+    readonly int    CUBESIZE = 64;      // Size of the LED cube
+    readonly int    DEFAULT_LINES = 11; // Nr of lines before the pattern table in pattern.h
+    readonly int    END_LINES = 2;      // Nr of lines after the pattern table in pattern.h
+    readonly string PATH = "pattern.h"; // Path to pattern.h
 
-    // Used for the redo functionality
-    int nrOfPatternsGenerated = 0;
 
-    // Nr of lines before the pattern table in pattern.h
-    readonly int defaultLines = 11;
-
-    // Nr of lines after the pattern table in pattern.h
-    readonly int endLines = 2;
-
-    
     // Start is called before the first frame update
     void Start()
     {
-        //Adds a listener to the input field and invokes a method when the value changes.
-        inputField.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
+        //Adds a listener to the input field to invoke a method when the value changes.
+        inputField.onValueChanged.AddListener(delegate { InputFieldValueChange(); });
 
         // Create patterh.h
-        if (!File.Exists(path))
+        if (!File.Exists(PATH))
         {
-            CreatePatternFile(path);
+            CreatePatternFile(PATH);
         }
 
         // Initialize pattern list with the contents of pattern.h
-        pattern = File.ReadAllLines(path).ToList();
+        pattern = File.ReadAllLines(PATH).ToList();
 
         RefreshInputField(inputField);
     
@@ -58,7 +49,16 @@ public class PatternGenerate : MonoBehaviour
 
     }
 
-    // Redo functionality
+    // Invoked when the value of the text field changes.
+    public void InputFieldValueChange()
+    {
+        /*
+        if (!readingFile) 
+            WriteString(inputField);
+        */
+    }
+
+    // Hotkeys
     void OnGUI()
     {
         Event e = Event.current;
@@ -73,24 +73,27 @@ public class PatternGenerate : MonoBehaviour
         // Ctrl + A Clicked
         else if (e.type == EventType.KeyDown && e.control && e.keyCode == KeyCode.A)
         {
-            Debug.Log("Click Ctrl + A");
+            LedsEnableAll();
+
             // Instance of LedLights for turning LEDs on and off
-            var ledLights = gameObject.AddComponent<LedLights>();
+            //var ledLights = gameObject.AddComponent<LedLights>();
 
             // Turn LEDs on 
-            ledLights.Enable("leds");
-            ledLights.Enable("halos");   
+            //ledLights.Enable("leds");
+            //ledLights.Enable("halos");
         }
 
         // Shift + A Clicked
         if (e.type == EventType.KeyDown && e.shift && e.keyCode == KeyCode.A)
         {
+            LedsDisableAll();
+
             // Instance of LedLights for turning LEDs on and off
-            var ledLights = gameObject.AddComponent<LedLights>();
+            //var ledLights = gameObject.AddComponent<LedLights>();
 
             // Turn LEDs off
-            ledLights.Disable("leds");
-            ledLights.Disable("halos");
+            //ledLights.Disable("leds");
+            //ledLights.Disable("halos");
         }
 
         // Ctrl + Z clicked
@@ -117,7 +120,7 @@ public class PatternGenerate : MonoBehaviour
                     pattern.Add("#endif");
 
                     // Write to file
-                    File.WriteAllLines(path, pattern);
+                    File.WriteAllLines(PATH, pattern);
 
                     RefreshInputField(inputField);
                 }
@@ -137,9 +140,9 @@ public class PatternGenerate : MonoBehaviour
         // Delete clicked
         else if (e.type == EventType.KeyDown && e.keyCode == KeyCode.Delete)
         {
-            //var contains = File.ReadAllLines(path).Contains("const PROGMEM uint16_t pattern_table[] = {");
+            //var contains = File.ReadAllLines(PATH).Contains("const PROGMEM uint16_t pattern_table[] = {");
             
-            int lineCount = File.ReadLines(path).Count() - defaultLines - endLines;
+            int lineCount = File.ReadLines(PATH).Count() - DEFAULT_LINES - END_LINES;
 
             // Only delete the contents of the array in pattern.h
             if (lineCount > 0)
@@ -156,7 +159,7 @@ public class PatternGenerate : MonoBehaviour
                 pattern.Add("#endif");
 
                 // Write to file
-                File.WriteAllLines(path, pattern);
+                File.WriteAllLines(PATH, pattern);
 
                 RefreshInputField(inputField);
 
@@ -167,22 +170,13 @@ public class PatternGenerate : MonoBehaviour
         }
     }
 
-    // Invoked when the value of the text field changes.
-    public void ValueChangeCheck()
-    {
-        /*
-        if (!readingFile) 
-            WriteString(inputField);
-        */
-    }
-
-    void CreatePatternFile(string path)
+    void CreatePatternFile(string PATH)
     {
         // Create pattern.h
-        File.Create(path).Dispose();
+        File.Create(PATH).Dispose();
 
         // Fill with the blank template
-        pattern = File.ReadAllLines(path).ToList();
+        pattern = File.ReadAllLines(PATH).ToList();
         pattern.Add("#ifndef __PATTERN_H__");
         pattern.Add("#define __PATTERN_H__\n");
         pattern.Add("// Includes");
@@ -194,15 +188,15 @@ public class PatternGenerate : MonoBehaviour
         pattern.Add("const PROGMEM uint16_t pattern_table[] = {\n");
         pattern.Add("};");
         pattern.Add("#endif");
-        File.WriteAllLines(path, pattern);
+        File.WriteAllLines(PATH, pattern);
     }
 
     void GeneratePattern(ushort[] ledValuesHex)
     {
         // Make list of patterns
-        if (File.Exists(path))
+        if (File.Exists(PATH))
         {
-            pattern = File.ReadAllLines(path).ToList();
+            pattern = File.ReadAllLines(PATH).ToList();
 
             // Remove end of file
             pattern.Remove("#endif");
@@ -218,15 +212,14 @@ public class PatternGenerate : MonoBehaviour
             pattern.Add("#endif");
 
             // Write list to pattern.h
-            File.WriteAllLines(path, pattern);
+            File.WriteAllLines(PATH, pattern);
         }
         else
-            CreatePatternFile(path);
+            CreatePatternFile(PATH);
     }
 
     public ushort[] ReadLedValues()
     {
-
         // Array with the status of LEDs
         ushort[] ledValuesHex = { 0, 0, 0, 0, };
 
@@ -265,13 +258,35 @@ public class PatternGenerate : MonoBehaviour
     //[MenuItem("Tools/Read file")]
     static void RefreshInputField(TMP_InputField inputField)
     {
-        string path = "pattern.h";
+        string PATH = "pattern.h";
 
         //Read the text from file
-        StreamReader reader = new StreamReader(path);
+        StreamReader reader = new StreamReader(PATH);
         inputField.text = reader.ReadToEnd();
         
         reader.Close();
     }
-    
+
+    void LedsEnableAll()
+    {
+        // Turns on all LEDs
+        for (int led = 0; led < 64; led++)
+            gameObject.transform.GetChild(led).GetChild(0).GetComponent<Light>().enabled = true;
+
+        // Turns on all halos for LEDs
+        for (int led = 0; led < 64; led++)
+            gameObject.transform.GetChild(led).GetChild(0).GetChild(0).GetComponent<Light>().enabled = true;   
+    }
+
+    void LedsDisableAll()
+    {
+        // Turns on all LEDs
+        for (int led = 0; led < 64; led++)
+            gameObject.transform.GetChild(led).GetChild(0).GetComponent<Light>().enabled = false;
+
+        // Turns on all halos for LEDs
+        for (int led = 0; led < 64; led++)
+            gameObject.transform.GetChild(led).GetChild(0).GetChild(0).GetComponent<Light>().enabled = false;
+    }
+
 }

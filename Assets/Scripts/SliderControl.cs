@@ -19,7 +19,7 @@ public class SliderControl : MonoBehaviour
     // Childs 
     const int light_back_child = 64;
     const int light_fill_child = 65;
-    const int light_key_child = 66;
+    const int light_key_child  = 66;
     const int light_roof_child = 67;
 
     // Start is called before the first frame update
@@ -70,15 +70,27 @@ public class SliderControl : MonoBehaviour
     // Invoked when the value of the slider changes.
     public void SliderValueChange()
     {
+        //Debug.Log("Slider Change!");
+
         // Set light intensity
         gameObject.transform.GetChild(light_back_child).GetComponent<Light>().intensity = sliderBackLight.value; 
         gameObject.transform.GetChild(light_fill_child).GetComponent<Light>().intensity = sliderFillLight.value; 
         gameObject.transform.GetChild(light_key_child).GetComponent<Light>().intensity  = sliderKeyLight.value;  
         gameObject.transform.GetChild(light_roof_child).GetComponent<Light>().intensity = sliderRoofLight.value;
 
+        SetLedIntensity(sliderLedIntensity.value);
+
+        /*
         // Set LED intensity
         var leds = new LedLights();
-        leds.SetIntensity((int)sliderLedIntensity.value, "leds");
+        leds.SetIntensity((float)sliderLedIntensity.value, "leds");
+        */
     } 
+
+    void SetLedIntensity(float intensity)
+    {
+        for (int led = 0; led < 64; led++)
+            gameObject.transform.GetChild(led).GetChild(0).GetComponent<Light>().intensity = intensity;
+    }
     
 }

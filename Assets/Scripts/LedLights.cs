@@ -1,21 +1,20 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class LedLights : MonoBehaviour
 {
     // Default LED values
-    const int    led_range      = 4;
-    const int    led_intensity  = 15;
-    const int    halo_range     = 15;
-    const float  halo_intensity = 0.1f;
+    const int   led_range      = 4;
+    const int   led_intensity  = 15;
+    const int   halo_range     = 15;
+    const float halo_intensity = 0.1f;
+
     Color color = Color.red;
 
     // Childs of LED cube
     const int light_source = 0;
     const int light_halo   = 0;
 
-    // Start is called before the first frame update
+
     void Start()
     { 
         // Disable LEDs and halos by default
@@ -31,7 +30,7 @@ public class LedLights : MonoBehaviour
         SetColor(color, "halos");
 
         // Set intensity for LEDs and halos
-        SetIntensity(led_intensity, "leds");
+        SetIntensity(led_intensity,  "leds");
         SetIntensity(halo_intensity, "halos");
     }
   

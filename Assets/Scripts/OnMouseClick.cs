@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using Unity.Collections.LowLevel.Unsafe;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class OnMouseClick : MonoBehaviour
 {
@@ -12,8 +6,7 @@ public class OnMouseClick : MonoBehaviour
 
     // Childs of LED cube
     const int light_source_child = 0;
-    const int light_halo_child = 0;
-    const int CUBESIZE = 64;
+    const int light_halo_child   = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -34,11 +27,14 @@ public class OnMouseClick : MonoBehaviour
             {
                 if (hit.transform != null)
                 {
+                    // Read status of clicked LED
                     GameObject led = hit.collider.transform.gameObject;
                     Light clicked_led_light = led.transform.GetChild(light_source_child).GetComponent<Light>();
+                    Light clicked_led_halo  = led.transform.GetChild(light_source_child).GetChild(light_halo_child).GetComponent<Light>();
 
                     // Toggle clicked LED
                     clicked_led_light.enabled = !clicked_led_light.enabled;
+                    clicked_led_halo.enabled  = !clicked_led_halo.enabled;
                 }
             }
         }
