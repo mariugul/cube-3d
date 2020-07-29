@@ -4,6 +4,7 @@ using System.IO;
 
 public class HandleTextFile
 {
+    /*
     [MenuItem("Tools/Write file")]
     public static void WriteString(string path)
     {
@@ -26,5 +27,6 @@ public class HandleTextFile
         StreamReader reader = new StreamReader(path);
         reader.Close();
     }
+    */
 
 }

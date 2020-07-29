@@ -10,6 +10,7 @@ using UnityEngine;
 
 public class FixedUpdateTest : MonoBehaviour
 {
+    /*
     private float updateCount = 0;
     private float fixedUpdateCount = 0;
     private float updateUpdateCountPerSecond;
@@ -126,4 +127,5 @@ public class FixedUpdateTest : MonoBehaviour
     {
       
     }
+    */
 }
