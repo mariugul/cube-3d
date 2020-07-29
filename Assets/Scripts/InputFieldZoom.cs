@@ -31,8 +31,6 @@ public class InputFieldZoom : MonoBehaviour
 
     void PlusButtonClick()
     {
-        Debug.Log("Plus Button clicked!");
-
         // Increment font size when smaller than defined maximum
         if (font_size < font_size_max)
         {
@@ -43,8 +41,6 @@ public class InputFieldZoom : MonoBehaviour
 
     void MinusButtonClick()
     {
-        Debug.Log("Minus Button clicked!");
-
         // Decrement font size when bigger than defined minimum
         if (font_size > font_size_min)
         {
