@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class ExportProject : MonoBehaviour
 {   
@@ -12,10 +13,12 @@ public class ExportProject : MonoBehaviour
     // Export button
     public Button exportButton;
 
-    // Directory paths
-    string sourceDir = @"C:\Users\Mariu\Documents\FileCopyTest\source";
-    string backupDir = @"C:\Users\Mariu\Documents\FileCopyTest\backup";
-    string path = @"C:\Users\Mariu\Documents\FileCopyTest\source\pattern.h";
+    // Directory and file paths
+    const string DIR_PATH     = @"cube3d";
+    const string PATTERN_FILE = @"pattern.h";
+
+    readonly string ARDUINO_FILE_PATH = DIR_PATH + '/' + DIR_PATH + ".ino";
+    readonly string PATTERN_FILE_PATH = DIR_PATH + '/' + PATTERN_FILE;
 
     void Start()
     {
@@ -25,54 +28,55 @@ public class ExportProject : MonoBehaviour
 
     void OnClick()
     {
-        Debug.Log("Clicked Export Button.");
-        string patternStr = inputField.text;
+        // Read all text from the input field
+        string inputFieldText = inputField.text;
 
+        // Create Directory and files if they don't exist
+        CreateDirectory(DIR_PATH);
+        CreateFile(PATTERN_FILE_PATH);
+        CreateFile(ARDUINO_FILE_PATH);
+
+        // Write input field text to the pattern.h
+        File.WriteAllText(PATTERN_FILE_PATH, inputFieldText);
+
+        //Load a text file (Assets/Resources/cube3d.ino)
+        TextAsset cube3d_ino = (TextAsset)Resources.Load(DIR_PATH);
+        string cube3d = cube3d_ino.text;
+
+        // This line of code throws a "Null reference pointer exception"
+        //File.WriteAllText(ARDUINO_FILE_PATH, cube3d);
+    }
+  
+    void CreateDirectory(string path)
+    {
         try
         {
-            string[] txtList = Directory.GetFiles(sourceDir, "*.txt");
-
-            // Copy text files.
-            foreach (string f in txtList)
+            // Determine whether the directory exists.
+            if (Directory.Exists(path))
             {
-                // Remove path from the file name.
-                string fName = f.Substring(sourceDir.Length + 1);
-
-                try
-                {
-                    // Will not overwrite if the destination file already exists.
-                    //File.Copy(Path.Combine(sourceDir, fName), Path.Combine(backupDir, fName));
-                    File.Create(path);
-                    //File.WriteAllLines(path, patternStr);
-                    Debug.Log(patternStr);
-                   
-                }
-
-                // Catch exception if the file was already copied.
-                catch (IOException copyError)
-                {
-                    Debug.Log(copyError.Message);
-                }
+                Debug.Log("That path exists already.");
+                return;
             }
 
-            /*
-            // Delete source files that were copied.
-            foreach (string f in txtList)
-            {
-                File.Delete(f);
-            }
-            */
+            // Try to create the directory.
+            DirectoryInfo di = Directory.CreateDirectory(path);
+            Debug.Log("The directory was created successfully at {0}." + Directory.GetCreationTime(path));
+
         }
-
-        catch (DirectoryNotFoundException dirNotFound)
+        catch (Exception e)
         {
-            Debug.Log(dirNotFound.Message);
+            Debug.Log("The process failed: {0}" + e.ToString());
         }
+        finally { }
     }
 
-    public static void ReadString(string path)
+    void CreateFile(string path)
     {
-        StreamReader reader = new StreamReader(path);
-        reader.Close();
+        if (!File.Exists(path))
+            File.Create(path);
+        else
+            Debug.Log(path + " exists already!");
     }
+    
+
 }
