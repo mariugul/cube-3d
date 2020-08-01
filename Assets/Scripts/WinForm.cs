@@ -5,6 +5,7 @@ public class WinForm : Form
 {
     public WinForm()
     {
+        // Form settings to make it invisible and anchored at the top
         Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
         FormBorderStyle = FormBorderStyle.FixedSingle;
         Location = new Point(0, -uwfHeaderHeight); // Hide header.
@@ -15,9 +16,13 @@ public class WinForm : Form
 
         uwfMovable = false;
 
-        var itemFile = new ToolStripMenuItem("File");
-        var itemEdit = new ToolStripMenuItem("Edit");
+        // Tool strip menu items
+        var itemFile     = new ToolStripMenuItem("File");
+        var itemExport   = new ToolStripMenuItem("Export");
+        var itemSettings = new ToolStripMenuItem("Settings");
+        var itemAbout    = new ToolStripMenuItem("About");
 
+        // Tool strip subitems
         var itemFileOpen = new ToolStripMenuItem("Open");
         itemFileOpen.Click += (sender, args) =>
         {
@@ -33,19 +38,26 @@ public class WinForm : Form
             };
         };
 
-        var itemFileExit = new ToolStripMenuItem("Exit");
+        var itemFileExit   = new ToolStripMenuItem("Exit");
 
+        // Add items to dropdown menu
         itemFile.DropDownItems.Add(itemFileOpen);
         itemFile.DropDownItems.Add(itemFileExit);
 
+        // Set up menu strip and anchor at the top
         var menu = new MenuStrip();
         menu.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
         menu.AutoSize = false;
         menu.Location = new Point(0, uwfHeaderHeight); // Need to be placed below form's header.
         menu.Width = Width;
-        menu.Items.Add(itemFile);
-        menu.Items.Add(itemEdit);
 
+        // Add menu strip items
+        menu.Items.Add(itemFile);
+        menu.Items.Add(itemExport);
+        menu.Items.Add(itemSettings);
+        menu.Items.Add(itemAbout);
+
+        // Add menu strip
         Controls.Add(menu);
     }
 
