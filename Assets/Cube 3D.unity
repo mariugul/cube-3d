@@ -13305,8 +13305,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material_red: {fileID: 2100000, guid: f9b79f16552e0b24985e95d595f8f8a2, type: 2}
-  material_green: {fileID: 0}
-  material_blue: {fileID: 0}
+  material_green: {fileID: 2100000, guid: dcbc2654097c37741bf9cc39abd0eb43, type: 2}
+  material_blue: {fileID: 2100000, guid: 25dc0657bbd7676418bb4a0498932d11, type: 2}
+  material_yellow: {fileID: 2100000, guid: a7d7a2b5202f8e343b43abbb55f68600, type: 2}
+  material_white: {fileID: 2100000, guid: 974d4dce7d11bae4785ca0c26dd5d749, type: 2}
 --- !u!114 &1811810687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15036,6 +15038,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 658461286514646888, guid: a40e96bade5709e479d95039ecd98d9e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f9b79f16552e0b24985e95d595f8f8a2, type: 2}
     - target: {fileID: 1696828618555787667, guid: a40e96bade5709e479d95039ecd98d9e,
         type: 3}
       propertyPath: m_Type
@@ -15064,6 +15071,16 @@ PrefabInstance:
     - target: {fileID: 2682523524013234767, guid: a40e96bade5709e479d95039ecd98d9e,
         type: 3}
       propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682523524013234767, guid: a40e96bade5709e479d95039ecd98d9e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 25dc0657bbd7676418bb4a0498932d11, type: 2}
+    - target: {fileID: 2682523524013234767, guid: a40e96bade5709e479d95039ecd98d9e,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2715729539359108936, guid: a40e96bade5709e479d95039ecd98d9e,
@@ -15101,6 +15118,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.28
       objectReference: {fileID: 0}
+    - target: {fileID: 3960773364484227692, guid: a40e96bade5709e479d95039ecd98d9e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dcbc2654097c37741bf9cc39abd0eb43, type: 2}
     - target: {fileID: 3983842736095142156, guid: a40e96bade5709e479d95039ecd98d9e,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -15176,6 +15198,11 @@ PrefabInstance:
       propertyPath: m_DrawHalo
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4803565682533684418, guid: a40e96bade5709e479d95039ecd98d9e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f9b79f16552e0b24985e95d595f8f8a2, type: 2}
     - target: {fileID: 4854408873161434575, guid: a40e96bade5709e479d95039ecd98d9e,
         type: 3}
       propertyPath: m_IsActive

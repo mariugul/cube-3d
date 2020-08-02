@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Diagnostics;
+using System.Linq.Expressions;
+using UnityEngine;
 
 public class LedLights : MonoBehaviour
 {
@@ -8,8 +10,6 @@ public class LedLights : MonoBehaviour
     const int   halo_range     = 15;
     const float halo_intensity = 0.1f;
 
-    Color color = Color.red;
-
     // Childs of LED cube
     const int light_source = 0;
     const int light_halo   = 0;
@@ -18,29 +18,37 @@ public class LedLights : MonoBehaviour
     public Material material_red;
     public Material material_green;
     public Material material_blue;
+    public Material material_yellow;
+    public Material material_white;
+
+    // LED colors
+    Color led_red   = new Color(0.3764706f, 0f, 0f, 1);
+    Color led_green = new Color(0.1121396f, 0.3773585f, 0.1121396f,  1);
+    Color led_blue  = new Color(0.05326628f, 0.2159348f, 0.5377358f, 1);
+   
+    // LED light color
+    Color light_red   = Color.red;
+    Color light_green = Color.green;
+    Color light_blue  = Color.blue;
 
     // Constants
     const int CUBESIZE = 64;
 
     void Start()
-    { 
+    {         
+        // Set range for LEDs and halos
+        SetRange(led_range,  "leds");
+        SetRange(halo_range, "halos");
+
+        // Set intensity for LEDs and halos
+        SetIntensity(led_intensity, "leds");
+        SetIntensity(halo_intensity, "halos");
+               
+        SetColor(led_red, light_red);
+        
         // Disable LEDs and halos by default
         Disable("leds");
         Disable("halos");
-        
-        // Set range for LEDs and halos
-        SetRange(led_range, "leds");
-        SetRange(halo_range, "halos");
-
-        // Set color for LEDs and halos
-        SetColor(color, "leds");
-        SetColor(color, "halos");
-
-        // Set intensity for LEDs and halos
-        SetIntensity(led_intensity,  "leds");
-        SetIntensity(halo_intensity, "halos");
-
-        // Set material
     }
   
     public void Enable(string light)
@@ -77,18 +85,20 @@ public class LedLights : MonoBehaviour
         }
     }
 
-    void SetColor(Color color, string light)
-    {
-        if (light == "leds")
+    public void SetColor(Color led_color, Color light_color)
+    {   
+        // iterate over all LEDs
+        for (int led = 0; led < CUBESIZE; led++)
         {
-            for (int led = 0; led < CUBESIZE; led++)
-                gameObject.transform.GetChild(led).GetChild(light_source).GetComponent<Light>().color = color;
-        }
-        
-        if (light == "halos")
-        {
-            for (int led = 0; led < CUBESIZE; led++)
-                gameObject.transform.GetChild(led).GetChild(light_source).GetChild(light_halo).GetComponent<Light>().color = color;
+            // Set lights color
+            gameObject.transform.GetChild(led).GetChild(light_source).GetComponent<Light>().color = light_color;
+
+            // Set halos color
+            gameObject.transform.GetChild(led).GetChild(light_source).GetChild(light_halo).GetComponent<Light>().color = light_color;
+
+            // Set LED material color
+            MeshRenderer meshRenderer   = gameObject.transform.GetChild(led).GetComponent<MeshRenderer>();
+            meshRenderer.material.color = led_color;
         }
     }
 
@@ -107,7 +117,7 @@ public class LedLights : MonoBehaviour
         }
     }
 
-    void SetRange(int range, string light)
+    public void SetRange(int range, string light)
     {
         if (light == "leds")
         {
@@ -120,15 +130,5 @@ public class LedLights : MonoBehaviour
             for (int led = 0; led < CUBESIZE; led++)
                 gameObject.transform.GetChild(led).GetChild(light_source).GetChild(light_halo).GetComponent<Light>().range = range;
         }
-    }
-
-    void SetMaterial(Material material)
-    {
-        /*
-        for (int led = 0; led < CUBESIZE; led++)
-        {
-            gameObject.transform.GetChild(led).GetChild(light_source).GetComponent<Material>() = material;
-        }
-        */
     }
 }
