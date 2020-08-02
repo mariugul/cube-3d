@@ -1,16 +1,23 @@
-﻿using System.Drawing;
+﻿using UnityEngine;
+using System.Drawing;
 using System.Windows.Forms;
+using TMPro;
 
-public class WinForm : Form
+public class WinFormToolStrip : Form
 {
-    public WinForm()
+    // Instances of Unity classes
+    private PanelOpener panel;
+
+    public WinFormToolStrip(PanelOpener panel)
     {
+        this.panel = panel;
+
         // Form settings to make it invisible and anchored at the top
         Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
         FormBorderStyle = FormBorderStyle.FixedSingle;
         Location = new Point(0, -uwfHeaderHeight); // Hide header.
         MaximizeBox = false;
-        Size = new Size(Screen.PrimaryScreen.WorkingArea.Width, uwfHeaderHeight + 24); // + menu height.
+        Size = new Size(System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width, uwfHeaderHeight + 24); // + menu height.
         SizeGripStyle = SizeGripStyle.Hide;
         StartPosition = FormStartPosition.Manual;
 
@@ -22,8 +29,12 @@ public class WinForm : Form
         var itemSettings = new ToolStripMenuItem("Settings");
         var itemAbout    = new ToolStripMenuItem("About");
 
+
         // Tool strip subitems
         var itemFileOpen = new ToolStripMenuItem("Open");
+        var itemFileExit = new ToolStripMenuItem("Exit");
+
+        // On click functionality
         itemFileOpen.Click += (sender, args) =>
         {
             var ofd = new OpenFileDialog();
@@ -38,7 +49,21 @@ public class WinForm : Form
             };
         };
 
-        var itemFileExit   = new ToolStripMenuItem("Exit");
+        itemAbout.Click += (sender, args) =>
+        {
+            string html_link = "https://github.com/mariugul/cube-3d";
+           
+            MessageBox.Show(
+                "Created by Marius C. K. in 2020 with the Unity game engine.\n\n" +
+                "For help or suggestions join the Discord server community:\n" +
+                " https://discord.gg/7c9Y6gt");
+           
+        };
+
+        itemSettings.Click += (sender, args) => {
+            panel.TogglePanel();
+            //MessageBox.Show("Settings!");
+        };
 
         // Add items to dropdown menu
         itemFile.DropDownItems.Add(itemFileOpen);
@@ -59,6 +84,14 @@ public class WinForm : Form
 
         // Add menu strip
         Controls.Add(menu);
+    }
+
+    void Initialize()
+    {
+        var button = new Button();
+        // Set button properties...
+
+        button.Click += (o, a) => panel.TogglePanel();
     }
 
     // Hide all painting with overriding methods.

@@ -90,7 +90,7 @@ public class PatternGenerate : MonoBehaviour
 
             // Instance of LedLights for turning LEDs on and off
             //var ledLights = gameObject.AddComponent<LedLights>();
-
+           
             // Turn LEDs off
             //ledLights.Disable("leds");
             //ledLights.Disable("halos");
@@ -267,7 +267,7 @@ public class PatternGenerate : MonoBehaviour
         reader.Close();
     }
 
-    void LedsEnableAll()
+    public void LedsEnableAll()
     {
         // Turns on all LEDs
         for (int led = 0; led < 64; led++)

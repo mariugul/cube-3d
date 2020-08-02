@@ -14,6 +14,13 @@ public class LedLights : MonoBehaviour
     const int light_source = 0;
     const int light_halo   = 0;
 
+    // Materials
+    public Material material_red;
+    public Material material_green;
+    public Material material_blue;
+
+    // Constants
+    const int CUBESIZE = 64;
 
     void Start()
     { 
@@ -32,6 +39,8 @@ public class LedLights : MonoBehaviour
         // Set intensity for LEDs and halos
         SetIntensity(led_intensity,  "leds");
         SetIntensity(halo_intensity, "halos");
+
+        // Set material
     }
   
     public void Enable(string light)
@@ -39,14 +48,14 @@ public class LedLights : MonoBehaviour
         if (light == "leds")
         {
             // Turns on all LEDs
-            for (int led = 0; led < 64; led++)
+            for (int led = 0; led < CUBESIZE; led++)
                 gameObject.transform.GetChild(led).GetChild(light_source).GetComponent<Light>().enabled = true;
         }
 
         if (light == "halos")
         {
             // Turns on all halos for LEDs
-            for (int led = 0; led < 64; led++)
+            for (int led = 0; led < CUBESIZE; led++)
                 gameObject.transform.GetChild(led).GetChild(light_source).GetChild(light_halo).GetComponent<Light>().enabled = true;
         }
     }
@@ -56,14 +65,14 @@ public class LedLights : MonoBehaviour
         if (light == "leds")
         {
             // Turns off all LEDs
-            for (int led = 0; led < 64; led++)
+            for (int led = 0; led < CUBESIZE; led++)
                 gameObject.transform.GetChild(led).GetChild(light_source).GetComponent<Light>().enabled = false;
         }
 
         if (light == "halos")
         {
             // Turns off all halos
-            for (int led = 0; led < 64; led++)
+            for (int led = 0; led < CUBESIZE; led++)
                 gameObject.transform.GetChild(led).GetChild(light_source).GetChild(light_halo).GetComponent<Light>().enabled = false;
         }
     }
@@ -72,13 +81,13 @@ public class LedLights : MonoBehaviour
     {
         if (light == "leds")
         {
-            for (int led = 0; led < 64; led++)
+            for (int led = 0; led < CUBESIZE; led++)
                 gameObject.transform.GetChild(led).GetChild(light_source).GetComponent<Light>().color = color;
         }
         
         if (light == "halos")
         {
-            for (int led = 0; led < 64; led++)
+            for (int led = 0; led < CUBESIZE; led++)
                 gameObject.transform.GetChild(led).GetChild(light_source).GetChild(light_halo).GetComponent<Light>().color = color;
         }
     }
@@ -87,13 +96,13 @@ public class LedLights : MonoBehaviour
     {
         if (light == "leds")
         { 
-            for (int led = 0; led < 64; led++)
+            for (int led = 0; led < CUBESIZE; led++)
                 gameObject.transform.GetChild(led).GetChild(light_source).GetComponent<Light>().intensity = intensity;
         }
 
         if (light == "halos")
         {
-            for (int led = 0; led < 64; led++)
+            for (int led = 0; led < CUBESIZE; led++)
                 gameObject.transform.GetChild(led).GetChild(light_source).GetChild(light_halo).GetComponent<Light>().intensity = intensity;
         }
     }
@@ -102,14 +111,24 @@ public class LedLights : MonoBehaviour
     {
         if (light == "leds")
         {
-            for (int led = 0; led < 64; led++)
+            for (int led = 0; led < CUBESIZE; led++)
                 gameObject.transform.GetChild(led).GetChild(light_source).GetComponent<Light>().range = range;
         }
 
         if (light == "halos")
         {
-            for (int led = 0; led < 64; led++)
+            for (int led = 0; led < CUBESIZE; led++)
                 gameObject.transform.GetChild(led).GetChild(light_source).GetChild(light_halo).GetComponent<Light>().range = range;
         }
+    }
+
+    void SetMaterial(Material material)
+    {
+        /*
+        for (int led = 0; led < CUBESIZE; led++)
+        {
+            gameObject.transform.GetChild(led).GetChild(light_source).GetComponent<Material>() = material;
+        }
+        */
     }
 }

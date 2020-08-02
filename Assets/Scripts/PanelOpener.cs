@@ -1,31 +1,25 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PanelOpener : MonoBehaviour
 {
-    public GameObject Panel;
-    public Button SettingsButton;
+    public GameObject panel;
 
-    public void Start()
+    void Start()
     {
-        // Add listener to button
-        SettingsButton.onClick.AddListener(delegate { ButtonHandler(); });
+
     }
 
-    public void ButtonHandler()
+    public void TogglePanel()
     {
-        TogglePanel();
-    }
-
-    void TogglePanel()
-    {
-        if (Panel != null)
+        if (panel != null)
         {
             // Read panel state
-            bool isActive = Panel.activeSelf;
+            bool isActive = panel.activeSelf;
 
             // Set state to the oposite
-            Panel.SetActive(!isActive);
+            panel.SetActive(!isActive);
         }
     }
 }
