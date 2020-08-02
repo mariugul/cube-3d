@@ -5381,7 +5381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -32.00006, y: -69.19998}
+  m_AnchoredPosition: {x: -32, y: -69.20001}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &573007421
@@ -8160,7 +8160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -52.200012, y: -45.599976}
+  m_AnchoredPosition: {x: -52.19995, y: -45.599976}
   m_SizeDelta: {x: 102.69031, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &981141960
@@ -12135,7 +12135,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -20.73407, y: -46.00992}
+  m_AnchoredPosition: {x: -20.73413, y: -46.00995}
   m_SizeDelta: {x: 29.952515, y: 23.904785}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1573869435
@@ -15186,7 +15186,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: a40e96bade5709e479d95039ecd98d9e,
         type: 3}
       propertyPath: m_Name
-      value: LED_3D_model_backup_experimental
+      value: LED_3D_model
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: a40e96bade5709e479d95039ecd98d9e,
         type: 3}
