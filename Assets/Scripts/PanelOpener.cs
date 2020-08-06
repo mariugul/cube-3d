@@ -6,11 +6,6 @@ public class PanelOpener : MonoBehaviour
 {
     public GameObject panel;
 
-    void Start()
-    {
-
-    }
-
     public void TogglePanel()
     {
         if (panel != null)

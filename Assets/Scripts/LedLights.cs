@@ -44,6 +44,7 @@ public class LedLights : MonoBehaviour
         SetIntensity(led_intensity, "leds");
         SetIntensity(halo_intensity, "halos");
                
+        // Set default LED color
         SetColor(led_red, light_red);
         
         // Disable LEDs and halos by default

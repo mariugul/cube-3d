@@ -4,14 +4,12 @@ using UnityEditor;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.Text;
 
 public class ExportProject : MonoBehaviour
 {   
     // Input fields
     public TMP_InputField inputField; // The text input field for the pattern.h file
-
-    // Export button
-    public Button exportButton;
 
     // Directory and file paths
     const string DIR_PATH     = @"cube3d";
@@ -20,31 +18,24 @@ public class ExportProject : MonoBehaviour
     readonly string ARDUINO_FILE_PATH = DIR_PATH + '/' + DIR_PATH + ".ino";
     readonly string PATTERN_FILE_PATH = DIR_PATH + '/' + PATTERN_FILE;
 
-    void Start()
+    // Generates a Arduino project with cube3d.ino and pattern.h
+    public void ArduinoGenerate(string folderName)
     {
-        // Add listener to button
-        exportButton.onClick.AddListener(delegate { OnClick(); });
-    }
-
-    void OnClick()
-    {
-        // Read all text from the input field
-        string inputFieldText = inputField.text;
+        // Read the Arduino code file
+        var sr = new StreamReader(Application.dataPath + "/" + "cube3d.ino");
+        var cube3dContents = sr.ReadToEnd();
+        sr.Close();
 
         // Create Directory and files if they don't exist
-        CreateDirectory(DIR_PATH);
-        CreateFile(PATTERN_FILE_PATH);
-        CreateFile(ARDUINO_FILE_PATH);
+        CreateDirectory(folderName + DIR_PATH);
+        CreateFile(folderName + PATTERN_FILE_PATH, inputField.text);
+        CreateFile(folderName + ARDUINO_FILE_PATH, cube3dContents);
+    }
 
-        // Write input field text to the pattern.h
-        File.WriteAllText(PATTERN_FILE_PATH, inputFieldText);
-
-        //Load a text file (Assets/Resources/cube3d.ino)
-        TextAsset cube3d_ino = (TextAsset)Resources.Load(DIR_PATH);
-        string cube3d = cube3d_ino.text;
-
-        // This line of code throws a "Null reference pointer exception"
-        //File.WriteAllText(ARDUINO_FILE_PATH, cube3d);
+    // Generates the pattern.h file in the selected folder
+    public void PatternFileGenerate(string fileName)
+    {
+        CreateFile(fileName, inputField.text);
     }
   
     void CreateDirectory(string path)
@@ -54,7 +45,7 @@ public class ExportProject : MonoBehaviour
             // Determine whether the directory exists.
             if (Directory.Exists(path))
             {
-                Debug.Log("That path exists already.");
+                Debug.Log("The directory exists already!");
                 return;
             }
 
@@ -70,12 +61,32 @@ public class ExportProject : MonoBehaviour
         finally { }
     }
 
-    void CreateFile(string path)
+    void CreateFile(string path, string content = "")
     {
-        if (!File.Exists(path))
-            File.Create(path);
-        else
-            Debug.Log(path + " exists already!");
+        try
+        {
+            // Check if file already exists   
+            if (!File.Exists(path))
+            {
+
+                // Create a new file     
+                using (FileStream fs = File.Create(path))
+                {
+                    // Write text to file   
+                    Byte[] file_content = new UTF8Encoding(true).GetBytes(content);
+                    fs.Write(file_content, 0, file_content.Length);
+
+                    Debug.Log(path + " was created!");
+                }
+            }
+            else 
+                Debug.Log(path + " exists already!");
+        }
+
+        catch (Exception Exc)
+        {
+            Debug.Log(Exc.ToString());
+        }
     }
     
 
