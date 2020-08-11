@@ -90,7 +90,7 @@ public class PatternGenerate : MonoBehaviour
 
             // Instance of LedLights for turning LEDs on and off
             //var ledLights = gameObject.AddComponent<LedLights>();
-
+           
             // Turn LEDs off
             //ledLights.Disable("leds");
             //ledLights.Disable("halos");
@@ -181,8 +181,8 @@ public class PatternGenerate : MonoBehaviour
         pattern.Add("#define __PATTERN_H__\n");
         pattern.Add("// Includes");
         pattern.Add("//---------------------------------");
-        pattern.Add("#include <stdint.h>        // Use uint_t");
-        pattern.Add("#include <avr/pgmspace.h>  // Store patterns in program memory\n");
+        pattern.Add("#include <stdint.h>");
+        pattern.Add("#include <avr/pgmspace.h>\n");
         pattern.Add("// Pattern that LED cube will display");
         pattern.Add("//--------------------------------- ");
         pattern.Add("const PROGMEM uint16_t pattern_table[] = {\n");
@@ -203,11 +203,11 @@ public class PatternGenerate : MonoBehaviour
             pattern.Remove("};");
 
             // Add new pattern to list
-            pattern.Add("     0x" + ledValuesHex[0].ToString("X4") +
-                           ", 0x" + ledValuesHex[1].ToString("X4") + 
-                           ", 0x" + ledValuesHex[2].ToString("X4") + 
-                           ", 0x" + ledValuesHex[3].ToString("X4") + 
-                           ", "   + inputFieldTime.text + ",");
+            pattern.Add("    0x" + ledValuesHex[0].ToString("X4") +
+                          ", 0x" + ledValuesHex[1].ToString("X4") + 
+                          ", 0x" + ledValuesHex[2].ToString("X4") + 
+                          ", 0x" + ledValuesHex[3].ToString("X4") + 
+                          ", "   + inputFieldTime.text + ",");
             pattern.Add("};");
             pattern.Add("#endif");
 
@@ -267,7 +267,7 @@ public class PatternGenerate : MonoBehaviour
         reader.Close();
     }
 
-    void LedsEnableAll()
+    public void LedsEnableAll()
     {
         // Turns on all LEDs
         for (int led = 0; led < 64; led++)

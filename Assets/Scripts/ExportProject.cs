@@ -3,76 +3,91 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using System.Text;
 
 public class ExportProject : MonoBehaviour
 {   
     // Input fields
     public TMP_InputField inputField; // The text input field for the pattern.h file
 
-    // Export button
-    public Button exportButton;
+    // Directory and file paths
+    const string DIR_PATH     = @"cube3d";
+    const string PATTERN_FILE = @"pattern.h";
 
-    // Directory paths
-    string sourceDir = @"C:\Users\Mariu\Documents\FileCopyTest\source";
-    string backupDir = @"C:\Users\Mariu\Documents\FileCopyTest\backup";
-    string path = @"C:\Users\Mariu\Documents\FileCopyTest\source\pattern.h";
+    readonly string ARDUINO_FILE_PATH = DIR_PATH + '/' + DIR_PATH + ".ino";
+    readonly string PATTERN_FILE_PATH = DIR_PATH + '/' + PATTERN_FILE;
 
-    void Start()
+    // Generates a Arduino project with cube3d.ino and pattern.h
+    public void ArduinoGenerate(string folderName)
     {
-        // Add listener to button
-        exportButton.onClick.AddListener(delegate { OnClick(); });
+        // Read the Arduino code file
+        var sr = new StreamReader(Application.dataPath + "/" + "cube3d.ino");
+        var cube3dContents = sr.ReadToEnd();
+        sr.Close();
+
+        // Create Directory and files if they don't exist
+        CreateDirectory(folderName + DIR_PATH);
+        CreateFile(folderName + PATTERN_FILE_PATH, inputField.text);
+        CreateFile(folderName + ARDUINO_FILE_PATH, cube3dContents);
     }
 
-    void OnClick()
+    // Generates the pattern.h file in the selected folder
+    public void PatternFileGenerate(string fileName)
     {
-        Debug.Log("Clicked Export Button.");
-        string patternStr = inputField.text;
-
+        CreateFile(fileName, inputField.text);
+    }
+  
+    void CreateDirectory(string path)
+    {
         try
         {
-            string[] txtList = Directory.GetFiles(sourceDir, "*.txt");
-
-            // Copy text files.
-            foreach (string f in txtList)
+            // Determine whether the directory exists.
+            if (Directory.Exists(path))
             {
-                // Remove path from the file name.
-                string fName = f.Substring(sourceDir.Length + 1);
-
-                try
-                {
-                    // Will not overwrite if the destination file already exists.
-                    //File.Copy(Path.Combine(sourceDir, fName), Path.Combine(backupDir, fName));
-                    File.Create(path);
-                    //File.WriteAllLines(path, patternStr);
-                    Debug.Log(patternStr);
-                   
-                }
-
-                // Catch exception if the file was already copied.
-                catch (IOException copyError)
-                {
-                    Debug.Log(copyError.Message);
-                }
+                Debug.Log("The directory exists already!");
+                return;
             }
 
-            /*
-            // Delete source files that were copied.
-            foreach (string f in txtList)
-            {
-                File.Delete(f);
-            }
-            */
+            // Try to create the directory.
+            DirectoryInfo di = Directory.CreateDirectory(path);
+            Debug.Log("The directory was created successfully at {0}." + Directory.GetCreationTime(path));
+
         }
-
-        catch (DirectoryNotFoundException dirNotFound)
+        catch (Exception e)
         {
-            Debug.Log(dirNotFound.Message);
+            Debug.Log("The process failed: {0}" + e.ToString());
         }
+        finally { }
     }
 
-    public static void ReadString(string path)
+    void CreateFile(string path, string content = "")
     {
-        StreamReader reader = new StreamReader(path);
-        reader.Close();
+        try
+        {
+            // Check if file already exists   
+            if (!File.Exists(path))
+            {
+
+                // Create a new file     
+                using (FileStream fs = File.Create(path))
+                {
+                    // Write text to file   
+                    Byte[] file_content = new UTF8Encoding(true).GetBytes(content);
+                    fs.Write(file_content, 0, file_content.Length);
+
+                    Debug.Log(path + " was created!");
+                }
+            }
+            else 
+                Debug.Log(path + " exists already!");
+        }
+
+        catch (Exception Exc)
+        {
+            Debug.Log(Exc.ToString());
+        }
     }
+    
+
 }
