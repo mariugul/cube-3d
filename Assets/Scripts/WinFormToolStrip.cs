@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 using TMPro;
-using UnityEngine.WSA;
 using System;
 using System.IO;
 using System.Diagnostics;
@@ -61,7 +60,9 @@ public class WinFormToolStrip : Form
         // On click export Arduino Project
         itemExportArduinoProject.Click += (sender, args) =>
         {
-            var ofd = new OpenFileDialog();
+            var ofd = new SaveFileDialog();
+
+            ofd.Filter = "Folder Name|*Folder";
 
             var result = ofd.ShowDialog(); // Saving the result is pointless, it's not async stuff here.
                                            // What you can do is wait for form closing:
