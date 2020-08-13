@@ -9,7 +9,6 @@
   * [Installing](#Installing)  
   * Hello Cube
     * Arduino
-    * Atmel Studio
 * [Contributing](#Contributing)  
 * [Authors](#Authors)
 * [License](#License)  
@@ -22,29 +21,31 @@ This is an application for generating code for a LED cube. The application is ca
 ## Getting Started
 <a name="GettingStarted"/>
 
-Watch the YouTube tutorials for most clarity:
+Watch the YouTube tutorials:
 * [Intro]()
 * [Basics]()
 * [Coding]()
 * [Code Generator]()
 * [Advanced]()
 
-### Installing
+## Installing
 <a name="Installing"/>
 
-Download the application from [link]() and follow the install wizard.
+Download the application (.exe) from [releases](https://github.com/mariugul/cube-3d/releases) and follow the install wizard. It works for Windows 10 and possibly earlier Windows OS'es (not tested).
 
-### Hello Cube
+
+## Usage
+The application does one thing at the time of writing, and that is to generate a pattern table for a 4x4x4 LED cube. The code for programming the LED cube comes with the application and does also exist in its own repository [LED-Cube-Code](https://github.com/mariugul/LED-Cube-Code). The application is depicted in the image below.
+
+## Examples
 "Describe how to make a simple starter program"
 
-#### Arduino
-
-#### Atmel Studio
+## Future Improvements
 
 ## Contributing
 <a name="Contributing"/>
 
-If you want to contribute that's great! Send a pull request and I will review it.
+Contributions are much appreciated! The Unity project is in the repository. Send a pull request and I will review it.
 
 ## Authors
 <a name="Authors"/>
@@ -54,4 +55,4 @@ If you want to contribute that's great! Send a pull request and I will review it
 ## License
 <a name="License"/>
 
-This project is licensed under the MIT license and is open source. You are free to use this project as you wish as long as you credit the work. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT license and is open source. You are free to use this project as you wish as long as you credit the work. I would much appreciate if you'd share it with me if you use this work in another project! I made this open source for the reason of improving and sharing. See the [LICENSE](LICENSE) file for details.
