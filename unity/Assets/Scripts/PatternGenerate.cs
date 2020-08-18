@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.IO;
 using System.Linq;
 using UnityEngine;
 using TMPro;
+using System.Security.Cryptography;
 
 public class PatternGenerate : MonoBehaviour
 {
@@ -19,8 +21,7 @@ public class PatternGenerate : MonoBehaviour
 
     // Readonly variables
     readonly int    CUBESIZE = 64;      // Size of the LED cube
-    readonly int    DEFAULT_LINES = 11; // Nr of lines before the pattern table in pattern.h
-    readonly int    END_LINES = 2;      // Nr of lines after the pattern table in pattern.h
+    readonly int    DEFAULT_LINES = 13; // Nr of lines before not part of the pattern table in pattern.h
     readonly string PATH = "pattern.h"; // Path to pattern.h
 
 
@@ -39,8 +40,8 @@ public class PatternGenerate : MonoBehaviour
         // Initialize pattern list with the contents of pattern.h
         pattern = File.ReadAllLines(PATH).ToList();
 
-        RefreshInputField(inputField);
-    
+        //RefreshInputField(inputField);
+
     }
 
     // Update is called once per frame
@@ -130,8 +131,11 @@ public class PatternGenerate : MonoBehaviour
         // Enter clicked
         else if (e.type == EventType.KeyDown && e.keyCode == KeyCode.Return)
         {
-            GeneratePattern(ReadLedValues());
-            RefreshInputField(inputField);
+            // Generate pattern line from LED values and update input field
+            inputField.text = GeneratePatternString(GetLedStatus());
+
+            //GeneratePattern(ReadLedValues());
+            //RefreshInputField(inputField);
 
             // Add to generated patterns for redo functionality
             nrOfPatternsGenerated += 1;
@@ -140,8 +144,34 @@ public class PatternGenerate : MonoBehaviour
         // Delete clicked
         else if (e.type == EventType.KeyDown && e.keyCode == KeyCode.Delete)
         {
-            //var contains = File.ReadAllLines(PATH).Contains("const PROGMEM uint16_t pattern_table[] = {");
+            // Read input field text
+            string inputFieldText = inputField.text;
             
+            // Calculate number of pattern lines (inside the array)
+            int numLines = inputFieldText.Split('\n').Length - DEFAULT_LINES;
+
+            // Remove pattern lines if there are any
+            if (numLines > 0)
+            {
+                // Remove end of file
+                inputFieldText = inputFieldText.Replace("\r\n};" + "\r\n" + "#endif", "");
+
+                // Find the last occurence of newline 
+                int lastIndex = inputFieldText.LastIndexOf("\r\n");
+
+                // Remove the last pattern line
+                if (lastIndex > 0)
+                    inputFieldText = inputFieldText.Substring(0, lastIndex);
+
+                // Add end of file
+                inputFieldText += ("\r\n};\r\n#endif");
+
+                // Refresh input field
+                inputField.text = inputFieldText;
+            }
+
+
+            /*
             int lineCount = File.ReadLines(PATH).Count() - DEFAULT_LINES - END_LINES;
 
             // Only delete the contents of the array in pattern.h
@@ -166,7 +196,9 @@ public class PatternGenerate : MonoBehaviour
                 // Decrement the redo
                 if (nrOfPatternsGenerated != 0)
                     nrOfPatternsGenerated -= 1;
+                    
             }
+            */
         }
     }
 
@@ -191,7 +223,7 @@ public class PatternGenerate : MonoBehaviour
         File.WriteAllLines(PATH, pattern);
     }
 
-    void GeneratePattern(ushort[] ledValuesHex)
+    void GeneratePattern (ushort[] ledValuesHex)
     {
         // Make list of patterns
         if (File.Exists(PATH))
@@ -218,30 +250,54 @@ public class PatternGenerate : MonoBehaviour
             CreatePatternFile(PATH);
     }
 
-    public ushort[] ReadLedValues()
+    // This is a redo of GeneratePattern() (*Under construction)
+    string GeneratePatternString(ushort[] ledStatus)
     {
-        // Array with the status of LEDs
-        ushort[] ledValuesHex = { 0, 0, 0, 0, };
+        // Read input field text
+        string inputFieldText = inputField.text;
 
-        Array.Clear(ledValuesHex, 0, ledValuesHex.Length); // Clear array before every new reading
+        // Remove end of file
+        inputFieldText = inputFieldText.Replace("};" + "\r\n" + "#endif", "");
+        
+        // Add new generated pattern line
+        inputFieldText += (
+                      "    0x" + ledStatus[0].ToString("X4") +
+                      ", 0x"   + ledStatus[1].ToString("X4") +
+                      ", 0x"   + ledStatus[2].ToString("X4") +
+                      ", 0x"   + ledStatus[3].ToString("X4") +
+                      ", "     + inputFieldTime.text + ",\r\n");
+
+        // Add end of file
+        inputFieldText += ("};\r\n#endif");
+
+        //Debug.Log(inputFieldText);
+        return inputFieldText;
+    }
+
+    public ushort[] GetLedStatus()
+    {
+        // Array with the status of LEDs in each plane
+        ushort[] ledStatusPlanes = { 0, 0, 0, 0, };
+
+        Array.Clear(ledStatusPlanes, 0, ledStatusPlanes.Length); // Clear array before every new reading
 
         // Iterate over every LED lightsource to find the values (on/off)
-        ushort ledValueHex = 0;
+        ushort ledStatus = 0;
         int j = 0;
         for (int i = 0; i < CUBESIZE; i++)
         {
             // Check if LED is on or off
             if (gameObject.transform.GetChild(i).GetChild(0).GetComponent<Light>().enabled == true)
-                ledValueHex += (ushort)(1 << j); // Bitshifts a '1' the correct order into a ushort variable
+                ledStatus += (ushort)(1 << j); // Bitshifts a '1' the correct order into a ushort variable
                         
             else
-                ledValueHex += (ushort)(0 << j); // Bitshifts a '0' the correct order into a ushort variable
+                ledStatus += (ushort)(0 << j); // Bitshifts a '0' the correct order into a ushort variable
                       
             // Save hex value for UInt16 every 16th iteration (4 times total)
             if ((i + 1) % 16 == 0)
             {
-                ledValuesHex[((i + 1) / 16) - 1] = ledValueHex; // Save hex-value of pattern to array
-                ledValueHex = 0;
+                ledStatusPlanes[((i + 1) / 16) - 1] = ledStatus; // Save hex-value of pattern to array
+                ledStatus = 0;
             }
 
             // Needed for correct calculation of bitshift
@@ -249,13 +305,11 @@ public class PatternGenerate : MonoBehaviour
                 j = 0;
             else
                 j++;
-            
         }
 
-        return ledValuesHex;
+        return ledStatusPlanes;
     }
 
-    //[MenuItem("Tools/Read file")]
     static void RefreshInputField(TMP_InputField inputField)
     {
         string PATH = "pattern.h";

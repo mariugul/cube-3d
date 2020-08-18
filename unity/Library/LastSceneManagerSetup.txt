@@ -1,5 +1,0 @@
-sceneSetups:
-- path: Assets/Cube 3D.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0
