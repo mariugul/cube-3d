@@ -2173,7 +2173,7 @@ MonoBehaviour:
   m_text: "#ifndef __PATTERN_H__\r\n#define __PATTERN_H__\r\n\r\n// Includes\r\n//---------------------------------\r\n#include
     <stdint.h>        \n#include <avr/pgmspace.h> \n\r\n// Pattern that LED cube
     will display\r\n//--------------------------------- \r\nconst PROGMEM uint16_t
-    pattern_table[][5] = {\r\n\n};\r\n#endif\r\n\u200B"
+    pattern_table[] = {\r\n};\r\n#endif\r\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed0b1cb7a703bde40a4ddac0bd0d58ab, type: 2}
   m_sharedMaterial: {fileID: 5259061394658136411, guid: ed0b1cb7a703bde40a4ddac0bd0d58ab,
@@ -6429,7 +6429,7 @@ MonoBehaviour:
   m_Text: "#ifndef __PATTERN_H__\r\n#define __PATTERN_H__\r\n\r\n// Includes\r\n//---------------------------------\r\n#include
     <stdint.h>        \n#include <avr/pgmspace.h> \n\r\n// Pattern that LED cube
     will display\r\n//--------------------------------- \r\nconst PROGMEM uint16_t
-    pattern_table[][5] = {\r\n\n};\r\n#endif\r\n"
+    pattern_table[] = {\r\n};\r\n#endif\r"
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 1
