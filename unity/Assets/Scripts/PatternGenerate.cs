@@ -5,6 +5,8 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
+using UnityEngine.UIElements;
 //using System.Windows.Forms;
 
 public class PatternGenerate : MonoBehaviour
@@ -14,7 +16,7 @@ public class PatternGenerate : MonoBehaviour
     public TMP_InputField inputFieldTime; // The integer input field for time [ms]
 
     // Buttons 
-    public Button editButton;
+    public UnityEngine.UI.Button editButton;
 
     // Lists
     List<string> pattern = new List<string>(); // Stored pattern table
@@ -37,13 +39,28 @@ public class PatternGenerate : MonoBehaviour
         inputField.onValueChanged.AddListener(delegate { InputFieldValueChange(); });
 
         // Add listener to button click
-        editButton.GetComponent<Button>().onClick.AddListener(OnEditButtonClick);
+        editButton.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(OnEditButtonClick);
     }
 
     void OnEditButtonClick()
     {
-        // Toggle input field's readonly option
-        inputField.readOnly = !inputField.readOnly;
+        if (inputField.readOnly == true)
+        {   
+            // Make input field editable
+            inputField.readOnly = false;
+
+            // Change background color
+            inputField.image.color = Color.gray;
+        }
+        else
+        {
+            // Make input field read only
+            inputField.readOnly = true;
+
+            // Change background color
+            inputField.image.color = Color.white;
+        }
+
     }
 
     // Invoked when the value of the text field changes.
