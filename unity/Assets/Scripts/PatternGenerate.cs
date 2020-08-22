@@ -27,6 +27,8 @@ public class PatternGenerate : MonoBehaviour
     readonly int    DEFAULT_LINES = 13; // Nr of lines before not part of the pattern table in pattern.h
     readonly string PATH = "pattern.h"; // Path to pattern.h
 
+    // Raycast
+    RaycastHit hit;
 
     // Start is called before the first frame update
     void Start()
@@ -109,7 +111,7 @@ public class PatternGenerate : MonoBehaviour
             if (numLines > 0)
             {
                 // Remove end of file
-                inputFieldText = inputFieldText.Replace("\r\n};" + "\r\n" + "#endif", "");
+                inputFieldText = inputFieldText.Replace("\r\n};" + "\r\n" + "<color=purple>#endif</color>", "");
 
                 // Find the last occurence of newline 
                 int lastIndex = inputFieldText.LastIndexOf("\r\n");
@@ -119,7 +121,7 @@ public class PatternGenerate : MonoBehaviour
                     inputFieldText = inputFieldText.Substring(0, lastIndex);
 
                 // Add end of file
-                inputFieldText += ("\r\n};\r\n#endif");
+                inputFieldText += ("\r\n};\r\n<color=purple>#endif</color>");
 
                 // Refresh input field
                 inputField.text = inputFieldText;
@@ -134,7 +136,7 @@ public class PatternGenerate : MonoBehaviour
         string inputFieldText = inputField.text;
 
         // Remove end of file
-        inputFieldText = inputFieldText.Replace("};" + "\r\n" + "#endif", "");
+        inputFieldText = inputFieldText.Replace("};" + "\r\n" + "<color=purple>#endif</color>", "");
         
         // Add new generated pattern line
         inputFieldText += (
@@ -145,7 +147,7 @@ public class PatternGenerate : MonoBehaviour
                       ", "     + inputFieldTime.text + ",\r\n");
 
         // Add end of file
-        inputFieldText += ("};\r\n#endif");
+        inputFieldText += ("};\r\n<color=purple>#endif</color>");
 
         //Debug.Log(inputFieldText);
         return inputFieldText;
