@@ -1731,7 +1731,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -2170,10 +2170,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "#ifndef __PATTERN_H__\r\n#define __PATTERN_H__\r\n\r\n// Includes\r\n//---------------------------------\r\n#include
-    <stdint.h>        \n#include <avr/pgmspace.h> \n\r\n// Pattern that LED cube
-    will display\r\n//--------------------------------- \r\nconst PROGMEM uint16_t
-    pattern_table[] = {\r\n};\r\n#endif\r\u200B"
+  m_text: "<color=purple>#ifndef</color> <color=blue>__PATTERN_H__\r</color>\n<color=purple>#define</color>
+    <color=blue>__PATTERN_H__</color>\n\n<color=#969696>// Includes\r</color>\n<color=#969696>//---------------------------------\r</color>\n<color=purple>#include</color>
+    <stdint.h>       \n<color=purple>#include</color> <avr/pgmspace.h> \n\r\n<color=#969696>//
+    Pattern that LED cube will display\r\n//--------------------------------- \r</color>\n<color=blue>const</color>
+    PROGMEM <color=#8ec7ff>uint16_t</color> pattern_table[] = {\r\n};\r\n<color=purple>#endif</color>\r\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed0b1cb7a703bde40a4ddac0bd0d58ab, type: 2}
   m_sharedMaterial: {fileID: 5259061394658136411, guid: ed0b1cb7a703bde40a4ddac0bd0d58ab,
@@ -6426,12 +6427,13 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: "#ifndef __PATTERN_H__\r\n#define __PATTERN_H__\r\n\r\n// Includes\r\n//---------------------------------\r\n#include
-    <stdint.h>        \n#include <avr/pgmspace.h> \n\r\n// Pattern that LED cube
-    will display\r\n//--------------------------------- \r\nconst PROGMEM uint16_t
-    pattern_table[] = {\r\n};\r\n#endif\r"
-  m_CaretBlinkRate: 0.85
-  m_CaretWidth: 1
+  m_Text: "<color=purple>#ifndef</color> <color=blue>__PATTERN_H__\r</color>\n<color=purple>#define</color>
+    <color=blue>__PATTERN_H__</color>\n\n<color=#969696>// Includes\r</color>\n<color=#969696>//---------------------------------\r</color>\n<color=purple>#include</color>
+    <stdint.h>       \n<color=purple>#include</color> <avr/pgmspace.h> \n\r\n<color=#969696>//
+    Pattern that LED cube will display\r\n//--------------------------------- \r</color>\n<color=blue>const</color>
+    PROGMEM <color=#8ec7ff>uint16_t</color> pattern_table[] = {\r\n};\r\n<color=purple>#endif</color>\r"
+  m_CaretBlinkRate: 1
+  m_CaretWidth: 2
   m_ReadOnly: 1
   m_RichText: 1
   m_GlobalFontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
