@@ -28,7 +28,6 @@ public class WinFormToolStrip : Form
         Size = new Size(System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width, uwfHeaderHeight + 24); // + menu height.
         SizeGripStyle = SizeGripStyle.Hide;
         StartPosition = FormStartPosition.Manual;
-
         uwfMovable = false;
 
         // Tool strip menu items
