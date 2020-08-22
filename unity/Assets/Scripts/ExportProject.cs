@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 public class ExportProject : MonoBehaviour
 {   
@@ -22,7 +24,7 @@ public class ExportProject : MonoBehaviour
     public void ArduinoGenerate(string folderName)
     {
         // Read the Arduino code file
-        var sr = new StreamReader(Application.dataPath + "/" + "cube3d.ino");
+        var sr = new StreamReader(UnityEngine.Application.dataPath + "/" + "cube3d.ino");
         var cube3dContents = sr.ReadToEnd();
         sr.Close();
 
@@ -35,7 +37,21 @@ public class ExportProject : MonoBehaviour
     // Generates the pattern.h file in the selected folder
     public void PatternFileGenerate(string fileName)
     {
-        CreateFile(fileName, inputField.text);
+        // Read input field text
+        string inputFieldText = inputField.text;
+
+        // Replace includes so they don't vanish on the parse
+        inputFieldText = Regex.Replace(inputFieldText, "<stdint.h>", "stdint.h");
+        inputFieldText = Regex.Replace(inputFieldText, "<avr/pgmspace.h>", "avr/pgmspace.h");
+
+        // Parse out Rich Text symbols
+        inputFieldText = Regex.Replace(inputFieldText, "<.*?>", String.Empty);
+
+        // Put includes back in
+        inputFieldText = Regex.Replace(inputFieldText, "stdint.h", "<stdint.h>");
+        inputFieldText = Regex.Replace(inputFieldText, "avr/pgmspace.h", "<avr/pgmspace.h>");
+
+        CreateFile(fileName, inputFieldText);
     }
   
     void CreateDirectory(string path)
