@@ -1,12 +1,8 @@
-﻿using UnityEngine;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
-using TMPro;
-using System;
 using System.IO;
 using System.Diagnostics;
-using UnityEngine.Networking.PlayerConnection;
-using Unity.API;
+
 
 public class WinFormToolStrip : Form
 {
@@ -85,11 +81,12 @@ public class WinFormToolStrip : Form
                     UnityEngine.Debug.Log(ofd.FileName);
 
                     string selectedFolder = ofd.FileName;
-                    export.ArduinoGenerate(selectedFolder);
-                    MessageBox.Show("Arduino project created successfully at " + ofd.FileName);
+                    if (export.ArduinoProjectGenerate(selectedFolder))
+                        MessageBox.Show("Arduino project created successfully at\n" + ofd.FileName);
+                    else
+                        MessageBox.Show("Something went wrong, project not created.\nThe folder might exist already.\n\nPlease try again.");
                 }
             };
-
         };
 
         // On click export pattern.h File
@@ -105,8 +102,10 @@ public class WinFormToolStrip : Form
             {
                 if (sfd.DialogResult == DialogResult.OK)
                 {
-                    export.PatternFileGenerate(sfd.FileName);
-                    MessageBox.Show("The pattern file was created successfully at " + sfd.FileName);
+                    if (export.PatternFileGenerate(sfd.FileName))
+                        MessageBox.Show("The pattern file was created successfully at\n" + sfd.FileName);
+                    else
+                        MessageBox.Show("Something went wrong, file not created.\nThe file might exist already or you did not write a filename.\n\nPlease try again.");
                 }
             };
         };

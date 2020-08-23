@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.IO;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
-using UnityEngine.UIElements;
+
 //using System.Windows.Forms;
 
 public class PatternGenerate : MonoBehaviour

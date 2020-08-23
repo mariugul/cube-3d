@@ -347,9 +347,8 @@ MonoBehaviour:
   m_text: "53                            54                             55                           
     56                       \n\n\n\n\n\n37                            38                            
     39                             40\n\n\n\n\n\n\n21                            
-    22                            23                              24\n\n\n\n\n\n
-    5                               6                             7                               
-    8"
+    22                            23                              24\n\n\n\n\n\n5                              
+    6                             7                                8"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3309,9 +3308,8 @@ MonoBehaviour:
   m_text: "49                            50                             51                           
     52                       \n\n\n\n\n\n33                            34                            
     35                             36\n\n\n\n\n\n\n17                            
-    18                            19                              20\n\n\n\n\n\n
-    1                               2                             3                               
-    4"
+    18                            19                              20\n\n\n\n\n\n1                              
+    2                             3                                4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9913,9 +9911,8 @@ MonoBehaviour:
   m_text: "61                            62                             63                           
     64                       \n\n\n\n\n\n45                            46                            
     47                             48\n\n\n\n\n\n\n29                            
-    30                            31                              32\n\n\n\n\n\n
-    13                             14                            15                            
-    16"
+    30                            31                              32\n\n\n\n\n\n13                            
+    14                            15                             16"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12660,9 +12657,8 @@ MonoBehaviour:
   m_text: "57                            58                             59                           
     60                       \n\n\n\n\n\n41                            42                            
     43                             44\n\n\n\n\n\n\n25                            
-    26                            27                              28\n\n\n\n\n\n
-    9                             10                            11                              
-    12"
+    26                            27                              28\n\n\n\n\n\n9                            
+    10                            11                               12"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13824,7 +13820,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -20.73413, y: -46.00995}
+  m_AnchoredPosition: {x: -20.73413, y: -46.009888}
   m_SizeDelta: {x: 29.952515, y: 23.904785}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1573869435
@@ -15888,7 +15884,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -374, y: -22.284973}
+  m_AnchoredPosition: {x: -374, y: -22.285034}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1840402131

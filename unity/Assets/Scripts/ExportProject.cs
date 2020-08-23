@@ -16,26 +16,60 @@ public class ExportProject : MonoBehaviour
     // Directory and file paths
     const string DIR_PATH     = @"cube3d";
     const string PATTERN_FILE = @"pattern.h";
+    const string ARDUINO_FILE = @"cube3d.ino";
 
     readonly string ARDUINO_FILE_PATH = DIR_PATH + '/' + DIR_PATH + ".ino";
     readonly string PATTERN_FILE_PATH = DIR_PATH + '/' + PATTERN_FILE;
 
-    // Generates a Arduino project with cube3d.ino and pattern.h
-    public void ArduinoGenerate(string folderName)
+    // Generates an Arduino project folder with cube3d.ino and pattern.h
+    public bool ArduinoProjectGenerate(string folderPath)
     {
-        // Read the Arduino code file
+        // Filter out the folder name from path
+        int lastIdx = folderPath.LastIndexOf('/');
+        int length  = folderPath.Length;
+        string folderName = folderPath.Remove(0, lastIdx);
+        Debug.Log("Foldername: " + folderName);
+
+        // Try create Directory 
+        if (CreateDirectory(folderPath))
+            Debug.Log("Created directory successfully at " + folderPath);
+        else
+        {
+            Debug.Log("Failed to create directory.");
+            return false;
+        }
+
+        // Try create pattern.h
+        if (PatternFileGenerate(folderPath + '/' + PATTERN_FILE))
+            Debug.Log("Created pattern file (.h) successfully at " + folderPath + '/' + PATTERN_FILE);
+        else
+        {
+            Debug.Log("Failed to create pattern file.");
+            return false;
+        }
+
+        // Read the .ino file from assets
         var sr = new StreamReader(UnityEngine.Application.dataPath + "/" + "cube3d.ino");
         var cube3dContents = sr.ReadToEnd();
         sr.Close();
+        
+        // Try create arduino file
+        if (CreateFile(folderPath + '/' + folderName + ".ino", cube3dContents))
+        {
+            Debug.Log("Created Arduino file (.ino) successfully at " + folderPath + '/' + folderName + ".ino");
+        }
+        else
+        {
+            Debug.Log("Failed to create Arduino file.");
+            return false;
+        }
 
-        // Create Directory and files if they don't exist
-        CreateDirectory(folderName + DIR_PATH);
-        CreateFile(folderName + PATTERN_FILE_PATH, inputField.text);
-        CreateFile(folderName + ARDUINO_FILE_PATH, cube3dContents);
+        // Return true for successfull creation of directory with contents
+        return true;
     }
 
     // Generates the pattern.h file in the selected folder
-    public void PatternFileGenerate(string fileName)
+    public bool PatternFileGenerate(string fileName)
     {
         // Read input field text
         string inputFieldText = inputField.text;
@@ -51,10 +85,10 @@ public class ExportProject : MonoBehaviour
         inputFieldText = Regex.Replace(inputFieldText, "stdint.h", "<stdint.h>");
         inputFieldText = Regex.Replace(inputFieldText, "avr/pgmspace.h", "<avr/pgmspace.h>");
 
-        CreateFile(fileName, inputFieldText);
+        return CreateFile(fileName, inputFieldText);
     }
   
-    void CreateDirectory(string path)
+    bool CreateDirectory(string path)
     {
         try
         {
@@ -62,22 +96,25 @@ public class ExportProject : MonoBehaviour
             if (Directory.Exists(path))
             {
                 Debug.Log("The directory exists already!");
-                return;
+                return false;
             }
 
             // Try to create the directory.
             DirectoryInfo di = Directory.CreateDirectory(path);
             Debug.Log("The directory was created successfully at {0}." + Directory.GetCreationTime(path));
+            
+            return true;
 
         }
         catch (Exception e)
         {
             Debug.Log("The process failed: {0}" + e.ToString());
+            return false;
         }
-        finally { }
     }
 
-    void CreateFile(string path, string content = "")
+    // Returns true if successful
+    bool CreateFile(string path, string content = "")
     {
         try
         {
@@ -91,17 +128,21 @@ public class ExportProject : MonoBehaviour
                     // Write text to file   
                     Byte[] file_content = new UTF8Encoding(true).GetBytes(content);
                     fs.Write(file_content, 0, file_content.Length);
-
-                    Debug.Log(path + " was created!");
                 }
+                Debug.Log(path + " was created!");
+                return true;
             }
-            else 
+            else
+            {
                 Debug.Log(path + " exists already!");
+                return false;
+            }
         }
 
         catch (Exception Exc)
         {
             Debug.Log(Exc.ToString());
+            return false;
         }
     }
     
