@@ -13,8 +13,9 @@ public class WinFormToolStrip : Form
     // Instances of Unity classes
     private PanelOpener panel;
     private ExportProject export;
+    private CubeLayout cube;
 
-    public WinFormToolStrip(PanelOpener panel, ExportProject export)
+    public WinFormToolStrip(PanelOpener panel, ExportProject export, CubeLayout cube)
     {
         this.panel = panel;
         this.export = export;
@@ -38,6 +39,7 @@ public class WinFormToolStrip : Form
         var itemDiscord  = new ToolStripMenuItem("Discord");
         var itemYoutube  = new ToolStripMenuItem("YouTube");
         var itemGithub   = new ToolStripMenuItem("GitHub");
+        var itemView     = new ToolStripMenuItem("View");
 
         // Tool strip subitems
         //--------------------------------------------------------------
@@ -50,11 +52,22 @@ public class WinFormToolStrip : Form
         var itemFileSave    = new ToolStripMenuItem("Save Project");
         var itemFileExit    = new ToolStripMenuItem("Exit");
 
+        var itemViewLayout  = new ToolStripMenuItem("Layout");
+        var itemViewPlanes  = new ToolStripMenuItem("Planes");
+        var itemViewColumns = new ToolStripMenuItem("Columns");
+
         // Tried to set button image
         //itemDiscord.BackgroundImage = Image.FromFile(@"C:\GitHub\cube-3d\Assets\Resources\discord.png");
 
         // On Click Functionality
         //--------------------------------------------------------------
+
+        // On click View Layout
+        itemViewLayout.Click += (sender, args) =>
+        {
+            //cube.TogglePlaneText();
+        };
+        
 
         // On click export Arduino Project
         itemExportArduinoProject.Click += (sender, args) =>
@@ -205,6 +218,10 @@ public class WinFormToolStrip : Form
         itemExport.DropDownItems.Add(itemExportPatternFile);
         //itemExport.DropDownItems.Add(itemExportSelectFolder); // TODO: Wait with this for next release
 
+        // Add items to VIEW dropdown menu
+        itemView.DropDownItems.Add(itemViewLayout);
+        itemView.DropDownItems.Add(itemViewPlanes);
+        itemView.DropDownItems.Add(itemViewColumns);
 
         // Set up menu strip and anchor at the top
         var menu = new MenuStrip();
@@ -215,8 +232,9 @@ public class WinFormToolStrip : Form
 
         // Add menu strip items
         menu.Items.Add(itemFile);
-        menu.Items.Add(itemExport);
         menu.Items.Add(itemSettings);
+        menu.Items.Add(itemView);
+        menu.Items.Add(itemExport);
         menu.Items.Add(itemDiscord);
         menu.Items.Add(itemYoutube);
         menu.Items.Add(itemGithub);

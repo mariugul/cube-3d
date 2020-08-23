@@ -6,11 +6,12 @@ public class GuiController : MonoBehaviour
 {
 	public PanelOpener panel;
 	public ExportProject export;
+	public CubeLayout cube;
 
 
 	void Start()
 	{
-		var form = new WinFormToolStrip(panel, export);
+		var form = new WinFormToolStrip(panel, export, cube);
 		//var form2 = new WinFormSettings();
 
 		form.Show();
