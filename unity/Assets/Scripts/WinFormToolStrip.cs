@@ -64,7 +64,6 @@ public class WinFormToolStrip : Form
             //cube.TogglePlaneText();
         };
         
-
         // On click export Arduino Project
         itemExportArduinoProject.Click += (sender, args) =>
         {

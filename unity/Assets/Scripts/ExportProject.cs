@@ -9,7 +9,10 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 public class ExportProject : MonoBehaviour
-{   
+{
+    // Text Asset from Resources
+    public TextAsset arduinoFile;
+
     // Input fields
     public TMP_InputField inputField; // The text input field for the pattern.h file
 
@@ -47,24 +50,19 @@ public class ExportProject : MonoBehaviour
             Debug.Log("Failed to create pattern file.");
             return false;
         }
-
-        // Read the .ino file from assets
-        var sr = new StreamReader(UnityEngine.Application.dataPath + "/" + "cube3d.ino");
-        var cube3dContents = sr.ReadToEnd();
-        sr.Close();
         
         // Try create arduino file
-        if (CreateFile(folderPath + '/' + folderName + ".ino", cube3dContents))
+        if (CreateFile(folderPath + '/' + folderName + ".ino", arduinoFile.text))
         {
-            Debug.Log("Created Arduino file (.ino) successfully at " + folderPath + '/' + folderName + ".ino");
+            Debug.Log("Created Arduino file (.ino) successfully at " + folderPath + folderName + ".ino");
         }
         else
         {
             Debug.Log("Failed to create Arduino file.");
             return false;
         }
-
-        // Return true for successfull creation of directory with contents
+        
+        // Return true for successful creation of directory with contents
         return true;
     }
 
