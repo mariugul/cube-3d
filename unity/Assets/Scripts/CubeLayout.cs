@@ -1,11 +1,10 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CubeLayout : MonoBehaviour
 {
-    public GameObject layoutText;
-    public GameObject planeText;
-
     public void ToggleLayoutText()
     {
         //gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -13,6 +12,7 @@ public class CubeLayout : MonoBehaviour
 
     public void TogglePlaneText()
     {
+        gameObject.transform.GetChild(1).transform.GetChild(0).GetComponent<TextMeshPro>().enabled = false;
         /*
         if (planeText.activeSelf) 
             //planeText.SetActive(false);
