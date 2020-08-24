@@ -7,14 +7,14 @@ using UnityEngine.UI;
 public class ExitApplication : MonoBehaviour
 {
     // Exit button
-    public Button exitButton;
+    //public Button exitButton;
 
     // Start is called before the first frame update
     void Start()
     {
         // Add click function to button
-        Button exitBtn = exitButton.GetComponent<Button>();
-        exitBtn.onClick.AddListener(OnButtonClick);
+        //Button exitBtn = exitButton.GetComponent<Button>();
+        //exitBtn.onClick.AddListener(OnButtonClick);
 
     }
 
