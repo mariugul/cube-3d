@@ -1,8 +1,12 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class SliderControl : MonoBehaviour
 {
+    // Canvas to access input field
+    public Canvas canvas;
+
     // Connected Slider Objects
     public Slider sliderBackLight;
     public Slider sliderFillLight;
@@ -19,6 +23,8 @@ public class SliderControl : MonoBehaviour
     public Toggle toggleCubeBox;
     public Toggle togglePCB;
     public Toggle toggleLEDLegs;
+
+    public Toggle toggleInputField;
 
     // Childs 
     const int light_back_child = 64;
@@ -49,6 +55,8 @@ public class SliderControl : MonoBehaviour
         toggleCubeBox.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
         togglePCB.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
         toggleLEDLegs.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
+
+        toggleInputField.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
     }
 
     // Invoked when a checkbox is clicked
@@ -95,6 +103,15 @@ public class SliderControl : MonoBehaviour
             gameObject.transform.GetChild(structure_legs_child).gameObject.SetActive(true);
         else
             gameObject.transform.GetChild(structure_legs_child).gameObject.SetActive(false);
+
+        // Pattern File Display Checkbox
+        int inputFieldChild = 0;
+
+        if (toggleInputField.isOn)
+            canvas.transform.GetChild(inputFieldChild).gameObject.SetActive(true);
+        else
+            canvas.transform.GetChild(inputFieldChild).gameObject.SetActive(false);
+
     }
 
     // Invoked when the value of the slider changes.
