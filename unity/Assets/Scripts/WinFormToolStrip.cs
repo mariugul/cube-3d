@@ -61,7 +61,12 @@ public class WinFormToolStrip : Form
         // On click View Layout
         itemViewLayout.Click += (sender, args) =>
         {
-            //cube.TogglePlaneText();
+            cube.ToggleLayoutText();
+        };
+
+        itemViewPlanes.Click += (sender, args) =>
+        {
+            cube.ToggleLayoutText();
         };
         
         // On click export Arduino Project
@@ -121,9 +126,9 @@ public class WinFormToolStrip : Form
             MessageBox.Show(
                 "Generate pattern              Enter\n\n"            +
                 "Enable all LEDs               Ctrl + A\n"         +
-                "Disable all LEDs              Ctrl + Shift + A\n\n" +
+                "Disable all LEDs              Shift + A\n\n" +
                 "Select pattern time           Ctrl + T\n\n"         +
-                "Redo generated line       Ctrl + Z\n"         +
+                /*"Redo generated line       Ctrl + Z\n"         +*/
                 "Delete pattern line           Delete\n");
         };
 
@@ -231,7 +236,7 @@ public class WinFormToolStrip : Form
         // Add menu strip items
         menu.Items.Add(itemFile);
         menu.Items.Add(itemSettings);
-        menu.Items.Add(itemView);
+        //menu.Items.Add(itemView);
         menu.Items.Add(itemExport);
         menu.Items.Add(itemDiscord);
         menu.Items.Add(itemYoutube);
