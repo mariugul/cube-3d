@@ -6206,6 +6206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b276fbd2d1ea0f429ea6ab1219bb831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputField: {fileID: 748559472}
   cam: {fileID: 963194227}
 --- !u!4 &588505363
 Transform:
@@ -7384,7 +7385,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.2548828, y: 0}
-  m_SizeDelta: {x: 366.3753, y: -29.435974}
+  m_SizeDelta: {x: 361, y: -29}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &748559472
 MonoBehaviour:

@@ -18,6 +18,10 @@ public class InputFieldZoom : MonoBehaviour
     int font_size = 12;
     const int font_size_min = 8;
     const int font_size_max = 14;
+
+    // Size variable for input field
+    int inputFieldWidth  = 361; // 361 is the default width
+    const int widthScale = 30; // Nr to scale width with
         
     // Start is called before the first frame update
     void Start()
@@ -38,7 +42,9 @@ public class InputFieldZoom : MonoBehaviour
             font_size += 1;
             SetFontSize(font_size);
 
-           
+            // Increase width of input field accordingly
+            RectTransform rt = inputField.GetComponent(typeof(RectTransform)) as RectTransform;
+            rt.sizeDelta = new Vector2(inputFieldWidth += widthScale, rt.sizeDelta.y);
         } 
     }
 
@@ -49,6 +55,10 @@ public class InputFieldZoom : MonoBehaviour
         {
             font_size -= 1;
             SetFontSize(font_size);
+
+            // Reduce width of input field accordingly
+            RectTransform rt = inputField.GetComponent(typeof(RectTransform)) as RectTransform;
+            rt.sizeDelta = new Vector2(inputFieldWidth -= widthScale, rt.sizeDelta.y);
         }
     }
 
