@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CameraMovement : MonoBehaviour
 {
+    public TMP_InputField inputField;
+
     [SerializeField] private Camera cam;
 
     private Vector3 previousPosition;
@@ -53,8 +58,10 @@ public class CameraMovement : MonoBehaviour
             float CamY = Camera.main.transform.position.y;
             float CamZ = Camera.main.transform.position.z;
 
-            // Zoom the main camera
-            Camera.main.transform.position = new Vector3(CamX + X, CamY, CamZ + Z);
+            // Don't zoom if focus is on inputfield
+            if (inputField.isFocused == false)
+                // Zoom the main camera
+                Camera.main.transform.position = new Vector3(CamX + X, CamY, CamZ + Z);
             
         }
     }
