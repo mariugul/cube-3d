@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,6 +37,8 @@ public class InputFieldZoom : MonoBehaviour
         {
             font_size += 1;
             SetFontSize(font_size);
+
+           
         } 
     }
 
