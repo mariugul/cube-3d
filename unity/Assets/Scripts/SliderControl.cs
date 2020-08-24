@@ -16,11 +16,19 @@ public class SliderControl : MonoBehaviour
     public Toggle toggleKeyLight;
     public Toggle toggleRoofLight;
 
+    public Toggle toggleCubeBox;
+    public Toggle togglePCB;
+    public Toggle toggleLEDLegs;
+
     // Childs 
     const int light_back_child = 64;
     const int light_fill_child = 65;
     const int light_key_child  = 66;
     const int light_roof_child = 67;
+
+    const int structure_box_child  = 68;
+    const int structure_legs_child = 69;
+    const int structure_pcb_child  = 70;
 
     // Start is called before the first frame update
     public void Start()
@@ -37,6 +45,10 @@ public class SliderControl : MonoBehaviour
         toggleFillLight.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
         toggleKeyLight.onValueChanged.AddListener ((bool value) => { CheckboxValueChange(); });
         toggleRoofLight.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
+
+        toggleCubeBox.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
+        togglePCB.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
+        toggleLEDLegs.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
     }
 
     // Invoked when a checkbox is clicked
@@ -65,6 +77,24 @@ public class SliderControl : MonoBehaviour
             gameObject.transform.GetChild(light_roof_child).GetComponent<Light>().enabled = true; 
         else
             gameObject.transform.GetChild(light_roof_child).GetComponent<Light>().enabled = false;
+
+        // Cube Box Checkbox
+        if (toggleCubeBox.isOn)
+            gameObject.transform.GetChild(structure_box_child).gameObject.SetActive(true);
+        else
+            gameObject.transform.GetChild(structure_box_child).gameObject.SetActive(false);
+
+        // PCB checkbox
+        if (togglePCB.isOn)
+            gameObject.transform.GetChild(structure_pcb_child).gameObject.SetActive(true);
+        else
+            gameObject.transform.GetChild(structure_pcb_child).gameObject.SetActive(false);
+
+        // LED legs checkbox
+        if (toggleLEDLegs.isOn)
+            gameObject.transform.GetChild(structure_legs_child).gameObject.SetActive(true);
+        else
+            gameObject.transform.GetChild(structure_legs_child).gameObject.SetActive(false);
     }
 
     // Invoked when the value of the slider changes.
@@ -79,12 +109,6 @@ public class SliderControl : MonoBehaviour
         gameObject.transform.GetChild(light_roof_child).GetComponent<Light>().intensity = sliderRoofLight.value;
 
         SetLedIntensity(sliderLedIntensity.value);
-
-        /*
-        // Set LED intensity
-        var leds = new LedLights();
-        leds.SetIntensity((float)sliderLedIntensity.value, "leds");
-        */
     } 
 
     void SetLedIntensity(float intensity)
