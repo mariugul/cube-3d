@@ -6,10 +6,7 @@
 
 ##### Table of Contents  
 * [Introduction](#Introduction)
-* [Getting Started](#GettingStarted)
-  * [Installing](#Installing)  
-  * Hello Cube
-    * Arduino
+* [Installing](#Installing)  
 * [Contributing](#Contributing)  
 * [Authors](#Authors)
 * [License](#License)  
@@ -43,17 +40,19 @@ The application does one thing at the time of writing, and that is to generate a
 
 ## Future Improvements
 
-## Contributing
-<a name="Contributing"/>
+<a name="HelpContributing"/>
 
-Contributions are much appreciated! The Unity project is in the repository. Send a pull request and I will review it.
+## Help and Contributing
 
-## Authors
-<a name="Authors"/>
+Check out the [Discord](https://discord.com/invite/ZgxjkC2) server if you need help with the code not working or if you have suggestions for improvement! The [YouTube]() channel has video tutorials to help out as well. (YouTube videos coming soon)
 
-<img src="https://lh3.googleusercontent.com/fqYJHtyzZzA4vacRzeJoB93QNvA5-mvR-8UB5oVLxdYDSTpfLp_KgYD4IqVGJUgFEJo" alt="" width="15"/> [Marius C. K. Gulbrandsen](https://www.linkedin.com/in/marius-c-k-gulbrandsen-963a69130/) 
-
-## License
 <a name="License"/>
 
-This project is licensed under the MIT license and is open source. You are free to use this project as you wish as long as you credit the work. I would much appreciate if you'd share it with me if you use this work in another project! I made this open source for the reason of improving and sharing. See the [LICENSE](LICENSE) file for details.
+## License
+This project is licensed under the MIT license and is open source. You are free to use this project as you wish as long as you credit the work. See the [LICENSE](LICENSE) file for details. I would highly appreciate if you contributed to the project that you share it so this can be a big open source project!
+
+
+<a name="Authors"/>
+
+## Authors
+<img src="https://lh3.googleusercontent.com/fqYJHtyzZzA4vacRzeJoB93QNvA5-mvR-8UB5oVLxdYDSTpfLp_KgYD4IqVGJUgFEJo" alt="" width="15"/> [Marius C. K. Gulbrandsen](https://www.linkedin.com/in/marius-c-k-gulbrandsen-963a69130/) 
