@@ -19,7 +19,7 @@ This is an application for generating code for a LED cube. The application is ca
 ## Getting Started
 <a name="GettingStarted"/>
 
-Watch the YouTube tutorials:
+Watch the YouTube tutorials: (coming soon)
 * [Intro]()
 * [Basics]()
 * [Coding]()
@@ -31,9 +31,10 @@ Watch the YouTube tutorials:
 
 Download the application (.exe) from [releases](https://github.com/mariugul/cube-3d/releases) and follow the install wizard. It works for Windows 10 and possibly earlier Windows OS'es (not tested).
 
-
 ## Usage
-The application does one thing at the time of writing, and that is to generate a pattern table for a 4x4x4 LED cube. The code for programming the LED cube comes with the application and does also exist in its own repository [LED-Cube-Code](https://github.com/mariugul/LED-Cube-Code). The application is depicted in the image below.
+The application generates a pattern table for a 4x4x4 LED cube and makes it easy to visualize the patterns. The code for programming the LED cube comes with the application and does also exist in its own repository [LED-Cube-Code](https://github.com/mariugul/LED-Cube-Code). The application is depicted in the image below.
+
+[<img src="cube.png" alt="cube.png" width="500"/>](https://github.com/mariugul/cube-3d/blob/develop/docs/images/cube3d.png) 
 
 ## Examples
 "Describe how to make a simple starter program"
