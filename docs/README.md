@@ -1,7 +1,7 @@
 # Cube 3D 
-[![License badge](https://img.shields.io/hexpm/l/repo_example.svg)](https://github.com/mariugul/LED-Cube-Code-Generator-3D/blob/master/LICENSE)
-[![GitHub last commit](https://img.shields.io/github/last-commit/mariugul/LED-Cube-Code-Generator-3D)](https://github.com/mariugul/LED-Cube-Code-Generator-3D/commits/master)
-![Issues](https://img.shields.io/github/issues/mariugul/LED-Cube-Code-Generator-3D)
+[![License badge](https://img.shields.io/github/license/mariugul/cube-3d)](https://github.com/mariugul/cube-3d/blob/develop/docs/LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/mariugul/cube-3d)](https://github.com/mariugul/cube-3d/commits/develop)
+[![Issues](https://img.shields.io/github/issues/mariugul/cube-3d)](https://github.com/mariugul/cube-3d/issues)
 [[![Discord badge](https://img.shields.io/discord/710895026435260556)](https://discord.com/invite/ZgxjkC2)
 
 ##### Table of Contents  
