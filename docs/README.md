@@ -70,6 +70,7 @@ This button contains the _About_ information and the _Hotkeys_ information. Seei
 [<img src="images/file.png" alt="file.png" width="300"/>](https://github.com/mariugul/cube-3d/blob/develop/docs/images/file.png) 
 
 <a name="ZoomRotate"/>
+
 ### Zoom and Rotate
 To zoom in on the cube simply use the scroll wheel or touchpad to zoom. To rotate the cube right click and drag the cube around. Whenever you right click you will reset the camera. This is both great if you want to go back to the default camera position and annoying if you dont. This is a known limitation that will be solved in a future update. The 3D model of the cube is wired exactly as a real life one would be, so if you want to visualize the wiring you can zoom in on the connections.
 
