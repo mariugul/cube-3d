@@ -34,18 +34,18 @@ The application generates a pattern table for a 4x4x4 LED cube and makes it easy
 ### Code Editor
 Possibly the most important part of the application is the code editor. This enables editing of what's going to become the pattern.h file, which contains all patterns for the LED cube. The code editor responds to `Enter` for generating patterns. It will then generate a pattern line depending on which LEDs are lit on the cube. By pressing `Delete` you simply delete the latest line. It has an input field for the time variable, by changing this you change how long (in ms) a pattern will be displayed on the cube. There are also two buttons for increasing and decreasing the code size and editor, these are the `+` and `-` buttons.
 
-[<img src="images/code_editor.png" alt="code_editor.png" width="250"/>]() 
+[<img src="images/code_editor.png" alt="code_editor.png" width="300"/>]() 
 
 By default the code in the editor is not editable. By clicking the `Edit` button you can edit the code. The thought is that you can add comments to structure the code and change it if something went wrong. Just a FYI, don't edit the code outside of the array as that might break the functionality of the hotkeys and make the exported files be exported wrongly. When you are in _edit_ mode, `Enter` will not work to generate code. When edit mode is enabled the code editor goes gray as shown in the image.
 
-[<img src="images/code_editor_edit.png" alt="code_editor_edit.png" width="250"/>]() 
+[<img src="images/code_editor_edit.png" alt="code_editor_edit.png" width="300"/>]() 
 
 <a name="Export"/>
 
 ### Export
 When you are happy with the code generated in the code editor, you can export it. There are two options, exporting as Arduino project or exporting just the pattern file. Exporting the Arduino project gives you a folder with the Arduino code for the LED cube and the `pattern.h` file, while exporting the pattern file simply gives `pattern.h`. Whatever is in the code editor is going to be in `pattern.h`. Remember to always write a filename or foldername for export to work. The exporter will always ask you where to export the code.
 
-[<img src="images/export.png" alt="export.png" width="250"/>]() 
+[<img src="images/export.png" alt="export.png" width="300"/>]() 
 
 
 <a name="Settings"/>
@@ -55,14 +55,17 @@ This is the panel where you can customize the cube. The environment the cube is 
 
 The cube consists of a box, PCB, LED legs and LEDs. You can switch off the cube box, PCB and LED legs for a cleaner look. This is of course up to your preferences. The code editor can also be turned off if you wish to just inspect the cube or for the future release with simulation.
 
-[<img src="images/settings.png" alt="settings.png" width="250"/>]() 
+[<img src="images/settings.png" alt="settings.png" width="300"/>]() 
 
 <a name="File"/>
 
 ### File
 This button contains the _About_ information and the _Hotkeys_ information. Seeing what hotkeys exists and how to use them is very useful for an efficient workflow. In the future this will probably include _Save Project_ and similar as well.
 
-[<img src="images/file.png" alt="file.png" width="250"/>]() 
+[<img src="images/file.png" alt="file.png" width="300"/>]() 
+
+### Zoom and Rotate
+To zoom in on the cube simply use the scroll wheel or touchpad to zoom. To rotate the cube right click and drag the cube around. Whenever you right click you will reset the camera. This is both great if you want to go back to the default camera position and annoying if you dont. This is a known limitation that will be solved in a future update. The 3D model of the cube is wired exactly as a real life one would be, so if you want to visualize the wiring you can zoom in on the connections.
 
 <a name="YouTubeTutorials"/>
 
