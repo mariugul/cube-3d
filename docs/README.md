@@ -43,17 +43,25 @@ By default the code in the editor is not editable. By clicking the `Edit` button
 <a name="Export"/>
 
 ### Export
+When you are happy with the code generated in the code editor, you can export it. There are two options, exporting as Arduino project or exporting just the pattern file. Exporting the Arduino project gives you a folder with the Arduino code for the LED cube and the `pattern.h` file, while exporting the pattern file simply gives `pattern.h`. Whatever is in the code editor is going to be in `pattern.h`. Remember to always write a filename or foldername for export to work. The exporter will always ask you where to export the code.
+
 [<img src="images/export.png" alt="export.png" width="250"/>]() 
 
 
 <a name="Settings"/>
 
 ### Settings
+This is the panel where you can customize the cube. The environment the cube is in has four lights in the traditional [Three-point lighting](https://en.wikipedia.org/wiki/Three-point_lighting?oldformat=true) plus a roof light. Adjust these lights if you feel the need to do so. The intensity of the LEDs can also be adjusted.
+
+The cube consists of a box, PCB, LED legs and LEDs. You can switch off the cube box, PCB and LED legs for a cleaner look. This is of course up to your preferences. The code editor can also be turned off if you wish to just inspect the cube or for the future release with simulation.
+
 [<img src="images/settings.png" alt="settings.png" width="250"/>]() 
 
 <a name="File"/>
 
 ### File
+This button contains the _About_ information and the _Hotkeys_ information. Seeing what hotkeys exists and how to use them is very useful for an efficient workflow. In the future this will probably include _Save Project_ and similar as well.
+
 [<img src="images/file.png" alt="file.png" width="250"/>]() 
 
 <a name="YouTubeTutorials"/>
