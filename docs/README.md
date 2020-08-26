@@ -28,13 +28,33 @@ The application generates a pattern table for a 4x4x4 LED cube and makes it easy
 
 [<img src="images/cube3d.png" alt="cube.png" width=""/>](https://github.com/mariugul/cube-3d/blob/develop/docs/images/cube3d.png)
 
+
+<a name="CodeEditor"/>
+
 ### Code Editor
+Possibly the most important part of the application is the code editor. This enables editing of what's going to become the pattern.h file, which contains all patterns for the LED cube. The code editor responds to `Enter` for generating patterns. It will then generate a pattern line depending on which LEDs are lit on the cube. By pressing `Delete` you simply delete the latest line. It has an input field for the time variable, by changing this you change how long (in ms) a pattern will be displayed on the cube. There are also two buttons for increasing and decreasing the code size and editor, these are the `+` and `-` buttons.
+
+[<img src="images/code_editor.png" alt="code_editor.png" width="250"/>]() 
+
+By default the code in the editor is not editable. By clicking the `Edit` button you can edit the code. The thought is that you can add comments to structure the code and change it if something went wrong. Just a FYI, don't edit the code outside of the array as that might break the functionality of the hotkeys and make the exported files be exported wrongly. When you are in _edit_ mode, `Enter` will not work to generate code. When edit mode is enabled the code editor goes gray as shown in the image.
+
+[<img src="images/code_editor_edit.png" alt="code_editor_edit.png" width="250"/>]() 
+
+<a name="Export"/>
 
 ### Export
+[<img src="images/export.png" alt="export.png" width="250"/>]() 
+
+
+<a name="Settings"/>
 
 ### Settings
+[<img src="images/settings.png" alt="settings.png" width="250"/>]() 
+
+<a name="File"/>
 
 ### File
+[<img src="images/file.png" alt="file.png" width="250"/>]() 
 
 <a name="YouTubeTutorials"/>
 
