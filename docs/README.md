@@ -13,7 +13,7 @@ This is an application for generating code for a LED cube. It generates the nece
 * [Usage](#Usage)
 * [YouTube Tutorials](#YouTubeTutorials)
 * [Future Improvements](#FutureImprovements)
-* [Help and Contributing](#Contributing)  
+* [Help and Contributing](#HelpContributing)  
 * [License](#License)  
 * [Authors](#Authors)
 * [Acknowledgement](#Aknowledgement)
@@ -23,12 +23,19 @@ This is an application for generating code for a LED cube. It generates the nece
 ## Installing
 Download the latest application (.exe) from [releases](https://github.com/mariugul/cube-3d/releases) and follow the install wizard. It works for Windows 10 and possibly earlier Windows OS'es (not tested).
 
-< name="Usage"/>
+<a name="Usage"/>
 
 ## Usage
-The application generates a pattern table for a 4x4x4 LED cube and makes it easy to visualize the patterns. The code for programming the LED cube comes with the application and does also exist in its own repository [LED-Cube-Code](https://github.com/mariugul/LED-Cube-Code). The application is depicted in the image below.
+The application generates a pattern table for a 4x4x4 LED cube and makes it easy to visualize the patterns. The code for programming the LED cube comes with the application and also exist in its own repository [LED-Cube-Code](https://github.com/mariugul/LED-Cube-Code). 
 
+### Code Editor
 [<img src="images/cube3d.png" alt="cube.png" width=""/>](https://github.com/mariugul/cube-3d/blob/develop/docs/images/cube3d.png) 
+
+### Export
+
+### Settings
+
+### File
 
 <a name="YouTubeTutorials"/>
 
