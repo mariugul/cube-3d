@@ -2,7 +2,7 @@
 [![License badge](https://img.shields.io/github/license/mariugul/cube-3d)](https://github.com/mariugul/cube-3d/blob/develop/docs/LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/mariugul/cube-3d)](https://github.com/mariugul/cube-3d/commits/develop)
 [![Issues](https://img.shields.io/github/issues/mariugul/cube-3d)](https://github.com/mariugul/cube-3d/issues)
-[![Discord badge](https://img.shields.io/discord/710895026435260556)](https://discord.com/invite/ZgxjkC2)
+[![Discord badge](https://img.shields.io/discord/710895026435260556)](https://discord.com/invite/ZgxjkC2) <img src="images/discord.png" alt="discord.png" width="80"/>
 
 This is an application for generating code for a LED cube. It generates the necessary code for programming the LED cube with either [Arduino](https://www.arduino.cc/en/Main/Software) or C, using [Atmel Studio](https://www.microchip.com/mplab/avr-support/atmel-studio-7). Currently, this works for a 4x4x4 LED cube and will eventually include other sizes. The Arduino/Atmega328 code and details can be found in the [LED-Cube-Code](https://github.com/mariugul/LED-Cube-Code) repository. The application will be simulating the LED cube as well in the future. 
 
