@@ -11,7 +11,7 @@ This is an application for generating code for a LED cube. It generates the nece
 ## Table of Contents  
 * [YouTube Tutorials](#YouTubeTutorials)
 * [Installing](#Installing)  
-* [Future Improvements](FutureImprovements)
+* [Future Improvements](#FutureImprovements)
 * [Help and Contributing](#Contributing)  
 * [License](#License)  
 * [Authors](#Authors)
