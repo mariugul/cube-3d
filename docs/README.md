@@ -8,30 +8,29 @@ This is an application for generating code for a LED cube. It generates the nece
 
 [<img src="images/cube3d.png" alt="cube.png" width=""/>](https://github.com/mariugul/cube-3d/blob/develop/docs/images/cube3d.png) 
 
-##### Table of Contents  
-* [Introduction](#Introduction)
+## Table of Contents  
+* [YouTube Tutorials](#YouTubeTutorials)
 * [Installing](#Installing)  
-* [Contributing](#Contributing)  
-* [Authors](#Authors)
+* [Help and Contributing](#Contributing)  
 * [License](#License)  
+* [Authors](#Authors)
+* [Acknowledgement](#Aknowledgement)
 
-## Introduction
-<a name="Introduction"/>
 
-<a name="GettingStarted"/>
+<a name="YouTubeTutorials"/>
 
-## Getting Started
+## YouTube Tutorials
 Watch the YouTube tutorials: (coming soon)
-* [Intro]()
-* [Basics]()
-* [Coding]()
-* [Code Generator]()
-* [Advanced]()
+* [1. LED Cube Intro]()
+* [2. LED Cube Theory]()
+* [3. LED Cube Wiring]()
+* [4. LED CUBE Coding]()
+* [5. LED Cube App]()
 
 <a name="Installing"/>
 
 ## Installing
-Download the application (.exe) from [releases](https://github.com/mariugul/cube-3d/releases) and follow the install wizard. It works for Windows 10 and possibly earlier Windows OS'es (not tested).
+Download the latest application (.exe) from [releases](https://github.com/mariugul/cube-3d/releases) and follow the install wizard. It works for Windows 10 and possibly earlier Windows OS'es (not tested).
 
 ## Usage
 The application generates a pattern table for a 4x4x4 LED cube and makes it easy to visualize the patterns. The code for programming the LED cube comes with the application and does also exist in its own repository [LED-Cube-Code](https://github.com/mariugul/LED-Cube-Code). The application is depicted in the image below.
@@ -42,6 +41,13 @@ The application generates a pattern table for a 4x4x4 LED cube and makes it easy
 "Describe how to make a simple starter program"
 
 ## Future Improvements
+Some of the things on the list for future improvements and features are:
+* Simulate the cube. This is halfway implemented already and will probably come in a new release.
+* Display the wiring of the cube (planes/columns/LED numbering).
+* Change cube color with color picker.
+* Improve the zooming functionality.
+* Functionality for saving projects and keeping patterns saved in the application.
+* Adding example patterns to the application.
 
 <a name="HelpContributing"/>
 
