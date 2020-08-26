@@ -50,6 +50,7 @@ Some of the things on the list for future improvements and features are:
 * Improve the zooming functionality.
 * Functionality for saving projects and keeping patterns saved in the application.
 * Adding example patterns to the application.
+* Interactive button on code editor to close/open instead of a settings button.
 
 <a name="HelpContributing"/>
 
