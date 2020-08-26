@@ -9,8 +9,9 @@ This is an application for generating code for a LED cube. It generates the nece
 [<img src="images/cube3d.png" alt="cube.png" width=""/>](https://github.com/mariugul/cube-3d/blob/develop/docs/images/cube3d.png) 
 
 ## Table of Contents  
-* [YouTube Tutorials](#YouTubeTutorials)
 * [Installing](#Installing)  
+* [Usage](#Usage)
+* [YouTube Tutorials](#YouTubeTutorials)
 * [Future Improvements](#FutureImprovements)
 * [Help and Contributing](#Contributing)  
 * [License](#License)  
@@ -22,13 +23,12 @@ This is an application for generating code for a LED cube. It generates the nece
 ## Installing
 Download the latest application (.exe) from [releases](https://github.com/mariugul/cube-3d/releases) and follow the install wizard. It works for Windows 10 and possibly earlier Windows OS'es (not tested).
 
+< name="Usage"/>
+
 ## Usage
 The application generates a pattern table for a 4x4x4 LED cube and makes it easy to visualize the patterns. The code for programming the LED cube comes with the application and does also exist in its own repository [LED-Cube-Code](https://github.com/mariugul/LED-Cube-Code). The application is depicted in the image below.
 
 [<img src="images/cube3d.png" alt="cube.png" width=""/>](https://github.com/mariugul/cube-3d/blob/develop/docs/images/cube3d.png) 
-
-## Examples
-"Describe how to make a simple starter program"
 
 <a name="YouTubeTutorials"/>
 
@@ -50,7 +50,6 @@ Some of the things on the list for future improvements and features are:
 * Improve the zooming functionality.
 * Functionality for saving projects and keeping patterns saved in the application.
 * Adding example patterns to the application.
-* Interactive button on code editor to close/open instead of a settings button.
 
 <a name="HelpContributing"/>
 
