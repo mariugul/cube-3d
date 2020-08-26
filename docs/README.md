@@ -24,7 +24,7 @@ Download the latest application (.exe) from [releases](https://github.com/mariug
 <a name="Usage"/>
 
 ## Usage
-The application generates a pattern table for a 4x4x4 LED cube and makes it easy to visualize the patterns. The code for programming the LED cube comes with the application and also exist in its own repository [LED-Cube-Code](https://github.com/mariugul/LED-Cube-Code). 
+The application generates a pattern table for a 4x4x4 LED cube and makes it easy to visualize the patterns. The code for programming the LED cube comes with the application and also exist in its own repository [LED-Cube-Code](https://github.com/mariugul/LED-Cube-Code).
 
 [<img src="images/cube3d.png" alt="cube.png" width=""/>](https://github.com/mariugul/cube-3d/blob/develop/docs/images/cube3d.png)
 
