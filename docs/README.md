@@ -11,21 +11,11 @@ This is an application for generating code for a LED cube. It generates the nece
 ## Table of Contents  
 * [YouTube Tutorials](#YouTubeTutorials)
 * [Installing](#Installing)  
+* [Future Improvements](FutureImprovements)
 * [Help and Contributing](#Contributing)  
 * [License](#License)  
 * [Authors](#Authors)
 * [Acknowledgement](#Aknowledgement)
-
-
-<a name="YouTubeTutorials"/>
-
-## YouTube Tutorials
-Watch the YouTube tutorials: (coming soon)
-* [1. LED Cube Intro]()
-* [2. LED Cube Theory]()
-* [3. LED Cube Wiring]()
-* [4. LED CUBE Coding]()
-* [5. LED Cube App]()
 
 <a name="Installing"/>
 
@@ -39,6 +29,18 @@ The application generates a pattern table for a 4x4x4 LED cube and makes it easy
 
 ## Examples
 "Describe how to make a simple starter program"
+
+<a name="YouTubeTutorials"/>
+
+## YouTube Tutorials
+Watch the YouTube tutorials: (coming soon)
+* [1. LED Cube Intro]()
+* [2. LED Cube Theory]()
+* [3. LED Cube Wiring]()
+* [4. LED CUBE Coding]()
+* [5. LED Cube App]()
+
+<a name="FutureImprovements"/>
 
 ## Future Improvements
 Some of the things on the list for future improvements and features are:
