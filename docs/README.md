@@ -16,7 +16,7 @@ This is an application for generating code for a LED cube. It generates the nece
 * [Help and Contributing](#HelpContributing)  
 * [License](#License)  
 * [Authors](#Authors)
-* [Acknowledgement](#Aknowledgement)
+* [Acknowledgement](#Acknowledgement)
 
 <a name="Installing"/>
 
