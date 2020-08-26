@@ -7,7 +7,7 @@
 This is an application for generating code for a LED cube. It generates the necessary code for programming the LED cube with either [Arduino](https://www.arduino.cc/en/Main/Software) or C, using [Atmel Studio](https://www.microchip.com/mplab/avr-support/atmel-studio-7). Currently, this works for a 4x4x4 LED cube and will eventually include other sizes. The Arduino/Atmega328 code and details can be found in the [LED-Cube-Code](https://github.com/mariugul/LED-Cube-Code) repository. The application will be simulating the LED cube as well in the future. 
 
 ## Table of Contents  
-* [Installing](#Installing)  
+* [Installing](#installing)  
 * [Usage](#Usage)
     * [Code Editor](#CodeEditor)
     * [Export](#Export)
@@ -21,7 +21,7 @@ This is an application for generating code for a LED cube. It generates the nece
 * [Authors](#Authors)
 * [Acknowledgement](#Acknowledgement)
 
-<a name="Installing"/>
+
 
 ## Installing
 Download the latest application (.exe) from [releases](https://github.com/mariugul/cube-3d/releases) and follow the install wizard. It works for Windows 10 and possibly earlier Windows OS'es (not tested).
