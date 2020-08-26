@@ -4,7 +4,7 @@
 [![Issues](https://img.shields.io/github/issues/mariugul/cube-3d)](https://github.com/mariugul/cube-3d/issues)
 [[![Discord badge](https://img.shields.io/discord/710895026435260556)](https://discord.com/invite/ZgxjkC2)
 
-[<img src="images/cube.png" alt="cube.png" width="400"/>](https://github.com/mariugul/cube-3d/blob/develop/docs/images/cube.png) 
+[<img src="images/cube3d.png" alt="cube.png" width="400"/>](https://github.com/mariugul/cube-3d/blob/develop/docs/images/cube.png) 
 
 ##### Table of Contents  
 * [Introduction](#Introduction)
