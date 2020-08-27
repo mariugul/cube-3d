@@ -17675,6 +17675,7 @@ GameObject:
   - component: {fileID: 1986539417}
   - component: {fileID: 1986539418}
   - component: {fileID: 1986539419}
+  - component: {fileID: 1986539420}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -17817,6 +17818,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arduinoFile: {fileID: 4900000, guid: 5bba9b424383bb54182c379575b75f6a, type: 3}
   inputField: {fileID: 748559472}
+--- !u!114 &1986539420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986539411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e93f8b5e11be141bbc9ba553199781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1992028518
 GameObject:
   m_ObjectHideFlags: 0
