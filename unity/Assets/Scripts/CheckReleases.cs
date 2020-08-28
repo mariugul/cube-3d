@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections;
-using System.Net;
 using System.Text.RegularExpressions;
-using System.Xml;
-using Unity.Collections;
+using System.Windows.Forms;
+using TMPro;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class CheckReleases : MonoBehaviour
 {
     // GitHub repository RSS feed info
     const string CUBE3D_RSS = "https://github.com/mariugul/cube-3d/releases.atom";
+    const string TEST_RSS = "https://github.com/mariugul/Full-led-cube/releases.atom";
 
     // The content of the RSS feed from cube-3d repository
     string rss_content = "";
@@ -19,9 +21,9 @@ public class CheckReleases : MonoBehaviour
     // The date and time of the current installed release. NB! Bump this on new releases!!
     //-------------------------------------------------------------------------
     DateTime currentRelease = new DateTime(2020, 8, 26, 11, 27, 43);
+    string currentVersion = "v1.0.0"; 
     //--------------------------------------------------------------------------
 
-    // List of all
 
     void Start()
     {
@@ -57,10 +59,14 @@ public class CheckReleases : MonoBehaviour
         if (result < 0)
         {
             Debug.Log("There is a new release on GitHub!");
+            string message = "There is a new release available on GitHub!\nInstalled version: " + currentVersion;
+            MessageBoxes.MBOXES.Show(message, "YesNo", "Update Available", "Do you want to update?");
         }
         else if (result == 0)
         {
             Debug.Log("You have the newest release installed!");
+            //string message = "Release: " + currentVersion + "\n\nYou have the newest release installed!";
+            //MessageBoxes.MBOXES.Show(message, "Ok", "Updates");
         }
         else
         {
