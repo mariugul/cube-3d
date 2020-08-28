@@ -40,13 +40,15 @@ public class PatternGenerate : MonoBehaviour
 
     void OnEditButtonClick()
     {
+        Color highlight_color = new Color(0.94f, 0.96f, 1f);
+
         if (inputField.readOnly == true)
         {   
             // Make input field editable
             inputField.readOnly = false;
 
             // Change background color
-            inputField.image.color = Color.gray;
+            inputField.image.color = highlight_color;
         }
         else
         {
