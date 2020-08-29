@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Cube 3D"
-#define MyAppVersion "0.1.0-beta"
+#define MyAppVersion "1.1.0"
 #define MyAppPublisher "Marius C. K."
 #define MyAppURL "https://github.com/mariugul/cube-3d"
 #define MyAppExeName "Cube 3D.exe"
@@ -36,11 +36,11 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\GitHub\builds\Cube 3D\Cube 3D.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\GitHub\builds\Cube 3D\UnityCrashHandler64.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\GitHub\builds\Cube 3D\UnityPlayer.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\GitHub\builds\Cube 3D\Cube 3D_Data\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\GitHub\builds\Cube 3D\MonoBleedingEdge\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\GitHub\cube-3d\unity\Release\Cube 3D.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\GitHub\cube-3d\unity\Release\UnityCrashHandler64.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\GitHub\cube-3d\unity\Release\UnityPlayer.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\GitHub\cube-3d\unity\Release\Cube 3D_Data\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\GitHub\cube-3d\unity\Release\MonoBleedingEdge\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

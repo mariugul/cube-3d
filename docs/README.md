@@ -1,8 +1,9 @@
 # Cube 3D 
-[![License badge](https://img.shields.io/github/license/mariugul/cube-3d)](https://github.com/mariugul/cube-3d/blob/develop/docs/LICENSE)
+[![Releases](https://img.shields.io/github/v/release/mariugul/cube-3d)](https://github.com/mariugul/cube-3d/releases)
+[![Discord badge](https://img.shields.io/discord/710895026435260556)](https://discord.com/invite/ZgxjkC2)
 [![GitHub last commit](https://img.shields.io/github/last-commit/mariugul/cube-3d)](https://github.com/mariugul/cube-3d/commits/develop)
 [![Issues](https://img.shields.io/github/issues/mariugul/cube-3d)](https://github.com/mariugul/cube-3d/issues)
-[![Discord badge](https://img.shields.io/discord/710895026435260556)](https://discord.com/invite/ZgxjkC2)
+[![License badge](https://img.shields.io/github/license/mariugul/LED-Cube-Code)](https://github.com/mariugul/cube-3d/blob/develop/docs/LICENSE)
 
 This is an application for generating code for a LED cube. It generates the necessary code for programming the LED cube with either [Arduino](https://www.arduino.cc/en/Main/Software) or C, using [Atmel Studio](https://www.microchip.com/mplab/avr-support/atmel-studio-7). Currently, this works for a 4x4x4 LED cube and will eventually include other sizes. The Arduino/Atmega328 code and details can be found in the [LED-Cube-Code](https://github.com/mariugul/LED-Cube-Code) repository. The application will be simulating the LED cube as well in the future. 
 
@@ -93,4 +94,4 @@ This project is licensed under the MIT license and is open source. You are free 
 
 ## Acknowledgement
 Big thanks to my brother [Stig Thomas Gulbrandsen](https://github.com/ribbreaker) for helping with Unity and C# issues, it has been much appreciated. 
-Also, thank you to [Denis](https://github.com/Meragon) who created a [Unity-WinForms](https://github.com/Meragon/Unity-WinForms) wrapper. He has been immensely helpful with getting WinForms to work.
+Also, thank you to [Denis](https://github.com/Meragon) who created a [Unity-WinForms](https://github.com/Meragon/Unity-WinForms) wrapper. He has been immensely helpful with getting WinForms to work. Thanks to [Judah Perez](https://github.com/judah4) for creating an awesome [HSV-Color Picker](https://github.com/judah4/HSV-Color-Picker-Unity).
