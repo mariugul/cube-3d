@@ -1,6 +1,4 @@
-﻿using System.Xml;
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class SliderControl : MonoBehaviour

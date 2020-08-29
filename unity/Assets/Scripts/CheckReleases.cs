@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
-using TMPro;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UI;
 
 public class CheckReleases : MonoBehaviour
 {

@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Linq.Expressions;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LedLights : MonoBehaviour
 {
