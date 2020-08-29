@@ -1,9 +1,14 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class SliderControl : MonoBehaviour
 {
+    // Settings panel
+    public GameObject settingsPanel;
+
+    // Color Picker
+    public ColorPicker picker;
+
     // Canvas to access input field
     public Canvas canvas;
 
@@ -25,6 +30,11 @@ public class SliderControl : MonoBehaviour
     public Toggle toggleLEDLegs;
 
     public Toggle toggleInputField;
+
+    public Toggle toggleColorPicker;
+
+    // Buttons
+    public Button exitButton;
 
     // Childs 
     const int light_back_child = 64;
@@ -57,6 +67,11 @@ public class SliderControl : MonoBehaviour
         toggleLEDLegs.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
 
         toggleInputField.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
+        toggleColorPicker.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
+
+        // Add buttons as listeners to handle
+        exitButton.onClick.AddListener(ButtonHandler);
+
     }
 
     // Invoked when a checkbox is clicked
@@ -112,6 +127,12 @@ public class SliderControl : MonoBehaviour
         else
             canvas.transform.GetChild(inputFieldChild).gameObject.SetActive(false);
 
+        // Color Picker
+        if (toggleColorPicker.isOn)
+            picker.gameObject.SetActive(true);
+        else
+            picker.gameObject.SetActive(false);
+
     }
 
     // Invoked when the value of the slider changes.
@@ -125,13 +146,25 @@ public class SliderControl : MonoBehaviour
         gameObject.transform.GetChild(light_key_child).GetComponent<Light>().intensity  = sliderKeyLight.value;  
         gameObject.transform.GetChild(light_roof_child).GetComponent<Light>().intensity = sliderRoofLight.value;
 
-        SetLedIntensity(sliderLedIntensity.value);
-    } 
+        // Set leds intensity
+        LedLights.LEDLIGHTS.SetIntensity(sliderLedIntensity.value, "leds");
 
-    void SetLedIntensity(float intensity)
+        // Set halos intensity
+        LedLights.LEDLIGHTS.SetIntensity(sliderLedIntensity.value / 150, "halos"); // Adjust value to match halo intensity
+
+        // Set halos range
+        int halo_range = (int)sliderLedIntensity.value;
+
+        if (halo_range > 15)
+            halo_range = 15;
+        else if (halo_range < 10)
+            halo_range = 10;
+
+        LedLights.LEDLIGHTS.SetRange(halo_range, "halos"); 
+    } 
+    void ButtonHandler()
     {
-        for (int led = 0; led < 64; led++)
-            gameObject.transform.GetChild(led).GetChild(0).GetComponent<Light>().intensity = intensity;
+        // Close settings panel
+        settingsPanel.SetActive(false);
     }
-    
 }

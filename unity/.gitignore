@@ -12,6 +12,8 @@
 /[Mm]emoryCaptures/
 /unity/Library
 /Library
+/[Pp]ackages/
+/[Rr]elease/
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
 
