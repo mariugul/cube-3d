@@ -15,7 +15,7 @@ public class InputFieldZoom : MonoBehaviour
     public TMP_InputField inputField;
 
     // Size variables for input field font
-    int font_size = 11S;
+    int font_size = 11;
     const int FONT_SIZE_MIN = 8;
     const int FONT_SIZE_MAX = 14;
 
