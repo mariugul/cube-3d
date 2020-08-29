@@ -49,7 +49,7 @@ public class LedLights : MonoBehaviour
             onColorPickerValueChange();   
         });
 
-        SetDefaultValues(Color.red);
+        SetDefaultValues(Color.green);
        
         // Disable LEDs by default
         Disable();
