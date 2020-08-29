@@ -81,13 +81,13 @@ public class PatternGenerate : MonoBehaviour
         // Ctrl + A Clicked
         else if (e.type == EventType.KeyDown && e.control && e.keyCode == KeyCode.A)
         {
-            LedsEnableAll();
+            LedLights.LEDLIGHTS.Enable();
         }
 
         // Shift + A Clicked
         else if (e.type == EventType.KeyDown && e.shift && e.keyCode == KeyCode.A)
         {
-            LedsDisableAll();
+            LedLights.LEDLIGHTS.Disable();
         }
 
         // Ctrl + Z clicked
@@ -204,26 +204,6 @@ public class PatternGenerate : MonoBehaviour
         return ledStatusPlanes;
     }
 
-    public void LedsEnableAll()
-    {
-        // Turns on all LEDs
-        for (int led = 0; led < 64; led++)
-            gameObject.transform.GetChild(led).GetChild(0).GetComponent<Light>().enabled = true;
-
-        // Turns on all halos for LEDs
-        for (int led = 0; led < 64; led++)
-            gameObject.transform.GetChild(led).GetChild(0).GetChild(0).GetComponent<Light>().enabled = true;   
-    }
-
-    void LedsDisableAll()
-    {
-        // Turns on all LEDs
-        for (int led = 0; led < 64; led++)
-            gameObject.transform.GetChild(led).GetChild(0).GetComponent<Light>().enabled = false;
-
-        // Turns on all halos for LEDs
-        for (int led = 0; led < 64; led++)
-            gameObject.transform.GetChild(led).GetChild(0).GetChild(0).GetComponent<Light>().enabled = false;
-    }
+ 
 
 }
