@@ -33,7 +33,7 @@ public class CheckReleases : MonoBehaviour
     void Start()
     {
         // Start the coroutine that downloads update info, check for updates and repeats
-        StartCoroutine(GetRequest(TEST_RSS));
+        StartCoroutine(GetRequest(CUBE3D_RSS));
     }
 
     void CheckNewUpdate()
