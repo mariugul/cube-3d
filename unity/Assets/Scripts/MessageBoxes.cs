@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -128,19 +129,18 @@ public class MessageBoxes : MonoBehaviour
         Close("Ok");
     }
 
-    string yesButtonHandler()
+    void yesButtonHandler()
     {
         // Close the message box
         Close("YesNo");
 
-        return "Yes button clicked";
+        // Open GitHub repository
+        Application.OpenURL("https://github.com/mariugul/cube-3d/releases");
     }
 
-    string noButtonHandler()
+    void noButtonHandler()
     {
         // Close the message box
         Close("YesNo");
-
-        return "No button clicked";
     }
 }
