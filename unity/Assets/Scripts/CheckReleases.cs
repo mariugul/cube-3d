@@ -22,17 +22,18 @@ public class CheckReleases : MonoBehaviour
     bool new_content = false;
 
     // BUMP
+    //-------------------------------------------------------------------------
     // The date and time of the current installed release. NB! Bump this on new releases!!
     //-------------------------------------------------------------------------
     DateTime currentRelease = new DateTime(2020, 8, 26, 11, 27, 43);
-    string currentVersion = "v1.0.0"; 
+    string   currentVersion = "v1.0.0"; 
     //--------------------------------------------------------------------------
 
 
     void Start()
     {
         // Start the coroutine that downloads update info, check for updates and repeats
-        StartCoroutine(GetRequest(CUBE3D_RSS));
+        StartCoroutine(GetRequest(TEST_RSS));
     }
 
     void CheckNewUpdate()
