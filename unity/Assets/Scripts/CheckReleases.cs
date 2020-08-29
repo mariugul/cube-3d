@@ -8,21 +8,20 @@ public class CheckReleases : MonoBehaviour
 {
     // GitHub repository RSS feed info
     const string CUBE3D_RSS = "https://github.com/mariugul/cube-3d/releases.atom";
-    const string TEST_RSS = "https://github.com/mariugul/Full-led-cube/releases.atom";
+    //const string TEST_RSS = "https://github.com/mariugul/Full-led-cube/releases.atom";
 
     // The content of the RSS feed from cube-3d repository
     string rss_content = "";
 
     // Internet Connection
-    bool webError = false;
     bool new_content = false;
 
     // BUMP
     //-------------------------------------------------------------------------
     // The date and time of the current installed release. NB! Bump this on new releases!!
     //-------------------------------------------------------------------------
-    DateTime currentRelease = new DateTime(2020, 8, 26, 11, 27, 43);
-    string   currentVersion = "v1.0.0"; 
+    DateTime currentRelease = new DateTime(2020, 8, 30, 00, 40, 00);
+    string   currentVersion = "v1.1.0"; 
     //--------------------------------------------------------------------------
 
 
