@@ -17,6 +17,10 @@ public class CheckReleases : MonoBehaviour
     // The content of the RSS feed from cube-3d repository
     string rss_content = "";
 
+    // Internet Connection
+    bool webError = false;
+    bool new_content = false;
+
     // BUMP
     // The date and time of the current installed release. NB! Bump this on new releases!!
     //-------------------------------------------------------------------------
@@ -27,14 +31,18 @@ public class CheckReleases : MonoBehaviour
 
     void Start()
     {
+        // Start the coroutine that downloads update info, check for updates and repeats
         StartCoroutine(GetRequest(CUBE3D_RSS));
-        
-        // Check for updates every 15 minutes (900 seconds)
-        InvokeRepeating("CheckNewUpdate", 2, 900);
     }
 
     void CheckNewUpdate()
     {
+        // Only run new update check if new content is available
+        if (!new_content)
+            return;
+        else
+            new_content = false; // Reset variable
+
         // Parse the date and time of all releases 
         MatchCollection matches = Regex.Matches(rss_content, @"(?<=<updated>)(.+?)(?=</updated>)");
 
@@ -48,10 +56,7 @@ public class CheckReleases : MonoBehaviour
 
             if (DateTime.Compare(latestRelease, cmp) < 0)
                 latestRelease = cmp;
-        }
-
-        Debug.Log("Latest Release Calculated: " + latestRelease);
-                        
+        }                        
 
         // Check wether there is a new release on GitHub
         int result = DateTime.Compare(currentRelease, latestRelease);
@@ -72,7 +77,7 @@ public class CheckReleases : MonoBehaviour
         {
             // Hopefully shouldn't reach this point (it doesn't make sense)
             Debug.Log("For some reason, your release is newer than the one present on GitHub.");
-        }   
+        }
     }
 
     IEnumerator GetRequest(string uri)
@@ -81,13 +86,15 @@ public class CheckReleases : MonoBehaviour
         {
             // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
-
+  
             string[] pages = uri.Split('/');
             int page = pages.Length - 1;
-
+            
             switch (webRequest.result)
             {
                 case UnityWebRequest.Result.ConnectionError:
+                    Debug.LogError("Error: Couldn't connect to the internet to get update information.");
+                    break;
                 case UnityWebRequest.Result.DataProcessingError:
                     Debug.LogError(pages[page] + ": Error: " + webRequest.error);
                     break;
@@ -95,9 +102,19 @@ public class CheckReleases : MonoBehaviour
                     Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
                     break;
                 case UnityWebRequest.Result.Success:
+                    //Debug.Log("Successfully connected and downloaded update info."); 
                     rss_content = webRequest.downloadHandler.text;
+                    new_content = true;
                     break;
             }
         }
+        // Check if there is a new update
+        CheckNewUpdate();
+
+        // Wait for 10 minutes to run again 
+        yield return new WaitForSeconds(600);
+
+        // Start the coroutine again
+        StartCoroutine(GetRequest(CUBE3D_RSS));
     }
 }
