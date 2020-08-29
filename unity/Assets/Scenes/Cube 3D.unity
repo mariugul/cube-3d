@@ -14675,6 +14675,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1693408684}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1609001790 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 11423364, guid: 916ee089a0d7b63419075f91e1c657ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 1693408684}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8262e4a8322117f4da079921eaa72834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1618463966
 GameObject:
   m_ObjectHideFlags: 0
@@ -16867,11 +16879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34172137d027ba4da081d895e69b6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material_red: {fileID: 2100000, guid: f9b79f16552e0b24985e95d595f8f8a2, type: 2}
-  material_green: {fileID: 2100000, guid: dcbc2654097c37741bf9cc39abd0eb43, type: 2}
-  material_blue: {fileID: 2100000, guid: 25dc0657bbd7676418bb4a0498932d11, type: 2}
-  material_yellow: {fileID: 2100000, guid: a7d7a2b5202f8e343b43abbb55f68600, type: 2}
-  material_white: {fileID: 2100000, guid: 974d4dce7d11bae4785ca0c26dd5d749, type: 2}
+  picker: {fileID: 1609001790}
 --- !u!114 &1811810687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18888,6 +18896,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_DrawHalo
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4710427013438956359, guid: a40e96bade5709e479d95039ecd98d9e,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4803565682533684418, guid: a40e96bade5709e479d95039ecd98d9e,
         type: 3}
