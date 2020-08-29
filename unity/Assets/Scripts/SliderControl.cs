@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class SliderControl : MonoBehaviour
 {
+    // Settings panel
+    public GameObject settingsPanel;
+
+    // Color Picker
+    public ColorPicker picker;
+
     // Canvas to access input field
     public Canvas canvas;
 
@@ -26,6 +32,11 @@ public class SliderControl : MonoBehaviour
     public Toggle toggleLEDLegs;
 
     public Toggle toggleInputField;
+
+    public Toggle toggleColorPicker;
+
+    // Buttons
+    public Button exitButton;
 
     // Childs 
     const int light_back_child = 64;
@@ -58,6 +69,11 @@ public class SliderControl : MonoBehaviour
         toggleLEDLegs.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
 
         toggleInputField.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
+        toggleColorPicker.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
+
+        // Add buttons as listeners to handle
+        exitButton.onClick.AddListener(ButtonHandler);
+
     }
 
     // Invoked when a checkbox is clicked
@@ -113,6 +129,12 @@ public class SliderControl : MonoBehaviour
         else
             canvas.transform.GetChild(inputFieldChild).gameObject.SetActive(false);
 
+        // Color Picker
+        if (toggleColorPicker.isOn)
+            picker.gameObject.SetActive(true);
+        else
+            picker.gameObject.SetActive(false);
+
     }
 
     // Invoked when the value of the slider changes.
@@ -142,4 +164,9 @@ public class SliderControl : MonoBehaviour
 
         LedLights.LEDLIGHTS.SetRange(halo_range, "halos"); 
     } 
+    void ButtonHandler()
+    {
+        // Close settings panel
+        settingsPanel.SetActive(false);
+    }
 }
