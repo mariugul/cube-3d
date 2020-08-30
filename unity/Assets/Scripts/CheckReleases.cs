@@ -68,22 +68,18 @@ public class CheckReleases : MonoBehaviour
         if (result > 0)
         {
             Debug.Log("There is a new release on GitHub!");
-            string message = "There is a new release available on GitHub!\nInstalled version: " + currentVersion;
+            string message = "There is a new release available on GitHub!" +
+                             "\n\nInstalled version: " + currentVersion      +
+                             "\nAvailable version: " + gitHubVersion;
             MessageBoxes.MBOXES.Show(message, "YesNo", "Update Available", "Do you want to update?");
 
         }
         else if (result < 0)
-        {
             // Hopefully shouldn't reach this point (it doesn't make sense)
             Debug.Log("For some reason, your release is newer than the latest on GitHub.");
-        }
+        
         else
-        {
             Debug.Log("You have the newest release installed!");
-            //string message = "Release: " + currentVersion + "\n\nYou have the newest release installed!";
-            //MessageBoxes.MBOXES.Show(message, "Ok", "Updates");
-
-        }
     }
 
     IEnumerator GetRequest(string uri)
