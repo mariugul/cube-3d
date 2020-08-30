@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -8,7 +9,6 @@ public class CheckReleases : MonoBehaviour
 {
     // GitHub repository RSS feed info
     const string CUBE3D_RSS = "https://github.com/mariugul/cube-3d/releases.atom";
-    //const string TEST_RSS = "https://github.com/mariugul/Full-led-cube/releases.atom";
 
     // The content of the RSS feed from cube-3d repository
     string rss_content = "";
@@ -18,12 +18,11 @@ public class CheckReleases : MonoBehaviour
 
     // BUMP
     //-------------------------------------------------------------------------
-    // The date and time of the current installed release. NB! Bump this on new releases!!
+    // Version of the current install. NB! Bump this on new releases!!
     //-------------------------------------------------------------------------
-    DateTime currentRelease = new DateTime(2020, 8, 30, 00, 40, 00);
-    string   currentVersion = "v1.1.0"; 
+    Version currentVersion = new Version("1.1.1"); 
     //--------------------------------------------------------------------------
-
+    
 
     void Start()
     {
@@ -39,40 +38,51 @@ public class CheckReleases : MonoBehaviour
         else
             new_content = false; // Reset variable
 
-        // Parse the date and time of all releases 
-        MatchCollection matches = Regex.Matches(rss_content, @"(?<=<updated>)(.+?)(?=</updated>)");
+        // Find all version number tags
+        MatchCollection versionMatches = Regex.Matches(rss_content, @"(?<=tag\/)v?(.+?)(?=""/)");
 
-        // Holds the latest release from the RSS feed, calculated below.
-        DateTime latestRelease = DateTime.ParseExact(matches[0].Value, "yyyy-MM-ddTHH:mm:ssZ", System.Globalization.CultureInfo.InvariantCulture);
+        // Semantic version number
+        var gitHubVersion = new Version("0.0.0");
 
-        // Find the newest update time from RSS feed
-        for (int i = 0; i < matches.Count - 1; i++)
+        // Find the newest version tag
+        foreach (Match match in versionMatches)
         {
-            DateTime cmp = DateTime.ParseExact(matches[i + 1].Value, "yyyy-MM-ddTHH:mm:ssZ", System.Globalization.CultureInfo.InvariantCulture);
+            // Extract individual semantic versioning numbers
+            MatchCollection semnums = Regex.Matches(match.Value, @"\d+");
 
-            if (DateTime.Compare(latestRelease, cmp) < 0)
-                latestRelease = cmp;
-        }                        
+            // Version to compare to the latest version
+            string semver = semnums[0].Value + '.' + semnums[1].Value + '.' +semnums[2].Value;
+            var version = new Version(semver);
 
-        // Check wether there is a new release on GitHub
-        int result = DateTime.Compare(currentRelease, latestRelease);
-        
-        if (result < 0)
+            // Compare to find the latest version on github
+            var _result = gitHubVersion.CompareTo(version);
+          
+            if (_result < 0)
+                gitHubVersion = version;
+        }
+
+        // Compare the version from GitHub to the installed version
+        var result = gitHubVersion.CompareTo(currentVersion);
+
+        // Ask to update if newer release exists
+        if (result > 0)
         {
             Debug.Log("There is a new release on GitHub!");
             string message = "There is a new release available on GitHub!\nInstalled version: " + currentVersion;
             MessageBoxes.MBOXES.Show(message, "YesNo", "Update Available", "Do you want to update?");
+
         }
-        else if (result == 0)
+        else if (result < 0)
+        {
+            // Hopefully shouldn't reach this point (it doesn't make sense)
+            Debug.Log("For some reason, your release is newer than the latest on GitHub.");
+        }
+        else
         {
             Debug.Log("You have the newest release installed!");
             //string message = "Release: " + currentVersion + "\n\nYou have the newest release installed!";
             //MessageBoxes.MBOXES.Show(message, "Ok", "Updates");
-        }
-        else
-        {
-            // Hopefully shouldn't reach this point (it doesn't make sense)
-            Debug.Log("For some reason, your release is newer than the one present on GitHub.");
+
         }
     }
 
