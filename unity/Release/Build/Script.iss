@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Cube 3D"
-#define MyAppVersion "1.1.0"
+#define MyAppVersion "1.1.1" ; BUMP
 #define MyAppPublisher "Marius C. K."
 #define MyAppURL "https://github.com/mariugul/cube-3d"
 #define MyAppExeName "Cube 3D.exe"
@@ -22,7 +22,7 @@ DefaultDirName={autopf}\{#MyAppName}
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=C:\GitHub\builds\Cube 3D\Build
+OutputDir=C:\GitHub\cube-3d\unity\Release\Build\
 OutputBaseFilename=Cube 3D setup (x64)
 SetupIconFile=C:\Users\Mariu\Dropbox\cube3d-removebg.ico
 Compression=lzma
