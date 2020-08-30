@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class Settings : MonoBehaviour
+public class SliderControl : MonoBehaviour
 {
     // Settings panel
     public GameObject settingsPanel;
@@ -167,6 +167,4 @@ public class Settings : MonoBehaviour
         // Close settings panel
         settingsPanel.SetActive(false);
     }
-
-    
 }
