@@ -20,7 +20,7 @@ public class CheckReleases : MonoBehaviour
     //-------------------------------------------------------------------------
     // Version of the current install. NB! Bump this on new releases!!
     //-------------------------------------------------------------------------
-    Version currentVersion = new Version("1.1.0"); 
+    Version currentVersion = new Version("1.1.1"); 
     //--------------------------------------------------------------------------
     
 
