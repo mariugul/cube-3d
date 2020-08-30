@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 485ac1ea01fa8db4db339beecabccbce
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - showSound: {instanceID: 0}
+  - closeSound: {instanceID: 0}
+  - m_Title: {instanceID: 0}
+  - m_Text: {instanceID: 0}
+  - m_Icon: {instanceID: 0}
+  - m_Background: {instanceID: 0}
+  - m_SlotPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
