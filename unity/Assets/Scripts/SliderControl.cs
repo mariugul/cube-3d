@@ -33,9 +33,6 @@ public class Settings : MonoBehaviour
 
     public Toggle toggleColorPicker;
 
-    // Buttons
-    public Button exitButton;
-
     // Childs 
     const int light_back_child = 64;
     const int light_fill_child = 65;
@@ -68,9 +65,6 @@ public class Settings : MonoBehaviour
 
         toggleInputField.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
         toggleColorPicker.onValueChanged.AddListener((bool value) => { CheckboxValueChange(); });
-
-        // Add buttons as listeners to handle
-        exitButton.onClick.AddListener(ButtonHandler);
 
     }
 
