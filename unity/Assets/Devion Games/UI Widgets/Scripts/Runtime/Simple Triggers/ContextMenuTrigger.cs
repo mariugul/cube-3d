@@ -19,7 +19,7 @@ public class ContextMenuTrigger : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right)
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
             this.m_ContextMenu.Clear();
             for (int i = 0; i < menu.Length; i++)
