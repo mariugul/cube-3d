@@ -6,6 +6,7 @@ using System.Diagnostics;
 
 public class WinFormToolStrip : Form
 {
+    /*
     // Instances of Unity classes
     private PanelOpener panel;
     private ExportProject export;
@@ -128,7 +129,7 @@ public class WinFormToolStrip : Form
                 "Enable all LEDs               Ctrl + A\n"         +
                 "Disable all LEDs              Shift + A\n\n" +
                 "Select pattern time           Ctrl + T\n\n"         +
-                /*"Redo generated line       Ctrl + Z\n"         +*/
+                /*"Redo generated line       Ctrl + Z\n"         +*//*
                 "Delete pattern line           Delete\n");
         };
 
@@ -263,4 +264,5 @@ public class WinFormToolStrip : Form
 
     protected internal override void uwfOnLatePaint(PaintEventArgs e)
     { }
+*/
 }
