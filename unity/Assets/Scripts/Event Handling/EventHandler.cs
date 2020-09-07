@@ -10,17 +10,48 @@ public class EventHandler : MonoBehaviour
     public ColorPicker picker;        // Color Picker
     public GameObject  settingsPanel; // Settings panel
 
+    // Internet Links
+    const string githubLink  = "https://github.com/mariugul/cube-3d";
+    const string youtubeLink = "https://youtube.com";
+    const string discordLink = "https://discord.gg/ZgxjkC2";
 
     // Handles all 'Button' clicks
     void ButtonHandler(int id, Button button)
     {
+        // Print the clicked button name
         Debug.Log("Button '" + button.name + "' Clicked.");
 
+        // Edit Button
+        // ----------------------------------------
+        if (button.name == "Settings")
+        {
+            // Display settings
+            settingsPanel.SetActive(true);
+
+            // Display color picker
+            picker.gameObject.SetActive(true);
+        }
+
+        // File button
+        // ----------------------------------------
         if (button.name == "Exit")
         {
+            // SAVE
+            // < Save what needs to be saved here >
+
             // Close unity application
             Application.Quit();
         }
+        // Help button
+        // -----------------------------------------
+        else if (button.name == "GitHub Repository")
+            System.Diagnostics.Process.Start(githubLink);
+
+        else if (button.name == "YouTube Tutorials")
+            System.Diagnostics.Process.Start(youtubeLink);
+
+        else if (button.name == "Chat in Discord")
+            System.Diagnostics.Process.Start(discordLink);
     }
 
     // Handles all 'Toggles' 
