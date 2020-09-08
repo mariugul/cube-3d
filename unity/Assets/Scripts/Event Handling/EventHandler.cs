@@ -220,6 +220,14 @@ public class EventHandler : MonoBehaviour
         }
     }
 
+    void DialogBoxHandler(string title, string result)
+    {
+        if (title.Contains("New Update"))
+        {
+            Debug.Log("Dialog Box: " + title + "\nCallback result: " + result);
+        }
+    }
+
     Light GetLightComponent(Child child)
     {
         return gameObject.transform.GetChild((int)child).GetComponent<Light>();
@@ -235,6 +243,7 @@ public class EventHandler : MonoBehaviour
         ButtonDelegate.Click  += ButtonHandler;
         ToggleDelegate.Toggle += ToggleHandler;
         SliderDelegate.Slide  += SliderHandler;
+        DialogBoxTrigger.Callback += DialogBoxHandler;
         Debug.Log("Subscribed to events.");
     }
 
@@ -243,6 +252,7 @@ public class EventHandler : MonoBehaviour
         ButtonDelegate.Click  -= ButtonHandler;
         ToggleDelegate.Toggle -= ToggleHandler;
         SliderDelegate.Slide  -= SliderHandler;
+        DialogBoxTrigger.Callback -= DialogBoxHandler;
         Debug.Log("Unsubscribed to events.");
     }
 }
