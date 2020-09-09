@@ -57,23 +57,29 @@ public class EventHandler : MonoBehaviour
             // Close unity application
             Application.Quit();
         }
+        
         // Help button
         // -----------------------------------------
+
+        // Go to GitHub repository
         else if (button.name == "GitHub Repository")
             System.Diagnostics.Process.Start(GITHUB_LINK);
 
+        // Go to YouTube tutorials
         else if (button.name == "YouTube Tutorials")
             System.Diagnostics.Process.Start(YOUTUBE_LINK);
 
+        // Go to Discord server
         else if (button.name == "Chat in Discord")
             System.Diagnostics.Process.Start(DISCORD_LINK);
 
+        // Check for updates
         else if (button.name == ("Check for Updates"))
         {
             Sprite icon = null; // Empty icon
 
             bool? isAvailable = checkReleases.IsUpdateAvailable();
-            
+
             if (isAvailable == true)
             {
                 Debug.Log("IsAvailable: " + isAvailable.ToString());
@@ -90,6 +96,38 @@ public class EventHandler : MonoBehaviour
                 string text = "It was not possible to determine if there are new updates available.\n\nThere might be no internet connection or an error reading from the server.";
                 dialogBox.Show("Error", text, icon, null, "Ok");
             }
+        }
+
+        // Show Hotkeys
+        else if (button.name == "Hotkeys")
+        {
+            Sprite icon = null;
+            string text = (
+                "Generate pattern                  Enter\n\n"     +
+                "Enable all LEDs                   Ctrl + A\n"    +
+                "Disable all LEDs                  Shift + A\n\n" +
+                "Select pattern time               Ctrl + T\n\n"  +
+                "Delete pattern line               Delete\n"
+            );
+
+            dialogBox.Show("Hotkeys", text, icon, null, "Ok");
+        }
+
+        // Show information about app
+        else if (button.name == "About")
+        {
+            Sprite icon = null;
+            string ver = checkReleases.GetCurrentVersion().ToString();
+            string title = "v" + ver;
+            string text = (
+                "<b>Created by Marius C. K.</b>\n\n"                              +
+                "For help or feedback, join the Discord server. " +
+                "Video tutorials are found on YouTube. " +
+                "The source code is found on GitHub.\n\n"                           +
+                "Link to Discord, YouTube and GitHub is found under the 'Help' button"
+            );
+            
+            dialogBox.Show(title, text, icon, null, "Ok");
         }
     }
 
@@ -303,6 +341,7 @@ public class EventHandler : MonoBehaviour
         ToggleDelegate.Toggle += ToggleHandler;
         SliderDelegate.Slide  += SliderHandler;
         DialogBoxTrigger.Callback += DialogBoxHandler;
+        //CheckReleases.UpdateAvailable += 
         Debug.Log("Subscribed to events.");
     }
 
