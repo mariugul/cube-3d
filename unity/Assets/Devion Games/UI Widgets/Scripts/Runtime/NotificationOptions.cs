@@ -26,23 +26,23 @@ namespace DevionGames.UIWidgets{
 		/// <summary>
 		/// The delay before fading
 		/// </summary>
-		public float delay = 2.0f;
+		public float delay = 10.0f;
 		/// <summary>
 		/// The duration of fading.
 		/// </summary>
-		public float duration = 2.0f;
+		public float duration = 5.0f;
 		/// <summary>
 		/// Ignore TimeScale.
 		/// </summary>
 		public bool ignoreTimeScale = true;
 
 		public NotificationOptions(NotificationOptions other){
-			this.title = other.title;
-			this.text=other.text;
-			this.icon = other.icon;
-			this.color=other.color;
-			this.duration=other.duration;
-			this.ignoreTimeScale=other.ignoreTimeScale;
+			title = other.title;
+			text  = other.text;
+			icon  = other.icon;
+			color = other.color;
+			duration = other.duration;
+			ignoreTimeScale = other.ignoreTimeScale;
 		}
 		
 		public NotificationOptions(){}

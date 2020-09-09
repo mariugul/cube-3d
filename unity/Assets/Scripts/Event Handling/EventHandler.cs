@@ -1,8 +1,8 @@
 ﻿using DevionGames.UIWidgets;
-using System.Reflection.Emit;
 using UnityEngine;
 using UnityEngine.UI;
 using static Enumerations.Enumerations;
+using static DebugNotifications;
 
 // This script is supposed to handle the events when notfied by EventListener
 public class EventHandler : MonoBehaviour
@@ -18,9 +18,9 @@ public class EventHandler : MonoBehaviour
     DialogBox     dialogBox;
 
     // Internet Links
-    const string GITHUB_LINK  = "https://github.com/mariugul/cube-3d";
-    const string YOUTUBE_LINK = "https://youtube.com";
-    const string DISCORD_LINK = "https://discord.gg/ZgxjkC2";
+    const string GITHUB_LINK     = "https://github.com/mariugul/cube-3d";
+    const string YOUTUBE_LINK    = "https://youtube.com";
+    const string DISCORD_LINK    = "https://discord.gg/ZgxjkC2";
     const string GITHUB_RELEASES = "https://github.com/mariugul/cube-3d/releases";
 
     void Start()
@@ -35,7 +35,8 @@ public class EventHandler : MonoBehaviour
     void ButtonHandler(int id, Button button)
     {
         // Print the clicked button name
-        Debug.Log("Button '" + button.name + "' Clicked.");
+        string debugText = "Button '" + button.name + "' Clicked.";
+        debug.Log(debugText);
 
         // File button
         // ----------------------------------------
@@ -143,7 +144,8 @@ public class EventHandler : MonoBehaviour
     // ------------------------------------------------------------------------------
     void ToggleHandler(int id, Toggle toggle)
     {
-        Debug.Log("Toggle '" + toggle.name + "' Clicked. State = " + toggle.isOn.ToString());
+        string debugMsg = "Toggle '" + toggle.name + "' Clicked. State = " + toggle.isOn.ToString();
+        debug.Log(debugMsg);
 
         ToggleID toggleID = (ToggleID)id;
 
@@ -275,7 +277,9 @@ public class EventHandler : MonoBehaviour
     // ------------------------------------------------------------------------------
     void SliderHandler(int id, Slider slider)
     {
-        Debug.Log("Slider value = " + slider.value);
+        string debugMsg = ("Slider value = " + slider.value);
+        debug.Log(debugMsg);
+
         SliderID sliderID = (SliderID)id;
 
         // Back Light Slider
@@ -333,6 +337,9 @@ public class EventHandler : MonoBehaviour
     // ------------------------------------------------------------------------------
     void DialogBoxHandler(string title, string result)
     {
+        string debugMsg = "Dialog box: " + title + " Callback: " + result;
+        debug.Log(debugMsg);
+
         // When a new update is available
         if (title.Contains("New Update"))
         {

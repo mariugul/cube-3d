@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CallbackDelegate : MonoBehaviour
+public class DropdownCallbackDelegate : MonoBehaviour
 {
     // Button this script is attached to
     Button button;

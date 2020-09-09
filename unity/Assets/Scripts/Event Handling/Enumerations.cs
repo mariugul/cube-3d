@@ -65,6 +65,7 @@ namespace Enumerations
 			ledNumbering,
 			planeLayout, 
 			columnLayout,
+			debugWindow,
 		}
 
 		// Type of clicked event to pass from delegate

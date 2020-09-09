@@ -8,14 +8,16 @@ using DevionGames.UIWidgets;
 /// Message container example.
 /// </summary>
 public class NotificationTrigger : MonoBehaviour {
+
 	//Reference to the MessageContainer in scene
-	private Notification m_Notification;
+	Notification m_Notification;
+	
 	//Options to display containing information about text, icon, fading duration...
 	public NotificationOptions[] options;
 
 	private void Start(){
 		//Find the reference to the MessageContainer
-		this.m_Notification = WidgetUtility.Find<Notification> ("Notification");
+		m_Notification = WidgetUtility.Find<Notification> ("Notification");
 	}
 
 	/// <summary>

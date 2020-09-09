@@ -20,7 +20,7 @@ public class DropdownMenus : MonoBehaviour, IDeselectHandler
     void OnEnable()
     {
         // Subscribe to callback for closing dropdown
-        CallbackDelegate.CloseDropdown += CloseDropdown;
+        DropdownCallbackDelegate.CloseDropdown += CloseDropdown;
     }
 
     void Start()
@@ -40,7 +40,7 @@ public class DropdownMenus : MonoBehaviour, IDeselectHandler
     void OnDisable()
     {
         // Unsubscribe to callback
-        CallbackDelegate.CloseDropdown -= CloseDropdown;
+        DropdownCallbackDelegate.CloseDropdown -= CloseDropdown;
     }
 
     // Toggle dropdown menu on tool strip
