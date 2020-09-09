@@ -2,7 +2,6 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
 public class CallbackDelegate : MonoBehaviour
 {
     // Button this script is attached to

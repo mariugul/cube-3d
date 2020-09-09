@@ -61,7 +61,10 @@ namespace Enumerations
 			pcb,
 			legs, 
 			codeEditor,
-			colorPicker
+			colorPicker, 
+			ledNumbering,
+			planeLayout, 
+			columnLayout,
 		}
 
 		// Type of clicked event to pass from delegate
@@ -82,6 +85,10 @@ namespace Enumerations
 			legs,
 			pcb,
 			frontText,
+
+			layoutText = 0,
+			planeText,
+			columnText,
 		}
 	}
 }

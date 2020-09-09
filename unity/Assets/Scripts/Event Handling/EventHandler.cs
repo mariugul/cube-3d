@@ -11,6 +11,7 @@ public class EventHandler : MonoBehaviour
     public Canvas      canvas;        // Canvas to access input field
     public ColorPicker picker;        // Color Picker
     public GameObject  settingsPanel; // Settings panel
+    public GameObject  cubeLayout;    // 3D numbering, planes and columns 
 
     // Scripts
     CheckReleases checkReleases;
@@ -36,20 +37,9 @@ public class EventHandler : MonoBehaviour
         // Print the clicked button name
         Debug.Log("Button '" + button.name + "' Clicked.");
 
-        // Edit Button
-        // ----------------------------------------
-        if (button.name == "Settings")
-        {
-            // Display settings
-            settingsPanel.SetActive(true);
-
-            // Display color picker
-            picker.gameObject.SetActive(true);
-        }
-
         // File button
         // ----------------------------------------
-        else if (button.name == "Exit")
+        if (button.name == "Exit")
         {
             // SAVE
             // < Save what needs to be saved here >
@@ -58,6 +48,24 @@ public class EventHandler : MonoBehaviour
             Application.Quit();
         }
         
+        // Edit Button
+        // ----------------------------------------
+
+        // Settings
+        else if (button.name == "Settings")
+        {
+            // Display settings
+            settingsPanel.SetActive(true);
+
+            // Display color picker
+            picker.gameObject.SetActive(true);
+        }
+
+        // View button
+        // -----------------------------------------
+
+        
+
         // Help button
         // -----------------------------------------
 
@@ -146,78 +154,64 @@ public class EventHandler : MonoBehaviour
                 GetLightComponent(Child.backLight).enabled = true;
             else
                 GetLightComponent(Child.backLight).enabled = false;
-            
-            return;
         }
 
         //  Fill Light Toggle
-        if (toggleID == ToggleID.fillLight)
+        else if (toggleID == ToggleID.fillLight)
         {
             if (toggle.isOn)
                 GetLightComponent(Child.fillLight).enabled = true;
             else
                 GetLightComponent(Child.fillLight).enabled = false;
-            
-            return;
         }
 
         //  Key Light Toggle
-        if (toggleID == ToggleID.keyLight)
+        else if (toggleID == ToggleID.keyLight)
         {
             if (toggle.isOn)
                 GetLightComponent(Child.keyLight).enabled = true;
             else
                 GetLightComponent(Child.keyLight).enabled = false;
-            
-            return;
         }
 
         //  Roof Light Toggle
-        if (toggleID == ToggleID.roofLight)
+        else if (toggleID == ToggleID.roofLight)
         {
             if (toggle.isOn)
                 GetLightComponent(Child.roofLight).enabled = true;
             else
                 GetLightComponent(Child.roofLight).enabled = false;
-
-            return;
         }
 
         // Cube Box Toggle
-        if (toggleID == ToggleID.box)
+        else if (toggleID == ToggleID.box)
         {
             if (toggle.isOn)
                 GetStructureObject(Child.box).SetActive(true);
             else
                 GetStructureObject(Child.box).SetActive(false);
-
-            return;
         }
 
         // PCB Toggle
-        if (toggleID == ToggleID.pcb)
+        else if (toggleID == ToggleID.pcb)
         {
             if (toggle.isOn)
                 GetStructureObject(Child.pcb).SetActive(true);
             else
                 GetStructureObject(Child.pcb).SetActive(false);
-
-            return;
         }
 
         // LED legs Toggle
-        if (toggleID == ToggleID.legs)
+        else if (toggleID == ToggleID.legs)
         {
             if (toggle.isOn)
                 GetStructureObject(Child.legs).SetActive(true);
             else
                 GetStructureObject(Child.legs).SetActive(false);
-
-            return;
         }
 
         // Pattern File Display Toggle
-        if (toggleID == ToggleID.codeEditor)
+        else if (toggleID == ToggleID.codeEditor)
         {
             int inputFieldChild = 0;
 
@@ -225,19 +219,55 @@ public class EventHandler : MonoBehaviour
                 canvas.transform.GetChild(inputFieldChild).gameObject.SetActive(true);
             else
                 canvas.transform.GetChild(inputFieldChild).gameObject.SetActive(false);
-
-            return;
         }
 
         // Color Picker Toggle
-        if (toggleID == ToggleID.colorPicker) 
+        else if (toggleID == ToggleID.colorPicker) 
         {
             if (toggle.isOn)
                 picker.gameObject.SetActive(true);
             else
                 picker.gameObject.SetActive(false);
+        }
 
-            return;
+        // View Tool Strip Dropdown Menu
+        // ------------------------------------------------------
+
+        // Toggle LED Numbering
+        else if (toggle.name == "LED Numbering")
+        {
+            // Get gameobject
+            var go = cubeLayout.transform.GetChild((int)Child.layoutText).gameObject;
+
+            // Toggle the 3D LED numbering
+            if (go.activeSelf)
+                go.SetActive(false);
+            else
+                go.SetActive(true);
+        }
+
+        else if (toggle.name == "Plane Layout")
+        {
+            // Get gameobject
+            var go = cubeLayout.transform.GetChild((int)Child.planeText).gameObject;
+
+            // Toggle the 3D plane text
+            if (go.activeSelf)
+                go.SetActive(false);
+            else
+                go.SetActive(true);
+        }
+
+        else if (toggle.name == "Column Layout")
+        {
+            // Get gameobject
+            var go = cubeLayout.transform.GetChild((int)Child.columnText).gameObject;
+
+            // Toggle the 3D column text
+            if (go.activeSelf)
+                go.SetActive(false);
+            else
+                go.SetActive(true);
         }
     }
 
