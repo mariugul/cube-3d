@@ -13,11 +13,11 @@ public class CheckReleases : MonoBehaviour
     string rss_content = "";
 
     // Internet Connection
-    bool new_content = false;
+    static bool new_content = false;
 
     // Is an update available online?
     // Null value represents internet connection error (Don't know)
-    bool? update_available = false;
+    static bool? update_available = false;
 
     // Send dialog button click to event handler
     public delegate void NewUpdateAvailable(Version version);

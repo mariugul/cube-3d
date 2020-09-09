@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using DevionGames.UIWidgets;
+using System.Reflection.Emit;
+using UnityEngine;
 using UnityEngine.UI;
 using static Enumerations.Enumerations;
 
@@ -10,12 +12,25 @@ public class EventHandler : MonoBehaviour
     public ColorPicker picker;        // Color Picker
     public GameObject  settingsPanel; // Settings panel
 
+    // Scripts
+    CheckReleases checkReleases;
+    DialogBox     dialogBox;
+
     // Internet Links
-    const string githubLink  = "https://github.com/mariugul/cube-3d";
-    const string youtubeLink = "https://youtube.com";
-    const string discordLink = "https://discord.gg/ZgxjkC2";
+    const string GITHUB_LINK  = "https://github.com/mariugul/cube-3d";
+    const string YOUTUBE_LINK = "https://youtube.com";
+    const string DISCORD_LINK = "https://discord.gg/ZgxjkC2";
+    const string GITHUB_RELEASES = "https://github.com/mariugul/cube-3d/releases";
+
+    void Start()
+    {
+        // Instantiate scripts
+        checkReleases = FindObjectOfType<CheckReleases>();
+        dialogBox     = FindObjectOfType<DialogBox>();
+    }
 
     // Handles all 'Button' clicks
+    // ------------------------------------------------------------------------------
     void ButtonHandler(int id, Button button)
     {
         // Print the clicked button name
@@ -34,7 +49,7 @@ public class EventHandler : MonoBehaviour
 
         // File button
         // ----------------------------------------
-        if (button.name == "Exit")
+        else if (button.name == "Exit")
         {
             // SAVE
             // < Save what needs to be saved here >
@@ -45,16 +60,41 @@ public class EventHandler : MonoBehaviour
         // Help button
         // -----------------------------------------
         else if (button.name == "GitHub Repository")
-            System.Diagnostics.Process.Start(githubLink);
+            System.Diagnostics.Process.Start(GITHUB_LINK);
 
         else if (button.name == "YouTube Tutorials")
-            System.Diagnostics.Process.Start(youtubeLink);
+            System.Diagnostics.Process.Start(YOUTUBE_LINK);
 
         else if (button.name == "Chat in Discord")
-            System.Diagnostics.Process.Start(discordLink);
+            System.Diagnostics.Process.Start(DISCORD_LINK);
+
+        else if (button.name == ("Check for Updates"))
+        {
+            Sprite icon = null; // Empty icon
+
+            bool? isAvailable = checkReleases.IsUpdateAvailable();
+            
+            if (isAvailable == true)
+            {
+                Debug.Log("IsAvailable: " + isAvailable.ToString());
+
+                dialogBox.Show("New Update", "A new release is available.\n\nDo you want to download?", icon, null, "Yes", "No");
+            }
+            else if (isAvailable == false)
+            {
+                var ver = checkReleases.GetCurrentVersion().ToString();
+                dialogBox.Show("No Updates", "You have the newest release installed already.\n\nVersion: " + ver, icon, null, "Ok");
+            }
+            else if (isAvailable == null)
+            {
+                string text = "It was not possible to determine if there are new updates available.\n\nThere might be no internet connection or an error reading from the server.";
+                dialogBox.Show("Error", text, icon, null, "Ok");
+            }
+        }
     }
 
     // Handles all 'Toggles' 
+    // ------------------------------------------------------------------------------
     void ToggleHandler(int id, Toggle toggle)
     {
         Debug.Log("Toggle '" + toggle.name + "' Clicked. State = " + toggle.isOn.ToString());
@@ -164,6 +204,7 @@ public class EventHandler : MonoBehaviour
     }
 
     // Handles all 'Slider' changes
+    // ------------------------------------------------------------------------------
     void SliderHandler(int id, Slider slider)
     {
         Debug.Log("Slider value = " + slider.value);
@@ -220,14 +261,32 @@ public class EventHandler : MonoBehaviour
         }
     }
 
+    // Handles all dialog boxes
+    // ------------------------------------------------------------------------------
     void DialogBoxHandler(string title, string result)
     {
+        // When a new update is available
         if (title.Contains("New Update"))
         {
-            Debug.Log("Dialog Box: " + title + "\nCallback result: " + result);
+            // Action based on callback result
+            if (result.Contains("Yes"))
+                // Open the GitHub releases in web browser
+                System.Diagnostics.Process.Start(GITHUB_RELEASES);
+
+            else if (result.Contains("No"))
+                Debug.Log("You didn't want to update.");
+
+            else
+                Debug.Log("No answer was received from dialog box.");
+
+            return;
         }
+
+        // 
     }
 
+    // Private functions
+    // ------------------------------------------------------------------------------
     Light GetLightComponent(Child child)
     {
         return gameObject.transform.GetChild((int)child).GetComponent<Light>();

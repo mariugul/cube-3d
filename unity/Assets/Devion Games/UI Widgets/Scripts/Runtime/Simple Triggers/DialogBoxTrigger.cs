@@ -36,7 +36,7 @@ public class DialogBoxTrigger : MonoBehaviour
 
     void Start()
     {
-        this.m_DialogBox = FindObjectOfType<DialogBox>();
+        m_DialogBox = FindObjectOfType<DialogBox>();
 
         // Get button component and add listener to 'on click'
         button = GetComponent<Button>();
@@ -51,16 +51,16 @@ public class DialogBoxTrigger : MonoBehaviour
             Show();
     }
 
-    public void Show() {
-        m_DialogBox.Show(title, text, icon, _OnButtonResult, options);
+    void Show() {
+        m_DialogBox.Show(title, text, icon, OnButtonResult, options);
     }
 
-    public void ShowWithCallback()
+    void ShowWithCallback()
     {
-        m_DialogBox.Show(title, text, icon, _OnDialogResult, options);
+        m_DialogBox.Show(title, text, icon, OnDialogResult, options);
     }
 
-    void _OnDialogResult(int index)
+    void OnDialogResult(int index)
     {
         //m_DialogBox.Show("Result", "Callback Result: " + options[index], icon, null, "OK");
         m_DialogBox.Show(callbackTitle, callbackText, callbackIcon, null, callbackOptions);
@@ -68,7 +68,7 @@ public class DialogBoxTrigger : MonoBehaviour
 
     // Sends the clicked button response from dialog box 
     // to event handler
-    void _OnButtonResult(int index)
+    void OnButtonResult(int index)
     {
         // Trigger 'dialog box button click' event
         // and send the result as string
