@@ -3,9 +3,10 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
+using static DebugNotifications;
 
 public class CheckReleases : MonoBehaviour
-{
+{ 
     // GitHub repository RSS feed info
     const string RELEASES_RSS = "https://github.com/mariugul/cube-3d/releases.atom";
 
@@ -78,7 +79,7 @@ public class CheckReleases : MonoBehaviour
         // Ask to update if newer release exists
         if (result > 0)
         {
-            Debug.Log("There is a new release on GitHub!");
+            debug.LogInfo("There is a new release on GitHub!");
 
             // Trigger 'Update available' event to event handler
             UpdateAvailable?.Invoke(gitHubVersion);
@@ -86,16 +87,18 @@ public class CheckReleases : MonoBehaviour
             // Set global variable to true for update available
             update_available = true;
         }
+
         else if (result < 0)
         {
             // Hopefully shouldn't reach this point (it doesn't make sense)
-            Debug.Log("For some reason, your release is newer than the latest on GitHub.");
+            debug.LogInfo("For some reason, your release is newer than the latest on GitHub.");
 
             update_available = false;
         }
+
         else
         {
-            Debug.Log("You have the newest release installed!");
+            debug.LogInfo("You have the newest release installed!");
 
             update_available = false;
         }
@@ -115,28 +118,28 @@ public class CheckReleases : MonoBehaviour
             switch (webRequest.result)
             {
                 case UnityWebRequest.Result.ConnectionError:
-                    Debug.LogError("Error: Couldn't connect to the internet to get update information.");
+                    debug.LogError("Error: Couldn't connect to the internet to get update information.");
                     
                     // Checking for an update was not possible
                     update_available = null;
                     break;
 
                 case UnityWebRequest.Result.DataProcessingError:
-                    Debug.LogError(pages[page] + ": Error: " + webRequest.error);
+                    debug.LogError(pages[page] + ": Error: " + webRequest.error);
 
                     // Checking for an update was not possible
                     update_available = null;
                     break;
 
                 case UnityWebRequest.Result.ProtocolError:
-                    Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                    debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
 
                     // Checking for an update was not possible
                     update_available = null;
                     break;
 
                 case UnityWebRequest.Result.Success:
-                    //Debug.Log("Successfully connected and downloaded update info."); 
+                    debug.LogInfo("Successfully connected and downloaded update info."); 
                     rss_content = webRequest.downloadHandler.text;
                     new_content = true;
                     break;
@@ -157,7 +160,7 @@ public class CheckReleases : MonoBehaviour
     }
 
     // Public Functions
-    // --------------------------------------------------------------------------
+    
 
     // Returns the current version number
     public Version GetCurrentVersion()

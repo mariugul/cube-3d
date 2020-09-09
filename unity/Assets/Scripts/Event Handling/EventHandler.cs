@@ -12,6 +12,7 @@ public class EventHandler : MonoBehaviour
     public ColorPicker picker;        // Color Picker
     public GameObject  settingsPanel; // Settings panel
     public GameObject  cubeLayout;    // 3D numbering, planes and columns 
+    public GameObject  debugWindow;   // Notification window in app used for debug
 
     // Scripts
     CheckReleases checkReleases;
@@ -91,7 +92,7 @@ public class EventHandler : MonoBehaviour
 
             if (isAvailable == true)
             {
-                Debug.Log("IsAvailable: " + isAvailable.ToString());
+                debug.Log("IsAvailable: " + isAvailable.ToString());
 
                 dialogBox.Show("New Update", "A new release is available.\n\nDo you want to download?", icon, null, "Yes", "No");
             }
@@ -224,12 +225,21 @@ public class EventHandler : MonoBehaviour
         }
 
         // Color Picker Toggle
-        else if (toggleID == ToggleID.colorPicker) 
+        else if (toggleID == ToggleID.colorPicker)
         {
             if (toggle.isOn)
                 picker.gameObject.SetActive(true);
             else
                 picker.gameObject.SetActive(false);
+        }
+
+        // Toggle Debug Window
+        else if (toggle.name == "Debug Window")
+        {
+            if (toggle.isOn)
+                debugWindow.SetActive(true);
+            else
+                debugWindow.SetActive(false);
         }
 
         // View Tool Strip Dropdown Menu
@@ -271,6 +281,7 @@ public class EventHandler : MonoBehaviour
             else
                 go.SetActive(true);
         }
+
     }
 
     // Handles all 'Slider' changes
@@ -349,10 +360,10 @@ public class EventHandler : MonoBehaviour
                 System.Diagnostics.Process.Start(GITHUB_RELEASES);
 
             else if (result.Contains("No"))
-                Debug.Log("You didn't want to update.");
+                debug.Log("You didn't want to update.");
 
             else
-                Debug.Log("No answer was received from dialog box.");
+                debug.Log("No answer was received from dialog box.");
 
             return;
         }
@@ -378,8 +389,6 @@ public class EventHandler : MonoBehaviour
         ToggleDelegate.Toggle += ToggleHandler;
         SliderDelegate.Slide  += SliderHandler;
         DialogBoxTrigger.Callback += DialogBoxHandler;
-        //CheckReleases.UpdateAvailable += 
-        Debug.Log("Subscribed to events.");
     }
 
     void OnDisable()
@@ -388,6 +397,5 @@ public class EventHandler : MonoBehaviour
         ToggleDelegate.Toggle -= ToggleHandler;
         SliderDelegate.Slide  -= SliderHandler;
         DialogBoxTrigger.Callback -= DialogBoxHandler;
-        Debug.Log("Unsubscribed to events.");
     }
 }

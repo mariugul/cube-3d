@@ -35,4 +35,19 @@ public class DebugNotifications : MonoBehaviour
 
         notification.AddItem(text);
     }
+
+    public void LogInfo(string text)
+    {
+        notification.AddItem("<color=green><b>INFO:</b> " + text + "</color>");
+    }
+
+    public void LogError(string text)
+    {
+        notification.AddItem("<color=red><b>ERROR:</b> " + text + "</color>");
+    }
+
+    public void LogWarning(string text)
+    {
+        notification.AddItem("<color=yellow><b>WARNING:</b> " + text + "</color>");
+    }
 }
