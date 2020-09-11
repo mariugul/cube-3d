@@ -88,8 +88,6 @@ public class LedLights : MonoBehaviour
 
     public void SetColor(Color color)
     {
-        color.a = ALPHA;
-
         // iterate over all LEDs
         for (int led = 0; led < CUBESIZE; led++)
         {
@@ -146,6 +144,7 @@ public class LedLights : MonoBehaviour
         SetIntensity(HALO_INTENSITY, "halos");
 
         // Set default color
+        color.a = ALPHA;
         picker.CurrentColor = color;
         SetColor(picker.CurrentColor);
     }

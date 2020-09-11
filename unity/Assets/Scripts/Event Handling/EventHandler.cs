@@ -3,16 +3,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Enumerations.Enumerations;
 using static DebugNotifications;
+using DevionGames;
 
 // This script is supposed to handle the events when notfied by EventListener
 public class EventHandler : MonoBehaviour
 {
     // GameObjects   
-    public Canvas      canvas;        // Canvas to access input field
-    public ColorPicker picker;        // Color Picker
-    public GameObject  settingsPanel; // Settings panel
-    public GameObject  cubeLayout;    // 3D numbering, planes and columns 
-    public GameObject  debugWindow;   // Notification window in app used for debug
+    public GameObject ledCube;           // The LED cube prefab
+    public Canvas      canvas;           // Canvas to access input field
+    public ColorPicker picker;           // Color Picker
+    public GameObject  pickerGameObject; // The entire gameobject with handle bar and close button
+    public GameObject  settingsPanel;    // Settings panel
+    public GameObject  cubeLayout;       // 3D numbering, planes and columns 
+    public GameObject  debugWindow;      // Notification window in app used for debug
+    public Toggle settingsToggleColorPicker; // For updating the toggle on the settings panel when the color picker is turned off
 
     // Scripts
     CheckReleases checkReleases;
@@ -49,7 +53,7 @@ public class EventHandler : MonoBehaviour
             // Close unity application
             Application.Quit();
         }
-        
+
         // Edit Button
         // ----------------------------------------
 
@@ -59,14 +63,15 @@ public class EventHandler : MonoBehaviour
             // Display settings
             settingsPanel.SetActive(true);
 
-            // Display color picker
-            picker.gameObject.SetActive(true);
+            // Display color picker if selected on settings panel
+            if (settingsToggleColorPicker.isOn)
+                pickerGameObject.gameObject.SetActive(true);
         }
 
         // View button
         // -----------------------------------------
 
-        
+
 
         // Help button
         // -----------------------------------------
@@ -113,10 +118,10 @@ public class EventHandler : MonoBehaviour
         {
             Sprite icon = null;
             string text = (
-                "Generate pattern                  Enter\n\n"     +
-                "Enable all LEDs                   Ctrl + A\n"    +
+                "Generate pattern                  Enter\n\n" +
+                "Enable all LEDs                   Ctrl + A\n" +
                 "Disable all LEDs                  Shift + A\n\n" +
-                "Select pattern time               Ctrl + T\n\n"  +
+                "Select pattern time               Ctrl + T\n\n" +
                 "Delete pattern line               Delete\n"
             );
 
@@ -130,14 +135,34 @@ public class EventHandler : MonoBehaviour
             string ver = checkReleases.GetCurrentVersion().ToString();
             string title = "v" + ver;
             string text = (
-                "<b>Created by Marius C. K.</b>\n\n"                              +
+                "<b>Created by Marius C. K.</b>\n\n" +
                 "For help or feedback, join the Discord server. " +
                 "Video tutorials are found on YouTube. " +
-                "The source code is found on GitHub.\n\n"                           +
+                "The source code is found on GitHub.\n\n" +
                 "Link to Discord, YouTube and GitHub is found under the 'Help' button"
             );
-            
+
             dialogBox.Show(title, text, icon, null, "Ok");
+        }
+
+        else if (button.name == "Close Color Picker")
+        {
+            // Deactivate Color Picker Game Object
+            pickerGameObject.SetActive(false);
+
+            // Update 'toggle' in settings to correct state
+            settingsToggleColorPicker.isOn = false;
+        }
+
+        else if (button.name == "Close Settings")
+        {
+            // Close the settings panel
+            settingsPanel.SetActive(false);
+
+            // Close the color picker
+            if (pickerGameObject.activeSelf)
+                pickerGameObject.SetActive(false);
+
         }
     }
 
@@ -228,9 +253,17 @@ public class EventHandler : MonoBehaviour
         else if (toggleID == ToggleID.colorPicker)
         {
             if (toggle.isOn)
-                picker.gameObject.SetActive(true);
+            {
+                // Check if the picker is already showing
+                if (!pickerGameObject.activeSelf)
+                    pickerGameObject.SetActive(true);
+            }
             else
-                picker.gameObject.SetActive(false);
+            {
+                // Check if the picker is already off
+                if (pickerGameObject.activeSelf)
+                    pickerGameObject.SetActive(false);
+            }
         }
 
         // Toggle Debug Window
@@ -375,12 +408,12 @@ public class EventHandler : MonoBehaviour
     // ------------------------------------------------------------------------------
     Light GetLightComponent(Child child)
     {
-        return gameObject.transform.GetChild((int)child).GetComponent<Light>();
+        return ledCube.transform.GetChild((int)child).GetComponent<Light>();
     }
 
     GameObject GetStructureObject(Child child)
     {
-        return gameObject.transform.GetChild((int)child).gameObject;
+        return ledCube.transform.GetChild((int)child).gameObject;
     }
 
     void OnEnable()
