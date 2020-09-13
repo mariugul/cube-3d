@@ -1770,6 +1770,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Debug Window
       objectReference: {fileID: 0}
+    - target: {fileID: 4529551416303525823, guid: 5eeced0be65b37041897f5941384c5a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4529551416597636527, guid: 5eeced0be65b37041897f5941384c5a6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1788,7 +1793,7 @@ PrefabInstance:
     - target: {fileID: 4529551417204117167, guid: 5eeced0be65b37041897f5941384c5a6,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5eeced0be65b37041897f5941384c5a6, type: 3}
@@ -2377,7 +2382,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &125311684
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,8 +2419,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 160, y: 0}
+  m_SizeDelta: {x: 320, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &125311686
 MonoBehaviour:
@@ -8384,8 +8389,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 192.5, y: 0}
+  m_SizeDelta: {x: 235, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &423287588
 MonoBehaviour:
@@ -12203,7 +12208,7 @@ GameObject:
   - component: {fileID: 588505363}
   - component: {fileID: 588505362}
   m_Layer: 0
-  m_Name: InputController
+  m_Name: CameraController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13465,6 +13470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3145db776c1d0864f8ae82694a98d306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toolStrip: {fileID: 1347208505485367992}
 --- !u!114 &666600899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44619,6 +44625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a76bbe821e8b04b8ab25e91aec5418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugWindow: {fileID: 610600658}
 --- !u!114 &1986539418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50856,7 +50863,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.0009765625, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 2303.9995, y: 27.915527}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &9161591556480813807

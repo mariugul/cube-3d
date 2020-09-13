@@ -4,6 +4,8 @@ using UnityEngine;
 // This script puts debug messages into the notfication window
 public class DebugNotifications : MonoBehaviour
 {
+    public GameObject debugWindow;
+
     Notification notification;
 
     // Make class singleton
@@ -32,22 +34,37 @@ public class DebugNotifications : MonoBehaviour
 
     public void Log(string text)
     {
-
-        notification.AddItem(text);
+        // Only put messages if the debug window is active
+        if (IsDebugWindowActive())
+            notification.AddItem(text);
     }
 
     public void LogInfo(string text)
     {
-        notification.AddItem("<color=green><b>INFO:</b> " + text + "</color>");
+        // Only put messages if the debug window is active
+        if (IsDebugWindowActive())
+            notification.AddItem("<color=green><b>INFO:</b> " + text + "</color>");
     }
 
     public void LogError(string text)
     {
-        notification.AddItem("<color=red><b>ERROR:</b> " + text + "</color>");
+        // Only put messages if the debug window is active
+        if (IsDebugWindowActive())
+            notification.AddItem("<color=red><b>ERROR:</b> " + text + "</color>");
     }
 
     public void LogWarning(string text)
     {
-        notification.AddItem("<color=yellow><b>WARNING:</b> " + text + "</color>");
+        // Only put messages if the debug window is active
+        if (IsDebugWindowActive())
+            notification.AddItem("<color=yellow><b>WARNING:</b> " + text + "</color>");
+    }
+
+    bool IsDebugWindowActive()
+    {
+        if (debugWindow.activeSelf)
+            return true;
+        else
+            return false;
     }
 }

@@ -9,6 +9,8 @@ using UnityEngine.Rendering.PostProcessing;
 namespace DevionGames
 {
 	public class Settings : MonoBehaviour {
+		public GameObject toolStrip;
+
 		private const string QUALITY_LEVEL_KEY = "QualityLevel";
 		private const string RESOLUTION_WIDTH_KEY = "ScreenResolutionWidth";
 		private const string RESOLUTION_HEIGHT_KEY = "ScreenResolutionHeight";
@@ -108,6 +110,12 @@ namespace DevionGames
 		public void SetFullscreen(bool fullScreen){
 			Screen.fullScreen = fullScreen;
 			PlayerPrefs.SetInt (FULL_SCREEN_KEY, BoolToInt(fullScreen));
+
+			// Move tool strip to top
+			Vector3 zero = new Vector3(0f, 0f, 0f);
+			var rect = toolStrip.GetComponent<RectTransform>();
+			//rect.position = zero;
+
 		}
 		#endregion
 

@@ -303,9 +303,24 @@ public class EventHandler : MonoBehaviour
         else if (toggle.name == "Debug Window")
         {
             if (toggle.isOn)
+            {
                 debugWindow.SetActive(true);
+
+                Sprite icon = null;
+                string text = "The debug window is now activated!\n\n" +
+                    "Debug information is shown in the bottom left and fades away after 10 seconds.";
+                dialogBox.Show("Debug Window", text, icon, null, "Ok");
+
+            }
             else
+            {
                 debugWindow.SetActive(false);
+
+                Sprite icon = null;
+                string text = "The debug window is deactivated.\n\n" +
+                    "Debug information will fade away and new information is not shown.";
+                dialogBox.Show("Debug Window", text, icon, null, "Ok");
+            }
         }
 
         // View Tool Strip Dropdown Menu
