@@ -1,4 +1,5 @@
 ﻿using DevionGames.UIWidgets;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using static Enumerations.Enumerations;
@@ -9,18 +10,27 @@ using DevionGames;
 public class EventHandler : MonoBehaviour
 {
     // GameObjects   
-    public GameObject ledCube;           // The LED cube prefab
-    public Canvas      canvas;           // Canvas to access input field
-    public ColorPicker picker;           // Color Picker
-    public GameObject  pickerGameObject; // The entire gameobject with handle bar and close button
-    public GameObject  settingsPanel;    // Settings panel
-    public GameObject  cubeLayout;       // 3D numbering, planes and columns 
-    public GameObject  debugWindow;      // Notification window in app used for debug
+    public Canvas      canvas;               // Canvas to access input field
+    public ColorPicker picker;               // Color Picker
+    public GameObject  ledCube;              // The LED cube prefab
+    public GameObject  pickerGameObject;     // The entire gameobject with handle bar and close button
+    public GameObject  settingsPanel;        // Settings panel
+    public GameObject  cubeLayout;           // 3D numbering, planes and columns 
+    public GameObject  debugWindow;          // Notification window in app used for debug
     public Toggle settingsToggleColorPicker; // For updating the toggle on the settings panel when the color picker is turned off
 
     // Scripts
     CheckReleases checkReleases;
     DialogBox     dialogBox;
+
+    // Delegates and events
+    public delegate void FileDialog(string button);
+    public static event FileDialog Request;
+
+    public void TriggerFileDialog(string button)
+    {
+        Request?.Invoke(button);
+    }
 
     // Internet Links
     const string GITHUB_LINK     = "https://github.com/mariugul/cube-3d";
@@ -66,6 +76,29 @@ public class EventHandler : MonoBehaviour
             // Display color picker if selected on settings panel
             if (settingsToggleColorPicker.isOn)
                 pickerGameObject.gameObject.SetActive(true);
+        }
+
+        // Export button
+        // -----------------------------------------
+        else if (button.name == "Export")
+        {
+            string message = "A new release is available.\n\nDo you want to download?";
+        }
+
+        else if (button.name == "Arduino Project")
+        {
+            TriggerFileDialog(button.name);
+            
+        }
+
+        else if (button.name == "Pattern File")
+        {
+            TriggerFileDialog(button.name);
+        }
+
+        else if (button.name == "Atmel Studio Project")
+        {
+            TriggerFileDialog(button.name);
         }
 
         // View button
@@ -162,8 +195,8 @@ public class EventHandler : MonoBehaviour
             // Close the color picker
             if (pickerGameObject.activeSelf)
                 pickerGameObject.SetActive(false);
-
         }
+
     }
 
     // Handles all 'Toggles' 

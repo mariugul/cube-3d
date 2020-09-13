@@ -18,7 +18,7 @@ public class ButtonDelegate : MonoBehaviour
 
     // Delegates and events
     public delegate void ButtonClick(int id, Button button);
-    public static event ButtonClick Click;
+    public static event  ButtonClick Click;
 
     // Runs on start up
     void Start()
