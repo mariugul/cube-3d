@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 /// <summary>
@@ -56,16 +57,20 @@ public class WinFormsFileHandler : Form
     {
         var ofd = new SaveFileDialog();
 
-        ofd.Filter = "Folder Name|*Folder";
+        // Initial directory
+        string initDir = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        ofd.InitialDirectory = initDir;
 
+        ofd.Filter = "Folder Name|*Folder";
+        
         var result = ofd.ShowDialog(); // Saving the result is pointless, it's not async stuff here.
-                                       // What you can do is wait for form closing:
+
         ofd.FormClosed += (o, eventArgs) =>
         {
             if (ofd.DialogResult == DialogResult.OK)
             {
                 UnityEngine.Debug.Log(ofd.FileName);
-
+                
                 string selectedFolder = ofd.FileName;
                 if (export.ArduinoProjectGenerate(selectedFolder))
                     MessageBox.Show("Arduino project created successfully at\n" + ofd.FileName);
@@ -94,6 +99,10 @@ public class WinFormsFileHandler : Form
     {
         var sfd = new SaveFileDialog();
 
+        // Initial directory
+        string initDir = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        sfd.InitialDirectory = initDir;
+        
         sfd.Filter = "C Header File|*.h";
 
         var result = sfd.ShowDialog();
