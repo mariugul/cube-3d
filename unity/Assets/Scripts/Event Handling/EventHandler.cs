@@ -23,7 +23,7 @@ public class EventHandler : MonoBehaviour
     CheckReleases checkReleases;
     DialogBox     dialogBox;
 
-    // Delegates and events
+    // Delegate and event for WinForms File Dialog
     public delegate void FileDialog(string button);
     public static event FileDialog Request;
 

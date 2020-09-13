@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 /// <summary>
 /// This script uses WinForms to get access to 
@@ -15,6 +16,17 @@ public class WinFormsFileHandler : Form
 
         // Listen for button click event
         EventHandler.Request += ButtonHandler;
+
+        // Form settings 
+        //--------------------------------------------------------------
+        Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+        FormBorderStyle = FormBorderStyle.FixedSingle;
+        Location = new Point(0, -uwfHeaderHeight); // Hide header.
+        MaximizeBox = false;
+        Size = new Size(System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width, uwfHeaderHeight + 24); // + menu height.
+        SizeGripStyle = SizeGripStyle.Hide;
+        StartPosition = FormStartPosition.Manual;
+        uwfMovable = false;
     }
 
     void ButtonHandler(string button)

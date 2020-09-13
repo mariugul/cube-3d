@@ -2419,8 +2419,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 160, y: 0}
-  m_SizeDelta: {x: 320, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &125311686
 MonoBehaviour:
@@ -8331,7 +8331,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 232444891}
   toggleTransition: 1
   graphic: {fileID: 416654383}
@@ -8389,8 +8389,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 192.5, y: 0}
-  m_SizeDelta: {x: 235, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &423287588
 MonoBehaviour:
@@ -11217,7 +11217,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1935597056}
   toggleTransition: 1
   graphic: {fileID: 197315935}
@@ -13492,7 +13492,7 @@ MonoBehaviour:
   showSound: {fileID: 8300000, guid: 40baf92810a08194e8de1e87e3952a0c, type: 3}
   closeSound: {fileID: 8300000, guid: 40baf92810a08194e8de1e87e3952a0c, type: 3}
   m_Focus: 1
-  m_DeactivateOnClose: 0
+  m_DeactivateOnClose: 1
   onShow:
     m_PersistentCalls:
       m_Calls: []
@@ -20028,7 +20028,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1933209998}
   toggleTransition: 1
   graphic: {fileID: 992597632}
@@ -21157,7 +21157,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 269853430}
   toggleTransition: 1
   graphic: {fileID: 830707899}
@@ -21254,7 +21254,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1537369079}
   toggleTransition: 1
   graphic: {fileID: 503913451}
