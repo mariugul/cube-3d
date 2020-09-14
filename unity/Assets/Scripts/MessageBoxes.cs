@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MessageBoxes : MonoBehaviour
 {
+    /*
     // Panels of Message Boxes
     public GameObject messageBoxYesNo;
     public GameObject messageBoxOk;
@@ -143,4 +144,5 @@ public class MessageBoxes : MonoBehaviour
         // Close the message box
         Close("YesNo");
     }
+    */
 }
