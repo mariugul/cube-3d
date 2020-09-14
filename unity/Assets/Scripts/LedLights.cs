@@ -6,17 +6,17 @@ public class LedLights : MonoBehaviour
     public ColorPicker picker;
 
     // Default LED values
-    const int   LED_RANGE      = 4;
-    const int   LED_INTENSITY  = 15;
+    const int LED_RANGE = 4;
+    const int LED_INTENSITY = 15;
 
-    const int   HALO_RANGE     = 15;
+    const int HALO_RANGE = 15;
     const float HALO_INTENSITY = 0.1f;
 
     const float ALPHA = 0.4f;
 
     // Childs of LED cube
     const int LIGHT_SOURCE = 0;
-    const int LIGHT_HALO   = 0;
+    const int LIGHT_HALO = 0;
 
     // Constants
     const int CUBESIZE = 64;
@@ -44,15 +44,20 @@ public class LedLights : MonoBehaviour
         // Color picker add listener to changed values
         picker.onValueChanged.AddListener(color =>
         {
-            onColorPickerValueChange();   
+            onColorPickerValueChange();
         });
 
         SetDefaultValues(Color.green);
-       
+
         // Disable LEDs by default
         Disable();
     }
-  
+
+    void Update()
+    {
+        
+    }
+
     void onColorPickerValueChange()
     {
         SetColor(picker.CurrentColor);
@@ -83,8 +88,6 @@ public class LedLights : MonoBehaviour
 
     public void SetColor(Color color)
     {
-        color.a = ALPHA;
-
         // iterate over all LEDs
         for (int led = 0; led < CUBESIZE; led++)
         {
@@ -141,7 +144,9 @@ public class LedLights : MonoBehaviour
         SetIntensity(HALO_INTENSITY, "halos");
 
         // Set default color
+        color.a = ALPHA;
         picker.CurrentColor = color;
         SetColor(picker.CurrentColor);
     }
-}
+
+ }
