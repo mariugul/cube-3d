@@ -101,11 +101,6 @@ public class EventHandler : MonoBehaviour
             TriggerFileDialog(button.name);
         }
 
-        // View button
-        // -----------------------------------------
-
-
-
         // Help button
         // -----------------------------------------
 
@@ -448,8 +443,6 @@ public class EventHandler : MonoBehaviour
 
             return;
         }
-
-        // 
     }
 
     // Private functions
